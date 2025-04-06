@@ -8,7 +8,6 @@ import { Menu, X, Search, ChevronDown } from "lucide-react";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [isAtFooter, setIsAtFooter] = useState(false);
   const [isOverHero, setIsOverHero] = useState(true);
   const navbarRef = useRef(null);
   const [hoveredMenu, setHoveredMenu] = useState<number | null>(null);
@@ -19,14 +18,6 @@ export default function Navbar() {
 
     // Check if user is over hero section (first 100vh)
     setIsOverHero(position < window.innerHeight * 0.8);
-
-    // Check if user has scrolled to the footer
-    const footerElement = document.querySelector("footer");
-    if (footerElement) {
-      const footerPosition = footerElement.offsetTop;
-      const windowHeight = window.innerHeight;
-      setIsAtFooter(position + windowHeight > footerPosition - 100);
-    }
   };
 
   useEffect(() => {
@@ -83,16 +74,14 @@ export default function Navbar() {
   return (
     <nav
       ref={navbarRef}
-      className={`w-full z-50 transition-all duration-300 ${
-        isAtFooter ? "relative" : "fixed"
-      } ${
+      className={`w-full z-50 fixed transition-all duration-300 ${
         isOverHero
           ? "bg-transparent text-white"
           : "bg-white text-gray-900 shadow-lg"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center">
@@ -104,15 +93,15 @@ export default function Navbar() {
                 <div className="flex items-center">
                   {/* Logo Circle */}
                   <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center mr-2 border ${
+                    className={`w-8 h-8 rounded-full flex items-center justify-center mr-2 border ${
                       isOverHero ? "border-orange-500" : "border-orange-500"
                     }`}
                   >
-                    <span className="text-orange-500 text-xl">⚡</span>
+                    <span className="text-orange-500 text-lg">⚡</span>
                   </div>
 
                   {/* Text Logo */}
-                  <div className="font-semibold tracking-wide text-lg md:text-xl uppercase">
+                  <div className="font-semibold tracking-wide text-lg uppercase">
                     NILEBIT LABS
                   </div>
                 </div>
