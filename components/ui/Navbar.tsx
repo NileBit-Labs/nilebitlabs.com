@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
@@ -188,112 +189,17 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="flex items-center">
-                <svg viewBox="0 0 300 80" className="h-10 w-auto">
-                  {/* Background Circle with Gradient */}
-                  <defs>
-                    <linearGradient
-                      id="logoGradient"
-                      x1="0%"
-                      y1="0%"
-                      x2="100%"
-                      y2="100%"
-                    >
-                      <stop offset="0%" stopColor="#ff6b00" />
-                      <stop offset="100%" stopColor="#ff9d00" />
-                    </linearGradient>
-                  </defs>
-
-                  {/* Main Logo Elements */}
-                  <g transform="translate(30, 15)">
-                    {/* Main Circle */}
-                    <circle cx="25" cy="25" r="25" fill="url(#logoGradient)" />
-
-                    {/* Circuit Lines */}
-                    <path
-                      d="M25,10 L25,5 L45,5 L45,15 L50,15"
-                      stroke="white"
-                      strokeWidth="2"
-                      fill="none"
-                    />
-                    <path
-                      d="M25,40 L25,45 L40,45 L40,35 L50,35"
-                      stroke="white"
-                      strokeWidth="2"
-                      fill="none"
-                    />
-                    <path
-                      d="M5,25 L15,25"
-                      stroke="white"
-                      strokeWidth="2"
-                      fill="none"
-                    />
-
-                    {/* "N" Symbol */}
-                    <path
-                      d="M15,15 L20,15 L20,35 L15,35 L15,15 M20,15 L35,35 M30,15 L35,15 L35,35 L30,35 L30,15"
-                      stroke="white"
-                      strokeWidth="3"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-
-                    {/* Digital Dots */}
-                    <circle cx="5" cy="25" r="2" fill="white" />
-                    <circle cx="50" cy="15" r="2" fill="white" />
-                    <circle cx="50" cy="35" r="2" fill="white" />
-                    <circle cx="45" cy="5" r="2" fill="white" />
-                    <circle cx="40" cy="45" r="2" fill="white" />
-                  </g>
-
-                  {/* Text - Conditionally change colors based on navbar state */}
-                  <g transform="translate(90, 30)">
-                    {/* NILEBIT */}
-                    <text
-                      x="0"
-                      y="0"
-                      fontFamily="Arial, sans-serif"
-                      fontWeight="700"
-                      fontSize="22"
-                      fill={isAtTop ? "white" : "#0f1419"}
-                    >
-                      NILEBIT
-                    </text>
-                    {/* LABS */}
-                    <text
-                      x="0"
-                      y="24"
-                      fontFamily="Arial, sans-serif"
-                      fontWeight="500"
-                      fontSize="20"
-                      fill="#ff7b00"
-                    >
-                      LABS
-                    </text>
-
-                    {/* Digital Lines */}
-                    <line
-                      x1="0"
-                      y1="6"
-                      x2="105"
-                      y2="6"
-                      stroke={isAtTop ? "#606060" : "#e0e0e0"}
-                      strokeWidth="1"
-                    />
-                    <line
-                      x1="0"
-                      y1="30"
-                      x2="60"
-                      y2="30"
-                      stroke={isAtTop ? "#606060" : "#e0e0e0"}
-                      strokeWidth="1"
-                    />
-                  </g>
-                </svg>
+                <img
+                  src={
+                    isAtTop ? "/nilebit-logo-darkmode.svg" : "/nilebit-logo.svg"
+                  }
+                  alt="NileBit Labs Logo"
+                  className="h-20 w-auto"
+                />
               </Link>
             </div>
 
