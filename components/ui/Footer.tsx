@@ -79,7 +79,7 @@ export default function Footer() {
                 <img
                   src="/nilebit-logo-darkmode.svg" // Adjust path based on where you saved it
                   alt="NileBit Labs Logo"
-                  className="h-10 w-auto"
+                  className="h-20 w-auto"
                 />
               </Link>
             </div>
