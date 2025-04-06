@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState, useEffect } from "react";
@@ -72,16 +73,15 @@ export default function Footer() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
           {/* Top Section with Logo and Glow Effect */}
           <div className="flex flex-col items-center mb-12">
-            <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 via-purple-500 to-blue-500 rounded-lg opacity-75 blur-lg animate-pulse"></div>
-              <div className="relative bg-gray-900 px-6 py-3 rounded-lg">
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter">
-                  <span className="text-orange-500">⚡</span>
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-orange-500">
-                    NileBit Labs
-                  </span>
-                </h2>
-              </div>
+            {/* Logo */}
+            <div className="flex-shrink-0 flex items-center">
+              <Link href="/" className="flex items-center">
+                <img
+                  src="/nilebit-logo-darkmode.svg" // Adjust path based on where you saved it
+                  alt="NileBit Labs Logo"
+                  className="h-10 w-auto"
+                />
+              </Link>
             </div>
             <p className="mt-4 text-center text-gray-400 max-w-2xl mx-auto italic">
               Shaping the Future of Decentralization & AI
