@@ -1,3 +1,4 @@
+// app/page.tsx
 import Hero from "../components/ui/Hero";
 import ServicesSection from "../components/sections/ServicesSection";
 
@@ -6,9 +7,9 @@ export default function Home() {
     <div>
       <Hero
         title="Empowering Innovation with NileBit Labs"
-        subtitle="Cutting-Edge Software Solutions for the Future"
-        ctaText="Discover Our Solutions"
-        ctaLink="/solutions"
+        subtitle="Transforming ideas into powerful digital experiences through innovative software development and strategic technology consulting."
+        ctaText="Let's Talk"
+        ctaLink="/contact"
       />
       <ServicesSection />
     </div>
