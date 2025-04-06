@@ -40,18 +40,8 @@ export default function Navbar() {
 
   const menuItems = [
     {
-      title: "Enterprise",
-      href: "/enterprise",
-      hasSubmenu: true,
-      submenu: [
-        { title: "Solutions", href: "/enterprise/solutions" },
-        { title: "Case Studies", href: "/enterprise/case-studies" },
-        { title: "Consulting", href: "/enterprise/consulting" },
-      ],
-    },
-    {
-      title: "Case Studies",
-      href: "/case-studies",
+      title: "Home",
+      href: "/",
       hasSubmenu: false,
     },
     {
@@ -77,16 +67,6 @@ export default function Navbar() {
       ],
     },
     {
-      title: "Blog",
-      href: "/blog",
-      hasSubmenu: false,
-    },
-    {
-      title: "Contact Us",
-      href: "/contact",
-      hasSubmenu: false,
-    },
-    {
       title: "Other",
       href: "/other",
       hasSubmenu: true,
@@ -94,6 +74,8 @@ export default function Navbar() {
         { title: "About Us", href: "/about" },
         { title: "Careers", href: "/careers" },
         { title: "Research", href: "/research" },
+        { title: "Blog", href: "/blog" },
+        { title: "Contact Us", href: "/contact" },
       ],
     },
   ];
@@ -131,7 +113,7 @@ export default function Navbar() {
 
                   {/* Text Logo */}
                   <div className="font-semibold tracking-wide text-lg md:text-xl uppercase">
-                    ITSULU
+                    NILEBIT LABS
                   </div>
                 </div>
               </div>
