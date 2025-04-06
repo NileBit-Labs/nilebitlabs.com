@@ -75,7 +75,7 @@ export default function Navbar() {
     <nav
       ref={navbarRef}
       className={`w-full z-50 fixed transition-all duration-300 ${
-        isAtTop ? "bg-black text-white" : "bg-white text-gray-900 shadow-lg"
+        isAtTop ? "bg-gray-900 text-white" : "bg-white text-gray-900 shadow-lg"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
