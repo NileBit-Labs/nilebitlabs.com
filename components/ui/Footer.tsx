@@ -32,7 +32,7 @@ export default function Footer() {
   return (
     <footer className="relative bg-gray-900 text-white overflow-hidden">
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* <div className="absolute inset-0 overflow-hidden">
         <div className="absolute opacity-5 top-0 left-0 w-96 h-96 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full filter blur-3xl animate-pulse"></div>
         <div
           className="absolute opacity-5 bottom-0 right-0 w-96 h-96 bg-gradient-to-r from-orange-500 to-pink-600 rounded-full filter blur-3xl animate-pulse"
@@ -42,7 +42,7 @@ export default function Footer() {
           className="absolute opacity-5 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-green-400 to-cyan-500 rounded-full filter blur-3xl animate-pulse"
           style={{ animationDelay: "4s" }}
         ></div>
-      </div>
+      </div> */}
 
       {/* Grid Pattern Overlay */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
