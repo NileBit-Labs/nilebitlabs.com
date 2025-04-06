@@ -1,12 +1,16 @@
-import './globals.css';
-import { MainLayout } from '../components/layout/MainLayout';
+import "./globals.css";
+import MainLayout from "../components/layout/MainLayout"; // Remove curly braces
 
 export const metadata = {
-  title: 'NileBit Labs',
-  description: 'Innovative Tech Solutions by NileBit Labs',
+  title: "NileBit Labs",
+  description: "Innovative Tech Solutions by NileBit Labs",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>
