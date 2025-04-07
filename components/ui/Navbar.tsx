@@ -61,15 +61,23 @@ export default function Navbar() {
       ],
     },
     {
+      title: "About Us",
+      href: "/about",
+      hasSubmenu: true,
+      submenu: [
+        { title: "Our Mandate, Vision & Mission", href: "/about" },
+        { title: "Our Team", href: "/about" },
+        { title: "Contact Us", href: "/contact" },
+      ],
+    },
+    {
       title: "Other",
       href: "/other",
       hasSubmenu: true,
       submenu: [
-        { title: "About Us", href: "/about" },
         { title: "Careers", href: "/careers" },
         { title: "Research", href: "/research" },
         { title: "Blog", href: "/blog" },
-        { title: "Contact Us", href: "/contact" },
       ],
     },
   ];
@@ -80,7 +88,7 @@ export default function Navbar() {
         ref={navbarRef}
         className={`w-full z-50 fixed transition-all duration-300 ${
           isAtTop
-            ? "bg-gray-900 text-white"
+            ? "bg-gray-900 text-white backdrop-blur-sm"
             : "bg-white text-gray-900 shadow-lg"
         }`}
       >
