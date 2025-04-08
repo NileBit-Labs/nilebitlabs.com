@@ -135,7 +135,7 @@ export default function About() {
                 />
               </div>
               <h3 className="text-xl font-semibold text-orange-500">
-                Shema Collins
+                Collins Shema
               </h3>
               <p className="text-gray-400">Co-Founder</p>
               <p className="text-gray-300 mt-2">
@@ -160,7 +160,7 @@ export default function About() {
             >
               <iframe
                 className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
-                src="https://www.youtube.com/embed/xFU8U4UVUBs?si=RyIhN94Y_Dl75VFA"
+                src="https://www.youtube.com/embed/yubzJw0uiE4?si=vTMo0C_U95z4-McP"
                 title="NileBit Labs Introduction"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -169,7 +169,7 @@ export default function About() {
             </div>
             <div className="text-center mt-4">
               <a
-                href="https://youtu.be/xFU8U4UVUBs?si=RyIhN94Y_Dl75VFA"
+                href="https://youtu.be/yubzJw0uiE4?si=vTMo0C_U95z4-McP"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block text-orange-500 hover:underline"

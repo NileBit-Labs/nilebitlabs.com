@@ -15,7 +15,7 @@ const posts: {
     title: "The Blockchain Revolution: Transforming Industries in 2025",
     category: "Blockchain",
     date: "April 10, 2025",
-    image: "/img/blog/blockchain.jpg",
+    image: "/img/blog/blockchain-1.png",
     content: (
       <div className="space-y-6">
         <p>
@@ -84,7 +84,7 @@ const posts: {
     title: "Why Solana is the Future of Scalable Blockchain Solutions",
     category: "Solana",
     date: "April 8, 2025",
-    image: "/img/blog/solana.jpg",
+    image: "/img/blog/solana-1.jpg",
     content: (
       <div className="space-y-6">
         <p>
@@ -152,7 +152,7 @@ const posts: {
     title: "AI and Machine Learning Trends to Watch in 2025",
     category: "AI & ML",
     date: "April 5, 2025",
-    image: "/img/blog/ai-ml.jpg",
+    image: "/img/blog/ai-1.png",
     content: (
       <div className="space-y-6">
         <p>
@@ -220,7 +220,7 @@ const posts: {
     title: "AI Agents: The Next Frontier in Automation",
     category: "AI Agents",
     date: "April 3, 2025",
-    image: "/img/blog/ai-agents.jpg",
+    image: "/img/blog/ai-agents-1.png",
     content: (
       <div className="space-y-6">
         <p>
@@ -286,7 +286,7 @@ const posts: {
     title: "Modern Software Development: Best Practices for 2025",
     category: "Software Development",
     date: "April 1, 2025",
-    image: "/img/blog/software-dev.jpg",
+    image: "/img/blog/softwaredev-1.png",
     content: (
       <div className="space-y-6">
         <p>
@@ -351,7 +351,7 @@ const posts: {
     title: "Web and Mobile Development: Building for the Future",
     category: "Web & Mobile",
     date: "March 30, 2025",
-    image: "/img/blog/web-mobile.jpg",
+    image: "/img/blog/web&mobile-1.jpg",
     content: (
       <div className="space-y-6">
         <p>
@@ -413,7 +413,7 @@ const posts: {
     title: "Full Stack Development: The Art of Building End-to-End Solutions",
     category: "Full Stack",
     date: "March 28, 2025",
-    image: "/img/blog/full-stack.jpg",
+    image: "/img/blog/fullstack-1.png",
     content: (
       <div className="space-y-6">
         <p>
@@ -476,7 +476,7 @@ const posts: {
     title: "Embedded Systems: Powering the Internet of Things in 2025",
     category: "Embedded Systems",
     date: "March 26, 2025",
-    image: "/img/blog/embedded.jpg",
+    image: "/img/blog/embedded-1.jpg",
     content: (
       <div className="space-y-6">
         <p>
@@ -542,7 +542,7 @@ const posts: {
     title: "The Future of Web3: Decentralized Apps and Beyond",
     category: "Web3",
     date: "March 24, 2025",
-    image: "/img/blog/web3.jpg",
+    image: "/img/blog/web3-1.jpg",
     content: (
       <div className="space-y-6">
         <p>
