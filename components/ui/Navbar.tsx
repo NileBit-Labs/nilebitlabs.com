@@ -24,10 +24,8 @@ export default function Navbar() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isAtTop, setIsAtTop] = useState(true);
   const navbarRef = useRef(null);
-  const [hoveredMenu, setHoveredMenu] = useState<number | null>(null);
-  const [expandedMobileMenu, setExpandedMobileMenu] = useState<number | null>(
-    null
-  );
+  const [hoveredMenu, setHoveredMenu] = useState(null);
+  const [expandedMobileMenu, setExpandedMobileMenu] = useState(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   const checkScrollPosition = () => {
@@ -124,7 +122,7 @@ export default function Navbar() {
         ref={navbarRef}
         className={`w-full z-50 fixed transition-all duration-300 ${
           isAtTop
-            ? "bg-gray-900 text-white backdrop-blur-sm"
+            ? "bg-gray-900 text-white"
             : "bg-white text-gray-900 shadow-lg"
         }`}
       >
@@ -240,7 +238,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile menu - Reimagined */}
+        {/* Mobile menu */}
         <div
           className={`md:hidden fixed inset-0 z-50 transition-all duration-300 ${
             isOpen
@@ -248,7 +246,7 @@ export default function Navbar() {
               : "opacity-0 pointer-events-none"
           }`}
         >
-          {/* Overlay */}
+          {/* Overlay - explicitly set to dark for consistency */}
           <div
             className="absolute inset-0 backdrop-blur-sm"
             onClick={() => setIsOpen(false)}
@@ -260,9 +258,9 @@ export default function Navbar() {
               isAtTop ? "bg-gray-900" : "bg-white"
             } transform transition-transform duration-300 ease-in-out ${
               isOpen ? "translate-x-0" : "translate-x-full"
-            }`}
+            } flex flex-col`}
           >
-            {/* Panel header with improved spacing */}
+            {/* Panel header */}
             <div
               className={`flex items-center justify-between p-5 border-b ${
                 isAtTop ? "border-gray-700" : "border-gray-200"
@@ -287,8 +285,8 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* Menu items */}
-            <div className="overflow-y-auto max-h-[calc(100vh-180px)] pb-20">
+            {/* Menu items - use flex-grow to fill space */}
+            <div className="flex-grow overflow-y-auto">
               {menuItems.map((item, index) => (
                 <div
                   key={index}
@@ -298,7 +296,7 @@ export default function Navbar() {
                 >
                   {item.hasSubmenu ? (
                     <div className="flex items-center">
-                      {/* Clickable menu item link - takes up most of the space */}
+                      {/* Clickable menu item link */}
                       <Link
                         href={item.href}
                         onClick={handleMobileNavClick}
@@ -312,7 +310,7 @@ export default function Navbar() {
                         <span className="inline-block ml-2 w-2 h-2 bg-orange-500 rounded-full"></span>
                       </Link>
 
-                      {/* Dropdown button - takes up less space */}
+                      {/* Dropdown button */}
                       <button
                         onClick={() =>
                           setExpandedMobileMenu(
@@ -347,7 +345,7 @@ export default function Navbar() {
                     </Link>
                   )}
 
-                  {/* Submenu with smooth transition */}
+                  {/* Submenu */}
                   {item.hasSubmenu && (
                     <div
                       className={`${
@@ -397,21 +395,22 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Contact info - fixed at bottom with proper coloring based on scroll position */}
+            {/* Contact info - at bottom but still inside scroll area */}
             <div
               className={`p-4 ${
                 isAtTop
                   ? "bg-gray-800 text-gray-300"
                   : "bg-gray-100 text-gray-700"
-              } text-sm absolute bottom-0 left-0 right-0 w-full`}
+              } text-sm mt-auto`}
             >
-              <h3
+              <Link
+                href="/contact"
                 className={`font-medium ${
                   isAtTop ? "text-white" : "text-gray-900"
-                } mb-2`}
+                } mb-2 block hover:text-orange-500`}
               >
                 Contact Us
-              </h3>
+              </Link>
               <a
                 href="mailto:info@nilebitlabs.com"
                 className="block text-orange-500 hover:underline"
@@ -430,7 +429,11 @@ export default function Navbar() {
                   href="https://twitter.com/nilebits"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-2 rounded-full transition"
+                  className={`${
+                    isAtTop
+                      ? "bg-gray-700 hover:bg-orange-500 text-orange-500"
+                      : "bg-gray-200 hover:bg-orange-500 text-orange-500"
+                  } hover:text-white p-2 rounded-full transition`}
                 >
                   <FaTwitter size={16} />
                 </a>
@@ -438,7 +441,11 @@ export default function Navbar() {
                   href="https://facebook.com/nilebits"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-2 rounded-full transition"
+                  className={`${
+                    isAtTop
+                      ? "bg-gray-700 hover:bg-orange-500 text-orange-500"
+                      : "bg-gray-200 hover:bg-orange-500 text-orange-500"
+                  } hover:text-white p-2 rounded-full transition`}
                 >
                   <FaFacebookF size={16} />
                 </a>
@@ -446,7 +453,11 @@ export default function Navbar() {
                   href="https://linkedin.com/company/nilebits"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-2 rounded-full transition"
+                  className={`${
+                    isAtTop
+                      ? "bg-gray-700 hover:bg-orange-500 text-orange-500"
+                      : "bg-gray-200 hover:bg-orange-500 text-orange-500"
+                  } hover:text-white p-2 rounded-full transition`}
                 >
                   <FaLinkedinIn size={16} />
                 </a>
@@ -454,7 +465,11 @@ export default function Navbar() {
                   href="https://github.com/nilebits"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-2 rounded-full transition"
+                  className={`${
+                    isAtTop
+                      ? "bg-gray-700 hover:bg-orange-500 text-orange-500"
+                      : "bg-gray-200 hover:bg-orange-500 text-orange-500"
+                  } hover:text-white p-2 rounded-full transition`}
                 >
                   <FaGithub size={16} />
                 </a>
@@ -462,7 +477,11 @@ export default function Navbar() {
                   href="https://instagram.com/nilebits"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-2 rounded-full transition"
+                  className={`${
+                    isAtTop
+                      ? "bg-gray-700 hover:bg-orange-500 text-orange-500"
+                      : "bg-gray-200 hover:bg-orange-500 text-orange-500"
+                  } hover:text-white p-2 rounded-full transition`}
                 >
                   <FaInstagram size={16} />
                 </a>
