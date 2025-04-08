@@ -13,7 +13,7 @@ export default function About() {
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Innovating the Future of Technology
           </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl">
+          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
             At NileBit Labs, we are committed to transforming ideas into
             powerful digital experiences through innovative software development
             and strategic technology solutions.
