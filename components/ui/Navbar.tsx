@@ -65,15 +65,19 @@ export default function Navbar() {
       href: "/about",
       hasSubmenu: true,
       submenu: [
-        { title: "Our Mandate, Vision & Mission", href: "/about" },
-        { title: "Our Team", href: "/about" },
+        {
+          title: "Our Mandate, Vision & Mission",
+          href: "/about#mandate-vision-mission",
+        },
+        { title: "Our Team", href: "/about#team" },
+        { title: "Video Introduction", href: "/about#video-introduction" },
         { title: "Contact Us", href: "/contact" },
       ],
     },
     {
-      title: "Other",
-      href: "/other",
-      hasSubmenu: true,
+      title: "Blog",
+      href: "/blog",
+      hasSubmenu: false,
       submenu: [
         { title: "Careers", href: "/careers" },
         { title: "Research", href: "/research" },
@@ -237,6 +241,26 @@ export default function Navbar() {
                     )}
                   </div>
                 </Link>
+
+                {/* Mobile submenu items */}
+                {item.hasSubmenu && (
+                  <div className="pl-4 pt-1 pb-1">
+                    {item.submenu &&
+                      item.submenu.map((subItem, subIdx) => (
+                        <Link
+                          key={subIdx}
+                          href={subItem.href}
+                          className={`block px-3 py-2 rounded-md text-sm ${
+                            isAtTop
+                              ? "text-gray-300 hover:text-orange-400"
+                              : "text-gray-600 hover:text-orange-500"
+                          }`}
+                        >
+                          {subItem.title}
+                        </Link>
+                      ))}
+                  </div>
+                )}
               </div>
             ))}
 
