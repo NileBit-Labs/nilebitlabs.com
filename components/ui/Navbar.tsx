@@ -4,8 +4,20 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, MessageSquare } from "lucide-react";
+import { Menu, X, ChevronDown, MessageSquare, ArrowRight } from "lucide-react";
 import ChatInterface from "./ChatInterface";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaGithub,
+  FaYoutube,
+  FaInstagram,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaClock,
+} from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,24 +25,49 @@ export default function Navbar() {
   const [isAtTop, setIsAtTop] = useState(true);
   const navbarRef = useRef(null);
   const [hoveredMenu, setHoveredMenu] = useState<number | null>(null);
+  const [expandedMobileMenu, setExpandedMobileMenu] = useState<number | null>(
+    null
+  );
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   const checkScrollPosition = () => {
     const position = window.pageYOffset;
     setScrollPosition(position);
-
-    // Check if user is at the top or has scrolled past a certain point
-    setIsAtTop(position < 100); // Change to white after scrolling 100px
+    setIsAtTop(position < 100);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", checkScrollPosition);
-    checkScrollPosition(); // Initial check
+    checkScrollPosition();
 
     return () => {
       window.removeEventListener("scroll", checkScrollPosition);
     };
   }, []);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isOpen &&
+        navbarRef.current &&
+        !navbarRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
+  // Handle mobile link click - close menu after navigation
+  const handleMobileNavClick = () => {
+    setIsOpen(false);
+    setExpandedMobileMenu(null);
+  };
 
   const menuItems = [
     {
@@ -78,11 +115,6 @@ export default function Navbar() {
       title: "Blog",
       href: "/blog",
       hasSubmenu: false,
-      submenu: [
-        { title: "Careers", href: "/careers" },
-        { title: "Research", href: "/research" },
-        { title: "Blog", href: "/blog" },
-      ],
     },
   ];
 
@@ -208,70 +240,177 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu - Reimagined */}
         <div
-          className={`md:hidden transition-all duration-300 ease-in-out ${
+          className={`md:hidden fixed inset-0 z-50 transition-all duration-300 ${
             isOpen
-              ? "max-h-screen opacity-100"
-              : "max-h-0 opacity-0 overflow-hidden"
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
           }`}
         >
+          {/* Overlay */}
           <div
-            className={`px-2 pt-2 pb-3 space-y-1 ${
-              isAtTop ? "bg-gray-900" : "bg-white"
+            className="absolute inset-0 backdrop-blur-sm"
+            onClick={() => setIsOpen(false)}
+          ></div>
+
+          {/* Menu Panel */}
+          <div
+            className={`absolute right-0 top-0 h-full w-4/5 max-w-sm bg-gray-900 transform transition-transform duration-300 ease-in-out ${
+              isOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
-            {menuItems.map((item, index) => (
-              <div key={index}>
-                <Link
-                  href={item.href}
-                  className={`block px-3 py-2 rounded-md text-base font-medium ${
-                    isAtTop
-                      ? "text-white hover:bg-gray-800 hover:text-orange-400"
-                      : "text-gray-800 hover:bg-gray-100 hover:text-orange-500"
-                  }`}
+            {/* Panel header */}
+            <div className="flex items-center justify-between p-4 border-b border-gray-700">
+              <img
+                src="/nilebit-logo-darkmode.svg"
+                alt="NileBit Labs Logo"
+                className="h-12 w-auto"
+              />
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-2 rounded-full bg-gray-800 text-white"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Menu items */}
+            <div className="overflow-y-auto max-h-screen pb-20">
+              {menuItems.map((item, index) => (
+                <div key={index} className="border-b border-gray-800">
+                  {item.hasSubmenu ? (
+                    <>
+                      <button
+                        onClick={() =>
+                          setExpandedMobileMenu(
+                            expandedMobileMenu === index ? null : index
+                          )
+                        }
+                        className="w-full px-4 py-4 flex items-center justify-between text-white hover:bg-gray-800"
+                      >
+                        <span className="font-medium">{item.title}</span>
+                        <span className="flex items-center">
+                          <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                          <ChevronDown
+                            size={16}
+                            className={`transform transition-transform duration-300 ${
+                              expandedMobileMenu === index ? "rotate-180" : ""
+                            }`}
+                          />
+                        </span>
+                      </button>
+
+                      {/* Submenu with smooth transition */}
+                      <div
+                        className={`bg-gray-800 overflow-hidden transition-all duration-300 ${
+                          expandedMobileMenu === index
+                            ? "max-h-96 opacity-100"
+                            : "max-h-0 opacity-0"
+                        }`}
+                      >
+                        {item.submenu &&
+                          item.submenu.map((subItem, subIdx) => (
+                            <Link
+                              key={subIdx}
+                              href={subItem.href}
+                              onClick={handleMobileNavClick}
+                              className="block px-8 py-3 text-gray-300 hover:text-orange-400 hover:bg-gray-700 flex items-center"
+                            >
+                              <ArrowRight
+                                size={12}
+                                className="mr-2 text-orange-500"
+                              />
+                              {subItem.title}
+                            </Link>
+                          ))}
+                      </div>
+                    </>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      onClick={handleMobileNavClick}
+                      className="block px-4 py-4 text-white hover:bg-gray-800 font-medium"
+                    >
+                      {item.title}
+                    </Link>
+                  )}
+                </div>
+              ))}
+
+              {/* Mobile Chat Button */}
+              <div className="p-4">
+                <button
+                  onClick={() => {
+                    setIsChatOpen(!isChatOpen);
+                    setIsOpen(false);
+                  }}
+                  className="w-full py-3 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-medium flex items-center justify-center"
                 >
-                  <div className="flex justify-between items-center">
-                    <span>{item.title}</span>
-                    {item.hasSubmenu && (
-                      <>
-                        <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
-                        <ChevronDown size={16} />
-                      </>
-                    )}
-                  </div>
-                </Link>
-
-                {/* Mobile submenu items */}
-                {item.hasSubmenu && (
-                  <div className="pl-4 pt-1 pb-1">
-                    {item.submenu &&
-                      item.submenu.map((subItem, subIdx) => (
-                        <Link
-                          key={subIdx}
-                          href={subItem.href}
-                          className={`block px-3 py-2 rounded-md text-sm ${
-                            isAtTop
-                              ? "text-gray-300 hover:text-orange-400"
-                              : "text-gray-600 hover:text-orange-500"
-                          }`}
-                        >
-                          {subItem.title}
-                        </Link>
-                      ))}
-                  </div>
-                )}
+                  <MessageSquare size={18} className="mr-2" />
+                  <span>NileBot</span>
+                </button>
               </div>
-            ))}
-
-            {/* Mobile Chat Button */}
-            <button
-              onClick={() => setIsChatOpen(!isChatOpen)}
-              className={`w-full mt-2 flex items-center justify-center px-3 py-2 rounded-md text-sm font-medium bg-orange-500 text-white`}
-            >
-              <MessageSquare size={16} className="mr-1" />
-              <span>NileBot</span>
-            </button>
+            </div>
+            {/* Contact info */}
+            <div className="p-4 mt-4 bg-gray-800 text-gray-300 text-sm fixed bottom-0 w-full">
+              <h3 className="font-medium text-white mb-2">Contact Us</h3>
+              <a
+                href="mailto:info@nilebitlabs.com"
+                className="block text-orange-400 hover:underline"
+              >
+                info@nilebitlabs.com
+              </a>
+              <a
+                href="tel:+256770919175"
+                className="mt-1 block text-orange-400 hover:underline"
+              >
+                (256)770-919175
+              </a>
+              <div className="mt-4 flex space-x-3">
+                {/* Social icons would go here */}
+                <a
+                  href="https://twitter.com/nilebits"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-3 rounded-full transition"
+                >
+                  <FaTwitter size={18} />
+                </a>
+                <a
+                  href="https://facebook.com/nilebits"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-3 rounded-full transition"
+                >
+                  <FaFacebookF size={18} />
+                </a>
+                <a
+                  href="https://linkedin.com/company/nilebits"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-3 rounded-full transition"
+                >
+                  <FaLinkedinIn size={18} />
+                </a>
+                <a
+                  href="https://github.com/nilebits"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-3 rounded-full transition"
+                >
+                  <FaGithub size={18} />
+                </a>
+                <a
+                  href="https://instagram.com/nilebits"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-3 rounded-full transition"
+                >
+                  <FaInstagram size={18} />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
