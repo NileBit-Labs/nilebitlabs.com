@@ -406,14 +406,14 @@ export default function Navbar() {
             >
               <Link
                 href="/contact"
-                className={`font-medium ${
+                className={`font-medium underline ${
                   isAtTop ? "text-white" : "text-gray-900"
                 } mb-2 block hover:text-orange-500`}
               >
                 Contact Us
               </Link>
               <a
-                href="mailto:info@nilebitlabs.com"
+                href="mailto:douglasbagambe4@gmail.com"
                 className="block text-orange-500 hover:underline"
               >
                 info@nilebitlabs.com

@@ -1,5 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
+  SiReact,
+  SiNodedotjs,
+  SiAmazonaws,
+  SiBlockchain,
+  SiTypescript,
+  SiDocker,
+  SiKubernetes,
+  SiGraphql,
+  SiNextdotjs,
+  SiTensorflow,
+  SiPostgresql,
+  SiTailwindcss,
+} from "react-icons/si";
+import {
   CodeBracketIcon,
   CloudIcon,
   ShieldCheckIcon,
@@ -18,17 +32,18 @@ import {
   RocketLaunchIcon,
   LifebuoyIcon,
 } from "@heroicons/react/24/outline";
+import { Cloud } from "lucide-react";
 
 export const technologies = [
   {
     name: "React",
     description: "A JavaScript library for building user interfaces.",
-    icon: CodeBracketIcon,
+    icon: SiReact,
   },
   {
     name: "Node.js",
     description: "JavaScript runtime built on Chrome's V8 engine.",
-    icon: CommandLineIcon,
+    icon: SiNodedotjs,
   },
   {
     name: "AWS",
@@ -44,48 +59,48 @@ export const technologies = [
     name: "TypeScript",
     description:
       "Strongly typed programming language that builds on JavaScript.",
-    icon: CodeBracketIcon,
+    icon: SiTypescript,
   },
   {
     name: "Docker",
     description:
       "Platform for developing, shipping, and running applications in containers.",
-    icon: CubeIcon,
+    icon: SiDocker,
   },
   {
     name: "Kubernetes",
     description:
       "Open-source platform for automating deployment and scaling of containerized applications.",
-    icon: ServerIcon,
+    icon: SiKubernetes,
   },
   {
     name: "GraphQL",
     description:
       "Query language for APIs and runtime for fulfilling those queries.",
-    icon: CircleStackIcon,
+    icon: SiGraphql,
   },
   {
     name: "Next.js",
     description:
       "React framework with hybrid static & server rendering, TypeScript support, and route pre-fetching.",
-    icon: ArrowPathIcon,
+    icon: SiNextdotjs,
   },
   {
     name: "TensorFlow",
     description:
       "Open-source platform for machine learning and artificial intelligence.",
-    icon: ChipIcon,
+    icon: SiTensorflow,
   },
   {
     name: "PostgreSQL",
     description: "Advanced open-source relational database system.",
-    icon: DatabaseIcon,
+    icon: SiPostgresql,
   },
   {
     name: "Tailwind CSS",
     description:
       "Utility-first CSS framework for rapidly building custom user interfaces.",
-    icon: SwatchIcon,
+    icon: SiTailwindcss,
   },
 ];
 

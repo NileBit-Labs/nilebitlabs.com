@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useState } from "react";
@@ -90,11 +89,9 @@ export default function Contact() {
                       <FaMapMarkerAlt size={20} />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">
-                        Office Location
-                      </h3>
+                      <h3 className="font-semibold text-gray-900">Location</h3>
                       <p className="text-gray-600">
-                        123 Innovation Drive
+                        Makerere Kavule
                         <br />
                         Kampala, Uganda
                       </p>
@@ -107,19 +104,12 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">Email Us</h3>
-                      <a
-                        href="mailto:info@nilebits.com"
+                      <Link
+                        href="mailto:douglasbagambe4@gmail.com"
                         className="text-gray-600 hover:text-orange-500 transition"
                       >
-                        info@nilebits.com
-                      </a>
-                      <br />
-                      <a
-                        href="mailto:support@nilebits.com"
-                        className="text-gray-600 hover:text-orange-500 transition"
-                      >
-                        support@nilebits.com
-                      </a>
+                        info@nilebitlabs.com
+                      </Link>
                     </div>
                   </div>
 
@@ -129,19 +119,26 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">Call Us</h3>
-                      <a
-                        href="tel:+256700123456"
+                      <Link
+                        href="tel:+256770919175"
                         className="text-gray-600 hover:text-orange-500 transition"
                       >
-                        +256 700 123 456
-                      </a>
+                        +256 770 919 975
+                      </Link>
                       <br />
-                      <a
-                        href="tel:+256780987654"
+                      <Link
+                        href="tel:+256780487574"
                         className="text-gray-600 hover:text-orange-500 transition"
                       >
-                        +256 780 987 654
-                      </a>
+                        +256 780 487 574
+                      </Link>
+                      <br />
+                      <Link
+                        href="tel:+256776159775"
+                        className="text-gray-600 hover:text-orange-500 transition"
+                      >
+                        +256 776 159 775
+                      </Link>
                     </div>
                   </div>
 
@@ -154,7 +151,7 @@ export default function Contact() {
                         Working Hours
                       </h3>
                       <p className="text-gray-600">
-                        Monday - Friday: 9AM - 6PM
+                        Monday - Friday: 9AM - 5PM
                         <br />
                         Saturday: 10AM - 2PM
                       </p>
@@ -169,7 +166,7 @@ export default function Contact() {
                   </h3>
                   <div className="flex space-x-4">
                     <a
-                      href="https://twitter.com/nilebits"
+                      href="https://twitter.com/nilebitlabs"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-gray-200 hover:bg-orange-500 text-gray-700 hover:text-white p-3 rounded-full transition"
@@ -177,7 +174,7 @@ export default function Contact() {
                       <FaTwitter size={18} />
                     </a>
                     <a
-                      href="https://facebook.com/nilebits"
+                      href="https://facebook.com/nilebitlabs"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-gray-200 hover:bg-orange-500 text-gray-700 hover:text-white p-3 rounded-full transition"
@@ -185,7 +182,7 @@ export default function Contact() {
                       <FaFacebookF size={18} />
                     </a>
                     <a
-                      href="https://linkedin.com/company/nilebits"
+                      href="https://linkedin.com/company/nilebitlabs"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-gray-200 hover:bg-orange-500 text-gray-700 hover:text-white p-3 rounded-full transition"
@@ -193,7 +190,7 @@ export default function Contact() {
                       <FaLinkedinIn size={18} />
                     </a>
                     <a
-                      href="https://github.com/nilebits"
+                      href="https://github.com/nilebitlabs"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-gray-200 hover:bg-orange-500 text-gray-700 hover:text-white p-3 rounded-full transition"
@@ -201,12 +198,20 @@ export default function Contact() {
                       <FaGithub size={18} />
                     </a>
                     <a
-                      href="https://instagram.com/nilebits"
+                      href="https://instagram.com/nilebitlabs"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-gray-200 hover:bg-orange-500 text-gray-700 hover:text-white p-3 rounded-full transition"
                     >
                       <FaInstagram size={18} />
+                    </a>
+                    <a
+                      href="https://youtube.com/@nilebitlabs"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-gray-200 hover:bg-orange-500 text-gray-700 hover:text-white p-3 rounded-full transition"
+                    >
+                      <FaYoutube size={18} />{" "}
                     </a>
                   </div>
                 </div>
@@ -228,7 +233,7 @@ export default function Contact() {
             </div>
 
             {/* Contact Form Column */}
-            <div className="lg:col-span-2">
+            <div id="form" className="lg:col-span-2">
               <div className="bg-gray-50 p-8 rounded-lg shadow-md">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
                   Send Us a Message
@@ -480,7 +485,7 @@ export default function Contact() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white text-gray-900">
+      <section id="faq" className="py-16 bg-white text-gray-900">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-8 text-center">
             Frequently Asked Questions
@@ -536,10 +541,10 @@ export default function Contact() {
               Don't see your question answered?
             </p>
             <Link
-              href="#top"
+              href="/faq"
               className="inline-block border-2 border-orange-500 text-orange-500 px-6 py-3 rounded-full hover:bg-orange-500 hover:text-white transition"
             >
-              Contact Us Directly
+              More FAQs
             </Link>
           </div>
         </div>
