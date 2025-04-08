@@ -1,7 +1,69 @@
-import Link from "next/link";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+"use client";
+import { useState } from "react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { technologies, services, process } from "../../data/services";
+import Link from "next/link";
+
+// Import the icons you'll need based on the process array
+import {
+  MagnifyingGlassIcon,
+  ClipboardDocumentListIcon,
+  CodeBracketIcon,
+  RocketLaunchIcon,
+  LifebuoyIcon,
+  ArrowPathIcon,
+} from "@heroicons/react/24/outline";
+import React from "react";
+
+// Icon mapping object
+const iconMap = {
+  MagnifyingGlassIcon,
+  ClipboardDocumentListIcon,
+  CodeBracketIcon,
+  RocketLaunchIcon,
+  LifebuoyIcon,
+  ArrowPathIcon,
+};
+
+// Color mapping object
+const colorMap = {
+  blue: "bg-blue-500 text-blue-100",
+  purple: "bg-purple-500 text-purple-100",
+  orange: "bg-orange-500 text-orange-100",
+  green: "bg-green-500 text-green-100",
+  red: "bg-red-500 text-red-100",
+  teal: "bg-teal-500 text-teal-100",
+};
+
+const colorBorderMap = {
+  blue: "border-blue-500",
+  purple: "border-purple-500",
+  orange: "border-orange-500",
+  green: "border-green-500",
+  red: "border-red-500",
+  teal: "border-teal-500",
+};
+
+const colorTextMap = {
+  blue: "text-blue-600",
+  purple: "text-purple-600",
+  orange: "text-orange-600",
+  green: "text-green-600",
+  red: "text-red-600",
+  teal: "text-teal-600",
+};
 
 export default function Services() {
+  const [activeProcess, setActiveProcess] = useState(0);
+
+  // Get appropriate icon component
+  const getIcon = (iconName) => {
+    const IconComponent = iconMap[iconName] || MagnifyingGlassIcon;
+    return IconComponent;
+  };
+
   return (
     <div className="bg-gray-900 text-white">
       {/* Hero Section */}
@@ -31,11 +93,11 @@ export default function Services() {
       <section id="services" className="py-16 bg-white text-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold mb-12 text-center">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => (
               <div
                 key={service.id}
-                className="p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border-b-4 border-orange-500 hover:-translate-y-1"
               >
                 <div className="flex items-start mb-4">
                   <div className="flex-shrink-0 p-3 bg-orange-100 rounded-lg mr-4">
@@ -74,40 +136,136 @@ export default function Services() {
           <h2 className="text-4xl font-bold mb-12 text-center">
             Technologies We Use
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {technologies.map((tech) => (
-              <div key={tech.name} className="text-center">
-                <div className="w-20 h-20 mx-auto mb-4 bg-gray-800 rounded-lg flex items-center justify-center">
-                  <tech.icon className="h-12 w-12 text-orange-500" />
+              <div key={tech.name} className="text-center p-2">
+                <div className="w-12 h-12 mx-auto mb-2 bg-gray-800 rounded-lg flex items-center justify-center">
+                  {tech.icon &&
+                    React.createElement(tech.icon, {
+                      className: "h-6 w-6 text-orange-500",
+                    })}
                 </div>
-                <h3 className="text-xl font-semibold text-orange-500">
+                <h3 className="text-base font-semibold text-orange-500 truncate">
                   {tech.name}
                 </h3>
-                <p className="text-gray-400 mt-2">{tech.description}</p>
+                <p className="text-xs text-gray-400 mt-1 line-clamp-2">
+                  {tech.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section id="process" className="py-16 bg-white text-gray-900">
+      {/* Process Section - Updated with interactive, eye-catching design */}
+      <section id="process" className="py-20 bg-white text-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold mb-12 text-center">Our Process</h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row">
-              {process.map((step, index) => (
-                <div key={step.title} className="flex-1 text-center p-4">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-orange-500 rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                    {index + 1}
+          <h2 className="text-4xl font-bold mb-16 text-center">Our Process</h2>
+
+          {/* Main Process Steps - Horizontal Timeline */}
+          <div className="relative mb-24">
+            {/* Timeline Line */}
+            <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-200 transform -translate-y-1/2"></div>
+
+            {/* Process Steps */}
+            <div className="flex justify-between relative z-10">
+              {process.map((step, index) => {
+                const IconComponent = getIcon(step.icon);
+                return (
+                  <div
+                    key={step.title}
+                    className="flex flex-col items-center cursor-pointer"
+                    onClick={() => setActiveProcess(index)}
+                  >
+                    <div
+                      className={`w-16 h-16 rounded-full flex items-center justify-center mb-3 transition-all duration-300 ${
+                        index === activeProcess
+                          ? colorMap[step.color]
+                          : "bg-white border-2 " + colorBorderMap[step.color]
+                      }`}
+                    >
+                      <IconComponent
+                        className={`h-8 w-8 ${
+                          index === activeProcess
+                            ? "text-white"
+                            : colorTextMap[step.color]
+                        }`}
+                      />
+                    </div>
+                    <h3
+                      className={`text-sm font-bold ${
+                        index === activeProcess
+                          ? colorTextMap[step.color]
+                          : "text-gray-500"
+                      }`}
+                    >
+                      {step.title}
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-semibold text-orange-500 mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600">{step.description}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
+          </div>
+
+          {/* Active Process Details */}
+          <div className="mt-10">
+            <div className="text-center mb-10">
+              <h3
+                className={`text-3xl font-bold mb-2 ${
+                  colorTextMap[process[activeProcess].color]
+                }`}
+              >
+                {process[activeProcess].title}
+              </h3>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                {process[activeProcess].description}
+              </p>
+            </div>
+
+            {/* Subprocess Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {process[activeProcess].subprocesses.map((subprocess, index) => {
+                const IconComponent = getIcon(process[activeProcess].icon);
+                return (
+                  <div
+                    key={subprocess.title}
+                    className={`p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white border-l-4 ${
+                      colorBorderMap[process[activeProcess].color]
+                    } hover:-translate-y-1`}
+                  >
+                    <div className="flex items-center mb-4">
+                      <div
+                        className={`w-10 h-10 rounded-full flex items-center justify-center mr-3 ${
+                          colorMap[process[activeProcess].color]
+                        }`}
+                      >
+                        <span className="text-white font-bold">
+                          {index + 1}
+                        </span>
+                      </div>
+                      <h4 className="text-xl font-semibold text-gray-800">
+                        {subprocess.title}
+                      </h4>
+                    </div>
+                    <p className="text-gray-600">{subprocess.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Process Navigation */}
+          <div className="flex justify-center mt-12 space-x-2">
+            {process.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveProcess(index)}
+                className={`w-3 h-3 rounded-full ${
+                  index === activeProcess ? "bg-orange-500" : "bg-gray-300"
+                }`}
+                aria-label={`View process step ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </section>
