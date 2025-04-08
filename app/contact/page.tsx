@@ -190,7 +190,7 @@ export default function Contact() {
                       <FaLinkedinIn size={18} />
                     </a>
                     <a
-                      href="https://github.com/nilebitlabs"
+                      href="https://github.com/NileBit-Labs"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-gray-200 hover:bg-orange-500 text-gray-700 hover:text-white p-3 rounded-full transition"

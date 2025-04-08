@@ -148,7 +148,7 @@ export default function Footer() {
               <div className="p-4 pt-0 border-t border-gray-700/50">
                 <div className="grid grid-cols-3 gap-4 mt-4">
                   <Link
-                    href="https://github.com/nilebitlabs"
+                    href="https://github.com/NileBit-Labs"
                     className="flex flex-col items-center justify-center p-3 rounded-lg bg-gray-700/30 hover:bg-gradient-to-br hover:from-blue-900/50 hover:to-blue-700/50 transition-all duration-300 group"
                   >
                     <Github className="h-6 w-6 text-gray-300 group-hover:text-blue-400 transition-all duration-300" />
@@ -376,7 +376,7 @@ export default function Footer() {
 
             <div className="grid grid-cols-3 gap-4">
               <Link
-                href="https://github.com/nilebitlabs"
+                href="https://github.com/NileBit-Labs"
                 className="flex flex-col items-center justify-center p-3 rounded-lg bg-gray-700/30 hover:bg-gradient-to-br hover:from-blue-900/50 hover:to-blue-700/50 transition-all duration-300 group"
               >
                 <Github className="h-6 w-6 text-gray-300 group-hover:text-blue-400 transition-all duration-300" />
