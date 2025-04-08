@@ -256,84 +256,128 @@ export default function Navbar() {
 
           {/* Menu Panel */}
           <div
-            className={`absolute right-0 top-0 h-full w-4/5 max-w-sm bg-gray-900 transform transition-transform duration-300 ease-in-out ${
+            className={`absolute right-0 top-0 h-full w-4/5 max-w-sm ${
+              isAtTop ? "bg-gray-900" : "bg-white"
+            } transform transition-transform duration-300 ease-in-out ${
               isOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
-            {/* Panel header */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-700">
+            {/* Panel header with improved spacing */}
+            <div
+              className={`flex items-center justify-between p-5 border-b ${
+                isAtTop ? "border-gray-700" : "border-gray-200"
+              } mt-2`}
+            >
               <img
-                src="/nilebit-logo-darkmode.svg"
+                src={
+                  isAtTop ? "/nilebit-logo-darkmode.svg" : "/nilebit-logo.svg"
+                }
                 alt="NileBit Labs Logo"
                 className="h-12 w-auto"
               />
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 rounded-full bg-gray-800 text-white"
+                className={`p-2 rounded-full ${
+                  isAtTop
+                    ? "bg-gray-800 text-white"
+                    : "bg-gray-100 text-gray-900"
+                }`}
               >
                 <X size={20} />
               </button>
             </div>
 
             {/* Menu items */}
-            <div className="overflow-y-auto max-h-screen pb-20">
+            <div className="overflow-y-auto max-h-[calc(100vh-180px)] pb-20">
               {menuItems.map((item, index) => (
-                <div key={index} className="border-b border-gray-800">
+                <div
+                  key={index}
+                  className={`border-b ${
+                    isAtTop ? "border-gray-800" : "border-gray-200"
+                  }`}
+                >
                   {item.hasSubmenu ? (
-                    <>
+                    <div className="flex items-center">
+                      {/* Clickable menu item link - takes up most of the space */}
+                      <Link
+                        href={item.href}
+                        onClick={handleMobileNavClick}
+                        className={`flex-grow px-4 py-4 ${
+                          isAtTop
+                            ? "text-white hover:bg-gray-800"
+                            : "text-gray-900 hover:bg-gray-100"
+                        } font-medium`}
+                      >
+                        {item.title}
+                        <span className="inline-block ml-2 w-2 h-2 bg-orange-500 rounded-full"></span>
+                      </Link>
+
+                      {/* Dropdown button - takes up less space */}
                       <button
                         onClick={() =>
                           setExpandedMobileMenu(
                             expandedMobileMenu === index ? null : index
                           )
                         }
-                        className="w-full px-4 py-4 flex items-center justify-between text-white hover:bg-gray-800"
-                      >
-                        <span className="font-medium">{item.title}</span>
-                        <span className="flex items-center">
-                          <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
-                          <ChevronDown
-                            size={16}
-                            className={`transform transition-transform duration-300 ${
-                              expandedMobileMenu === index ? "rotate-180" : ""
-                            }`}
-                          />
-                        </span>
-                      </button>
-
-                      {/* Submenu with smooth transition */}
-                      <div
-                        className={`bg-gray-800 overflow-hidden transition-all duration-300 ${
-                          expandedMobileMenu === index
-                            ? "max-h-96 opacity-100"
-                            : "max-h-0 opacity-0"
+                        className={`px-4 py-4 ${
+                          isAtTop
+                            ? "text-white hover:bg-gray-800"
+                            : "text-gray-900 hover:bg-gray-100"
                         }`}
                       >
-                        {item.submenu &&
-                          item.submenu.map((subItem, subIdx) => (
-                            <Link
-                              key={subIdx}
-                              href={subItem.href}
-                              onClick={handleMobileNavClick}
-                              className="block px-8 py-3 text-gray-300 hover:text-orange-400 hover:bg-gray-700 flex items-center"
-                            >
-                              <ArrowRight
-                                size={12}
-                                className="mr-2 text-orange-500"
-                              />
-                              {subItem.title}
-                            </Link>
-                          ))}
-                      </div>
-                    </>
+                        <ChevronDown
+                          size={16}
+                          className={`transform transition-transform duration-300 ${
+                            expandedMobileMenu === index ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    </div>
                   ) : (
                     <Link
                       href={item.href}
                       onClick={handleMobileNavClick}
-                      className="block px-4 py-4 text-white hover:bg-gray-800 font-medium"
+                      className={`block px-4 py-4 ${
+                        isAtTop
+                          ? "text-white hover:bg-gray-800"
+                          : "text-gray-900 hover:bg-gray-100"
+                      } font-medium`}
                     >
                       {item.title}
                     </Link>
+                  )}
+
+                  {/* Submenu with smooth transition */}
+                  {item.hasSubmenu && (
+                    <div
+                      className={`${
+                        isAtTop ? "bg-gray-800" : "bg-gray-50"
+                      } overflow-hidden transition-all duration-300 ${
+                        expandedMobileMenu === index
+                          ? "max-h-96 opacity-100"
+                          : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      {item.submenu &&
+                        item.submenu.map((subItem, subIdx) => (
+                          <Link
+                            key={subIdx}
+                            href={subItem.href}
+                            onClick={handleMobileNavClick}
+                            className={`block px-8 py-3 ${
+                              isAtTop
+                                ? "text-gray-300 hover:text-orange-400 hover:bg-gray-700"
+                                : "text-gray-700 hover:text-orange-500 hover:bg-gray-100"
+                            } flex items-center`}
+                          >
+                            <ArrowRight
+                              size={12}
+                              className="mr-2 text-orange-500"
+                            />
+                            {subItem.title}
+                          </Link>
+                        ))}
+                    </div>
                   )}
                 </div>
               ))}
@@ -352,62 +396,75 @@ export default function Navbar() {
                 </button>
               </div>
             </div>
-            {/* Contact info */}
-            <div className="p-4 mt-4 bg-gray-800 text-gray-300 text-sm fixed bottom-0 w-full">
-              <h3 className="font-medium text-white mb-2">Contact Us</h3>
+
+            {/* Contact info - fixed at bottom with proper coloring based on scroll position */}
+            <div
+              className={`p-4 ${
+                isAtTop
+                  ? "bg-gray-800 text-gray-300"
+                  : "bg-gray-100 text-gray-700"
+              } text-sm absolute bottom-0 left-0 right-0 w-full`}
+            >
+              <h3
+                className={`font-medium ${
+                  isAtTop ? "text-white" : "text-gray-900"
+                } mb-2`}
+              >
+                Contact Us
+              </h3>
               <a
                 href="mailto:info@nilebitlabs.com"
-                className="block text-orange-400 hover:underline"
+                className="block text-orange-500 hover:underline"
               >
                 info@nilebitlabs.com
               </a>
               <a
                 href="tel:+256770919175"
-                className="mt-1 block text-orange-400 hover:underline"
+                className="mt-1 block text-orange-500 hover:underline"
               >
                 (256)770-919175
               </a>
               <div className="mt-4 flex space-x-3">
-                {/* Social icons would go here */}
+                {/* Social icons */}
                 <a
                   href="https://twitter.com/nilebits"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-3 rounded-full transition"
+                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-2 rounded-full transition"
                 >
-                  <FaTwitter size={18} />
+                  <FaTwitter size={16} />
                 </a>
                 <a
                   href="https://facebook.com/nilebits"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-3 rounded-full transition"
+                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-2 rounded-full transition"
                 >
-                  <FaFacebookF size={18} />
+                  <FaFacebookF size={16} />
                 </a>
                 <a
                   href="https://linkedin.com/company/nilebits"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-3 rounded-full transition"
+                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-2 rounded-full transition"
                 >
-                  <FaLinkedinIn size={18} />
+                  <FaLinkedinIn size={16} />
                 </a>
                 <a
                   href="https://github.com/nilebits"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-3 rounded-full transition"
+                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-2 rounded-full transition"
                 >
-                  <FaGithub size={18} />
+                  <FaGithub size={16} />
                 </a>
                 <a
                   href="https://instagram.com/nilebits"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-3 rounded-full transition"
+                  className="bg-gray-200 hover:bg-orange-500 text-orange-500 hover:text-white p-2 rounded-full transition"
                 >
-                  <FaInstagram size={18} />
+                  <FaInstagram size={16} />
                 </a>
               </div>
             </div>
