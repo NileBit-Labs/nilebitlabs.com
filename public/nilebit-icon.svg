@@ -1,0 +1,28 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle with Gradient -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b00" />
+      <stop offset="100%" stop-color="#ff9d00" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main Circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#logoGradient)" />
+  
+  <!-- Circuit Lines -->
+  <path d="M32,14 L32,8 L56,8 L56,20 L62,20" stroke="white" stroke-width="2.5" fill="none" />
+  <path d="M32,50 L32,56 L50,56 L50,44 L62,44" stroke="white" stroke-width="2.5" fill="none" />
+  <path d="M6,32 L18,32" stroke="white" stroke-width="2.5" fill="none" />
+  
+  <!-- "N" Symbol -->
+  <path d="M18,20 L24,20 L24,44 L18,44 L18,20 M24,20 L42,44 M36,20 L42,20 L42,44 L36,44 L36,20" 
+        stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Digital Dots -->
+  <circle cx="6" cy="32" r="2.5" fill="white" />
+  <circle cx="62" cy="20" r="2.5" fill="white" />
+  <circle cx="62" cy="44" r="2.5" fill="white" />
+  <circle cx="56" cy="8" r="2.5" fill="white" />
+  <circle cx="50" cy="56" r="2.5" fill="white" />
+</svg>
