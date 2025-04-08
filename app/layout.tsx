@@ -1,9 +1,12 @@
 import "./globals.css";
-import MainLayout from "../components/layout/MainLayout"; // Remove curly braces
+import MainLayout from "../components/layout/MainLayout";
 
 export const metadata = {
   title: "NileBit Labs",
   description: "Innovative Tech Solutions by NileBit Labs",
+  icons: {
+    icon: "/nilebit-icon.svg",
+  },
 };
 
 export default function RootLayout({
