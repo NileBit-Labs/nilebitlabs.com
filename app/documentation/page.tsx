@@ -28,16 +28,13 @@ export default function Documentation() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* General Guides */}
-            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div id="general" className="bg-gray-50 p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold text-orange-500 mb-4">
                 Getting Started
               </h3>
               <ul className="space-y-4 text-gray-600">
                 <li>
-                  <Link
-                    href="/documentation/setup"
-                    className="hover:text-orange-500"
-                  >
+                  <Link href="#general" className="hover:text-orange-500">
                     Project Setup Guide
                   </Link>
                   <p>
@@ -45,10 +42,7 @@ export default function Documentation() {
                   </p>
                 </li>
                 <li>
-                  <Link
-                    href="/documentation/intro"
-                    className="hover:text-orange-500"
-                  >
+                  <Link href="#general" className="hover:text-orange-500">
                     Introduction to Our Services
                   </Link>
                   <p>
@@ -59,25 +53,19 @@ export default function Documentation() {
             </div>
 
             {/* API Documentation */}
-            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div id="api" className="bg-gray-50 p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold text-orange-500 mb-4">
                 API References
               </h3>
               <ul className="space-y-4 text-gray-600">
                 <li>
-                  <Link
-                    href="/documentation/api/blockchain"
-                    className="hover:text-orange-500"
-                  >
+                  <Link href="#api" className="hover:text-orange-500">
                     Blockchain API
                   </Link>
                   <p>Integrate with our blockchain services using our APIs.</p>
                 </li>
                 <li>
-                  <Link
-                    href="/documentation/api/ai"
-                    className="hover:text-orange-500"
-                  >
+                  <Link href="#api" className="hover:text-orange-500">
                     AI Agent API
                   </Link>
                   <p>Access our AI tools programmatically.</p>
@@ -86,16 +74,13 @@ export default function Documentation() {
             </div>
 
             {/* Tutorials */}
-            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div id="tutorials" className="bg-gray-50 p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold text-orange-500 mb-4">
                 Tutorials
               </h3>
               <ul className="space-y-4 text-gray-600">
                 <li>
-                  <Link
-                    href="/documentation/tutorials/nft"
-                    className="hover:text-orange-500"
-                  >
+                  <Link href="#tutorials" className="hover:text-orange-500">
                     Building an NFT Marketplace
                   </Link>
                   <p>
@@ -103,10 +88,7 @@ export default function Documentation() {
                   </p>
                 </li>
                 <li>
-                  <Link
-                    href="/documentation/tutorials/ai"
-                    className="hover:text-orange-500"
-                  >
+                  <Link href="#tutorials" className="hover:text-orange-500">
                     Deploying an AI Model
                   </Link>
                   <p>Learn how to deploy AI solutions with NileBit Labs.</p>
@@ -115,14 +97,17 @@ export default function Documentation() {
             </div>
 
             {/* Troubleshooting */}
-            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div
+              id="troubleshooting"
+              className="bg-gray-50 p-6 rounded-lg shadow-md"
+            >
               <h3 className="text-xl font-semibold text-orange-500 mb-4">
                 Troubleshooting
               </h3>
               <ul className="space-y-4 text-gray-600">
                 <li>
                   <Link
-                    href="/documentation/troubleshooting/common-issues"
+                    href="#troubleshooting"
                     className="hover:text-orange-500"
                   >
                     Common Issues & Fixes
@@ -130,7 +115,7 @@ export default function Documentation() {
                   <p>Solutions to frequent technical problems.</p>
                 </li>
                 <li>
-                  <Link href="/support" className="hover:text-orange-500">
+                  <Link href="/contact" className="hover:text-orange-500">
                     Contact Support
                   </Link>
                   <p>Get help directly from our team.</p>

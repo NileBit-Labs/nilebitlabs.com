@@ -104,12 +104,12 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">Email Us</h3>
-                      <Link
+                      <a
                         href="mailto:douglasbagambe4@gmail.com"
                         className="text-gray-600 hover:text-orange-500 transition"
                       >
                         info@nilebitlabs.com
-                      </Link>
+                      </a>
                     </div>
                   </div>
 
