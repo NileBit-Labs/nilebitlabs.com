@@ -186,11 +186,9 @@ export const projects = {
 
 // You can add more categories as needed
 export const projectCategories = [
+  { id: "blockchain", label: "Blockchain", href: "#blockchain" },
+  { id: "ai-ml", label: "AI & ML", href: "#ai-ml" },
   { id: "websites", label: "Websites", href: "#websites" },
   { id: "web-apps", label: "Web Applications", href: "#web-apps" },
   { id: "mobile-apps", label: "Mobile Apps", href: "#mobile-apps" },
-  { id: "ai-ml", label: "AI & ML", href: "#ai-ml" },
-  { id: "blockchain", label: "Blockchain", href: "#blockchain" },
-  { id: "cybersecurity", label: "Cybersecurity", href: "#cybersecurity" },
-  { id: "enterprise", label: "Enterprise Solutions", href: "#enterprise" },
 ];

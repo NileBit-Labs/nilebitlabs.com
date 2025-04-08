@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
 "use client";
 import { useState } from "react";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import {
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@heroicons/react/24/outline";
 import { technologies, services, process } from "../../data/services";
 import Link from "next/link";
 
@@ -62,6 +65,15 @@ export default function Services() {
   const getIcon = (iconName) => {
     const IconComponent = iconMap[iconName] || MagnifyingGlassIcon;
     return IconComponent;
+  };
+
+  // Navigation functions for process section
+  const goToNextProcess = () => {
+    setActiveProcess((prev) => (prev === process.length - 1 ? 0 : prev + 1));
+  };
+
+  const goToPrevProcess = () => {
+    setActiveProcess((prev) => (prev === 0 ? process.length - 1 : prev - 1));
   };
 
   return (
@@ -157,115 +169,167 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Process Section - Updated with interactive, eye-catching design */}
+      {/* Process Section - Redesigned with mobile support */}
       <section id="process" className="py-20 bg-white text-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold mb-16 text-center">Our Process</h2>
 
-          {/* Main Process Steps - Horizontal Timeline */}
-          <div className="relative mb-24">
-            {/* Timeline Line */}
-            <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-200 transform -translate-y-1/2"></div>
-
-            {/* Process Steps */}
-            <div className="flex justify-between relative z-10">
-              {process.map((step, index) => {
-                const IconComponent = getIcon(step.icon);
-                return (
-                  <div
-                    key={step.title}
-                    className="flex flex-col items-center cursor-pointer"
-                    onClick={() => setActiveProcess(index)}
-                  >
-                    <div
-                      className={`w-16 h-16 rounded-full flex items-center justify-center mb-3 transition-all duration-300 ${
-                        index === activeProcess
-                          ? colorMap[step.color]
-                          : "bg-white border-2 " + colorBorderMap[step.color]
-                      }`}
-                    >
-                      <IconComponent
-                        className={`h-8 w-8 ${
-                          index === activeProcess
-                            ? "text-white"
-                            : colorTextMap[step.color]
-                        }`}
-                      />
-                    </div>
-                    <h3
-                      className={`text-sm font-bold ${
-                        index === activeProcess
-                          ? colorTextMap[step.color]
-                          : "text-gray-500"
-                      }`}
-                    >
-                      {step.title}
-                    </h3>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Active Process Details */}
-          <div className="mt-10">
-            <div className="text-center mb-10">
-              <h3
-                className={`text-3xl font-bold mb-2 ${
-                  colorTextMap[process[activeProcess].color]
-                }`}
+          {/* Mobile-friendly Process Navigation */}
+          <div className="mb-12">
+            {/* Process Navigation Controls */}
+            <div className="flex items-center justify-between mb-8">
+              <button
+                onClick={goToPrevProcess}
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all"
+                aria-label="Previous process step"
               >
-                {process[activeProcess].title}
-              </h3>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                {process[activeProcess].description}
-              </p>
+                <ChevronLeftIcon className="h-6 w-6" />
+              </button>
+
+              <div className="text-center">
+                <h3
+                  className={`text-2xl font-bold mb-1 ${
+                    colorTextMap[process[activeProcess].color]
+                  }`}
+                >
+                  {process[activeProcess].title}
+                </h3>
+                <div className="flex justify-center space-x-2 mt-2">
+                  {process.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveProcess(index)}
+                      className={`w-3 h-3 rounded-full transition-all ${
+                        index === activeProcess
+                          ? "bg-orange-500 scale-125"
+                          : "bg-gray-300"
+                      }`}
+                      aria-label={`Go to process step ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <button
+                onClick={goToNextProcess}
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all"
+                aria-label="Next process step"
+              >
+                <ChevronRightIcon className="h-6 w-6" />
+              </button>
             </div>
 
-            {/* Subprocess Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {process[activeProcess].subprocesses.map((subprocess, index) => {
-                const IconComponent = getIcon(process[activeProcess].icon);
-                return (
-                  <div
-                    key={subprocess.title}
-                    className={`p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white border-l-4 ${
-                      colorBorderMap[process[activeProcess].color]
-                    } hover:-translate-y-1`}
-                  >
-                    <div className="flex items-center mb-4">
+            {/* Process Steps - Horizontal Pills (Desktop Only) */}
+            <div className="hidden md:block relative">
+              {/* Timeline Line */}
+              <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-200 transform -translate-y-1/2"></div>
+
+              {/* Process Steps */}
+              <div className="flex justify-between relative z-10">
+                {process.map((step, index) => {
+                  const IconComponent = getIcon(step.icon);
+                  return (
+                    <div
+                      key={step.title}
+                      className="flex flex-col items-center cursor-pointer transition-all"
+                      onClick={() => setActiveProcess(index)}
+                    >
                       <div
-                        className={`w-10 h-10 rounded-full flex items-center justify-center mr-3 ${
-                          colorMap[process[activeProcess].color]
+                        className={`w-16 h-16 rounded-full flex items-center justify-center mb-3 transition-all duration-300 ${
+                          index === activeProcess
+                            ? colorMap[step.color]
+                            : "bg-white border-2 " + colorBorderMap[step.color]
                         }`}
                       >
-                        <span className="text-white font-bold">
-                          {index + 1}
-                        </span>
+                        <IconComponent
+                          className={`h-8 w-8 ${
+                            index === activeProcess
+                              ? "text-white"
+                              : colorTextMap[step.color]
+                          }`}
+                        />
                       </div>
-                      <h4 className="text-xl font-semibold text-gray-800">
-                        {subprocess.title}
-                      </h4>
+                      <h3
+                        className={`text-sm font-bold ${
+                          index === activeProcess
+                            ? colorTextMap[step.color]
+                            : "text-gray-500"
+                        }`}
+                      >
+                        {step.title}
+                      </h3>
                     </div>
-                    <p className="text-gray-600">{subprocess.description}</p>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
 
-          {/* Process Navigation */}
-          <div className="flex justify-center mt-12 space-x-2">
-            {process.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveProcess(index)}
-                className={`w-3 h-3 rounded-full ${
-                  index === activeProcess ? "bg-orange-500" : "bg-gray-300"
-                }`}
-                aria-label={`View process step ${index + 1}`}
-              />
-            ))}
+          {/* Active Process Description */}
+          <div className="bg-gray-50 p-6 rounded-lg shadow-md mb-10">
+            <p className="text-lg text-gray-600">
+              {process[activeProcess].description}
+            </p>
+          </div>
+
+          {/* Subprocess Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {process[activeProcess].subprocesses.map((subprocess, index) => {
+              const IconComponent = getIcon(process[activeProcess].icon);
+              return (
+                <div
+                  key={subprocess.title}
+                  className={`p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white border-l-4 ${
+                    colorBorderMap[process[activeProcess].color]
+                  } hover:-translate-y-1`}
+                >
+                  <div className="flex items-center mb-4">
+                    <div
+                      className={`w-10 h-10 rounded-full flex items-center justify-center mr-3 ${
+                        colorMap[process[activeProcess].color]
+                      }`}
+                    >
+                      <span className="text-white font-bold">{index + 1}</span>
+                    </div>
+                    <h4 className="text-xl font-semibold text-gray-800">
+                      {subprocess.title}
+                    </h4>
+                  </div>
+                  <p className="text-gray-600">{subprocess.description}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Bottom Navigation Controls */}
+          <div className="flex justify-center items-center mt-12 space-x-4">
+            <button
+              onClick={goToPrevProcess}
+              className={`flex items-center px-4 py-2 rounded-full border ${
+                colorBorderMap[process[activeProcess].color]
+              } ${
+                colorTextMap[process[activeProcess].color]
+              } hover:bg-gray-50 transition-all`}
+            >
+              <ChevronLeftIcon className="h-5 w-5 mr-1" />
+              <span>Previous</span>
+            </button>
+
+            <span className="text-gray-400">
+              {activeProcess + 1} of {process.length}
+            </span>
+
+            <button
+              onClick={goToNextProcess}
+              className={`flex items-center px-4 py-2 rounded-full border ${
+                colorBorderMap[process[activeProcess].color]
+              } ${
+                colorTextMap[process[activeProcess].color]
+              } hover:bg-gray-50 transition-all`}
+            >
+              <span>Next</span>
+              <ChevronRightIcon className="h-5 w-5 ml-1" />
+            </button>
           </div>
         </div>
       </section>
