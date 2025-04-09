@@ -139,7 +139,7 @@ export default function Contact() {
                         href="tel:+256770919175"
                         className="text-gray-600 hover:text-orange-500 transition"
                       >
-                        +256 770 919 975
+                        +256 770 919 175
                       </Link>
                       <br />
                       <Link

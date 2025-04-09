@@ -326,7 +326,9 @@ export default function Footer() {
             <div className="space-y-4">
               <p className="flex items-start">
                 <MapPin className="h-5 w-5 text-orange-500 mr-2 flex-shrink-0 mt-1" />
-                <span>Makerere Kavule, Kampala, Uganda</span>
+                <span className="text-white">
+                  Makerere Kavule, Kampala, Uganda
+                </span>
               </p>
 
               <p className="flex items-start">
@@ -334,21 +336,21 @@ export default function Footer() {
                 <span>
                   <a
                     href="tel:+256770919175"
-                    className="hover:text-orange-500 transition"
+                    className="text-white hover:text-orange-500 transition"
                   >
-                    +256 770 919 975
+                    +256 770 919 175
                   </a>
                   <br />
                   <a
                     href="tel:+256780487574"
-                    className="hover:text-orange-500 transition"
+                    className="text-white hover:text-orange-500 transition"
                   >
                     +256 780 487 574
                   </a>
                   <br />
                   <a
                     href="tel:+256776159775"
-                    className="hover:text-orange-500 transition"
+                    className="text-white hover:text-orange-500 transition"
                   >
                     +256 776 159 775
                   </a>
@@ -359,7 +361,7 @@ export default function Footer() {
                 <Mail className="h-5 w-5 text-orange-500 mr-2" />
                 <a
                   href="mailto:info@nilebitlabs.com"
-                  className="hover:text-orange-500 transition"
+                  className="text-white hover:text-orange-500 transition"
                 >
                   info@nilebitlabs.com
                 </a>
@@ -380,7 +382,7 @@ export default function Footer() {
                 className="flex flex-col items-center justify-center p-3 rounded-lg bg-gray-700/30 hover:bg-gradient-to-br hover:from-blue-900/50 hover:to-blue-700/50 transition-all duration-300 group"
               >
                 <Github className="h-6 w-6 text-gray-300 group-hover:text-blue-400 transition-all duration-300" />
-                <span className="text-xs mt-1 opacity-70 group-hover:opacity-100">
+                <span className="text-white text-xs mt-1 opacity-70 group-hover:opacity-100">
                   GitHub
                 </span>
               </Link>
@@ -390,7 +392,7 @@ export default function Footer() {
                 className="flex flex-col items-center justify-center p-3 rounded-lg bg-gray-700/30 hover:bg-gradient-to-br hover:from-blue-900/50 hover:to-blue-600/50 transition-all duration-300 group"
               >
                 <Linkedin className="h-6 w-6 text-gray-300 group-hover:text-blue-400 transition-all duration-300" />
-                <span className="text-xs mt-1 opacity-70 group-hover:opacity-100">
+                <span className="text-white text-xs mt-1 opacity-70 group-hover:opacity-100">
                   LinkedIn
                 </span>
               </Link>
@@ -400,7 +402,7 @@ export default function Footer() {
                 className="flex flex-col items-center justify-center p-3 rounded-lg bg-gray-700/30 hover:bg-gradient-to-br hover:from-blue-800/50 hover:to-blue-500/50 transition-all duration-300 group"
               >
                 <Twitter className="h-6 w-6 text-gray-300  group-hover:text-blue-400 transition-all duration-300" />
-                <span className="text-xs mt-1 opacity-70 group-hover:opacity-100">
+                <span className="text-white text-xs mt-1 opacity-70 group-hover:opacity-100">
                   Twitter
                 </span>
               </Link>
@@ -410,7 +412,7 @@ export default function Footer() {
                 className="flex flex-col items-center justify-center p-3 rounded-lg bg-gray-700/30 hover:bg-gradient-to-br hover:from-purple-900/50 hover:to-pink-700/50 transition-all duration-300 group"
               >
                 <Instagram className="h-6 w-6 text-gray-300 group-hover:text-pink-400 transition-all duration-300" />
-                <span className="text-xs mt-1 opacity-70 group-hover:opacity-100">
+                <span className="text-white text-xs mt-1 opacity-70 group-hover:opacity-100">
                   Instagram
                 </span>
               </Link>
@@ -420,7 +422,7 @@ export default function Footer() {
                 className="flex flex-col items-center justify-center p-3 rounded-lg bg-gray-700/30 hover:bg-gradient-to-br hover:from-blue-900/50 hover:to-blue-600/50 transition-all duration-300 group"
               >
                 <Facebook className="h-6 w-6 text-gray-300 group-hover:text-blue-400 transition-all duration-300" />
-                <span className="text-xs mt-1 opacity-70 group-hover:opacity-100">
+                <span className="text-white text-xs mt-1 opacity-70 group-hover:opacity-100">
                   Facebook
                 </span>
               </Link>
@@ -430,7 +432,7 @@ export default function Footer() {
                 className="flex flex-col items-center justify-center p-3 rounded-lg bg-gray-700/30 hover:bg-gradient-to-br hover:from-red-900/50 hover:to-red-700/50 transition-all duration-300 group"
               >
                 <Youtube className="h-6 w-6 text-gray-300 group-hover:text-red-400 transition-all duration-300" />
-                <span className="text-xs mt-1 opacity-70 group-hover:opacity-100">
+                <span className="text-white text-xs mt-1 opacity-70 group-hover:opacity-100">
                   YouTube
                 </span>
               </Link>
@@ -450,7 +452,7 @@ export default function Footer() {
                 className="flex items-center py-1 px-3 rounded-md hover:bg-gray-700/50 transition-all duration-300 group"
               >
                 <Code className="h-4 w-4 text-green-500 mr-2 opacity-70 group-hover:opacity-100" />
-                <span className="group-hover:translate-x-1 transition-transform duration-300">
+                <span className="text-white group-hover:translate-x-1 transition-transform duration-300">
                   Documentation
                 </span>
               </Link>
@@ -460,7 +462,7 @@ export default function Footer() {
                 className="flex items-center py-1 px-3 rounded-md hover:bg-gray-700/50 transition-all duration-300 group"
               >
                 <HelpCircle className="h-4 w-4 text-green-500 mr-2 opacity-70 group-hover:opacity-100" />
-                <span className="group-hover:translate-x-1 transition-transform duration-300">
+                <span className="text-white group-hover:translate-x-1 transition-transform duration-300">
                   FAQs
                 </span>
               </Link>
@@ -470,7 +472,7 @@ export default function Footer() {
                 className="flex items-center py-1 px-3 rounded-md hover:bg-gray-700/50 transition-all duration-300 group"
               >
                 <BookOpen className="h-4 w-4 text-green-500 mr-2 opacity-70 group-hover:opacity-100" />
-                <span className="group-hover:translate-x-1 transition-transform duration-300">
+                <span className="text-white group-hover:translate-x-1 transition-transform duration-300">
                   Support
                 </span>
               </Link>
@@ -490,7 +492,7 @@ export default function Footer() {
                 className="flex items-center py-1 px-3 rounded-md hover:bg-gray-700/50 transition-all duration-300 group"
               >
                 <ExternalLink className="h-4 w-4 text-orange-500 mr-2 opacity-70 group-hover:opacity-100" />
-                <span className="group-hover:translate-x-1 transition-transform duration-300">
+                <span className="text-white group-hover:translate-x-1 transition-transform duration-300">
                   About Us
                 </span>
               </Link>
@@ -500,7 +502,7 @@ export default function Footer() {
                 className="flex items-center py-1 px-3 rounded-md hover:bg-gray-700/50 transition-all duration-300 group"
               >
                 <FileText className="h-4 w-4 text-orange-500 mr-2 opacity-70 group-hover:opacity-100" />
-                <span className="group-hover:translate-x-1 transition-transform duration-300">
+                <span className="text-white group-hover:translate-x-1 transition-transform duration-300">
                   Terms & Conditions
                 </span>
               </Link>
@@ -510,7 +512,7 @@ export default function Footer() {
                 className="flex items-center py-1 px-3 rounded-md hover:bg-gray-700/50 transition-all duration-300 group"
               >
                 <Shield className="h-4 w-4 text-orange-500 mr-2 opacity-70 group-hover:opacity-100" />
-                <span className="group-hover:translate-x-1 transition-transform duration-300">
+                <span className="text-white group-hover:translate-x-1 transition-transform duration-300">
                   Privacy Policy
                 </span>
               </Link>
