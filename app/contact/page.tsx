@@ -31,27 +31,43 @@ export default function Contact() {
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Replace with actual form submission logic
-    console.log("Form data submitted:", formData);
-    setFormSubmitted(true);
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        company: "",
-        role: "",
-        service: "",
-        description: "",
-        newsletter: false,
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-    }, 3000);
+
+      if (response.ok) {
+        console.log("Form data submitted:", formData);
+        setFormSubmitted(true);
+
+        setTimeout(() => {
+          setFormSubmitted(false);
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            company: "",
+            role: "",
+            service: "",
+            description: "",
+            newsletter: false,
+          });
+        }, 3000);
+      } else {
+        throw new Error("Failed to send inquiry");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("There was an error sending your inquiry. Please try again later.");
+    }
   };
 
   return (
