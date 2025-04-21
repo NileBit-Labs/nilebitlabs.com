@@ -7,7 +7,7 @@ export const projects = {
       description:
         "A decentralized platform for trading digital assets with enhanced security features.",
       category: "Web3",
-      image: "/img/projects/nft-marketplace.jpg",
+      image: "/img/portfolio/nft-marketplace.jpeg",
       link: "/portfolio/nft-marketplace",
       technologies: ["Ethereum", "Solidity", "IPFS"],
     },
@@ -17,7 +17,7 @@ export const projects = {
       description:
         "Real-time AI system that monitors driver behavior to enhance road safety.",
       category: "AI & ML",
-      image: "/img/projects/ai-driver.jpg",
+      image: "/img/portfolio/ai-driver.jpg",
       link: "/portfolio/ai-driver-monitoring",
       technologies: ["TensorFlow", "Computer Vision", "Edge Computing"],
     },
@@ -28,7 +28,7 @@ export const projects = {
         "Feature-rich e-commerce platform for computer hardware and accessories.",
       category: "E-Commerce",
       image: "/img/portfolio/skcomputerstore.png",
-      link: "/img/portfolio/skcomputerstore.png",
+      link: "/portfolio/skcomputerstore",
       technologies: ["Next.js", "Tailwind CSS", "Stripe"],
     },
   ],
@@ -38,7 +38,7 @@ export const projects = {
       title: "NFT Marketplace",
       description:
         "A decentralized platform for creating, buying, and selling digital assets with enhanced security features.",
-      image: "/img/projects/nft-marketplace.jpg",
+      image: "/img/portfolio/nft-marketplace.jpeg",
       technologies: ["Ethereum", "Solidity", "IPFS"],
     },
     {
@@ -54,7 +54,7 @@ export const projects = {
       title: "DeFi Lending Protocol",
       description:
         "A decentralized finance platform for lending and borrowing crypto assets with optimized yield strategies.",
-      image: "/img/projects/defi-platform.jpg",
+      image: "/img/portfolio/compound.png",
       technologies: ["Ethereum", "Solidity", "The Graph"],
     },
   ],
@@ -64,23 +64,23 @@ export const projects = {
       title: "AI Driver Behavior Monitoring",
       description:
         "An advanced computer vision system that monitors driver behavior in real-time to prevent accidents.",
-      image: "/img/projects/ai-driver.jpg",
+      image: "/img/portfolio/ai-driver.jpg",
       technologies: ["TensorFlow", "Computer Vision", "Edge Computing"],
     },
     {
-      id: "business-assistant",
-      title: "Intelligent Business Assistant",
+      id: "terasalesai",
+      title: "TeraSalesAI",
       description:
         "An AI agent that automates business processes, customer service, and data analysis tasks.",
-      image: "/img/projects/ai-agent.jpg",
+      image: "/img/portfolio/terasalesai.jpg",
       technologies: ["NLP", "Python", "GPT Integration"],
     },
     {
-      id: "predictive-analytics",
-      title: "Enterprise Predictive Analytics",
+      id: "bankguard",
+      title: "BankGuard",
       description:
-        "A powerful predictive analytics platform that forecasts business trends and optimizes operations.",
-      image: "/img/projects/predictive-analytics.jpg",
+        "An AI Bankchurning model that helps analyze and predict customer churning rates.",
+      image: "/img/portfolio/bankguard.jpg",
       technologies: ["PyTorch", "Time Series", "Big Data"],
     },
     {
@@ -88,7 +88,7 @@ export const projects = {
       title: "Medical Imaging Diagnostics",
       description:
         "An AI system that assists medical professionals in analyzing medical images for early disease detection.",
-      image: "/img/projects/medical-ai.jpg",
+      image: "/img/portfolio/medical.jpg",
       technologies: ["Deep Learning", "Medical Imaging", "HIPAA Compliant"],
     },
   ],
@@ -106,7 +106,7 @@ export const projects = {
       title: "TechVision Corporate",
       description:
         "A modern, responsive corporate website with CMS integration and SEO optimization.",
-      image: "/img/projects/corporate-site.jpg",
+      image: "/img/portfolio/TechVision-Corporate.png",
       technologies: ["WordPress", "Custom Theme", "SEO"],
     },
     {
@@ -114,7 +114,7 @@ export const projects = {
       title: "Creative Portfolio",
       description:
         "An artist portfolio site with gallery features and client project showcase.",
-      image: "/img/projects/portfolio-site.jpg",
+      image: "/img/portfolio/portfolio-creative.png",
       technologies: ["React", "Framer Motion", "Sanity CMS"],
     },
   ],
@@ -125,7 +125,7 @@ export const projects = {
         title: "Custom CRM System",
         description:
           "A tailored customer relationship management system with advanced analytics and reporting features.",
-        image: "/img/projects/crm-system.jpg",
+        image: "/img/portfolio/crm.jpg",
         technologies: ["Vue.js", "Node.js", "MongoDB"],
       },
       {
@@ -133,7 +133,7 @@ export const projects = {
         title: "Project Management Suite",
         description:
           "An enterprise-grade project management application with real-time collaboration and resource allocation.",
-        image: "/img/projects/project-management.jpg",
+        image: "/img/portfolio/project-management.png",
         technologies: ["React", "GraphQL", "PostgreSQL"],
       },
     ],
@@ -143,7 +143,7 @@ export const projects = {
         title: "Headless CMS Platform",
         description:
           "A flexible content management system with API-first architecture for omnichannel content delivery.",
-        image: "/img/projects/headless-cms.jpg",
+        image: "/img/portfolio/cms.jpg",
         technologies: ["Next.js", "NestJS", "MongoDB"],
       },
       {
@@ -151,18 +151,18 @@ export const projects = {
         title: "Marketing Automation Suite",
         description:
           "A comprehensive marketing automation tool with email campaigns, social media scheduling, and analytics.",
-        image: "/img/projects/marketing-automation.jpg",
+        image: "/img/portfolio/marketing-automation.jpg",
         technologies: ["Angular", "Django", "Redis"],
       },
     ],
   },
   mobileApps: [
     {
-      id: "fittrack-pro",
-      title: "FitTrack Pro",
+      id: "foozana",
+      title: "Foozana",
       description:
-        "A fitness tracking app with personalized workout plans, nutrition tracking, and progress analytics.",
-      image: "/img/projects/fitness-app.jpg",
+        "Foozana is a diet and nutrition wellness app built in flutter.",
+      image: "/img/portfolio/foozana.jpg",
       technologies: ["React Native", "Firebase", "iOS & Android"],
     },
     {
@@ -170,7 +170,7 @@ export const projects = {
       title: "SecureBank Mobile",
       description:
         "A secure mobile banking application with biometric authentication and advanced transaction features.",
-      image: "/img/projects/banking-app.jpg",
+      image: "/img/portfolio/securebank.jpg",
       technologies: ["Flutter", "Java Backend", "Blockchain"],
     },
     {
@@ -178,7 +178,7 @@ export const projects = {
       title: "FoodDash",
       description:
         "A comprehensive food delivery platform with real-time order tracking and restaurant management.",
-      image: "/img/projects/food-delivery.jpg",
+      image: "/img/portfolio/fooddash.jpg",
       technologies: ["Swift UI", "Kotlin", "Node.js"],
     },
   ],
