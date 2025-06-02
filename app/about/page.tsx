@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
 import Image from "next/image";
 
@@ -22,7 +23,7 @@ export default function About() {
             href="/contact"
             className="inline-block border-2 border-white text-white px-6 py-3 rounded-full hover:bg-orange-500 hover:border-orange-500 transition"
           >
-            Let’s Talk
+            Let's Talk
           </Link>
         </div>
       </section>
@@ -158,24 +159,19 @@ export default function About() {
               className="relative"
               style={{ paddingBottom: "56.25%" /* 16:9 Aspect Ratio */ }}
             >
-              <iframe
+              <video
                 className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
-                src="https://www.youtube.com/embed/yubzJw0uiE4?si=vTMo0C_U95z4-McP"
-                title="NileBit Labs Introduction"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+                controls
+                autoPlay
+                muted
+                loop
+              >
+                <source src="/vid/intro.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
             <div className="text-center mt-4">
-              <a
-                href="https://youtu.be/yubzJw0uiE4?si=vTMo0C_U95z4-McP"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block text-orange-500 hover:underline"
-              >
-                Watch on YouTube
-              </a>
+              <p className="text-orange-500">NileBit Labs Introduction Video</p>
             </div>
           </div>
         </div>
