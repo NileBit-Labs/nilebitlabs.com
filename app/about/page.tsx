@@ -156,22 +156,26 @@ export default function About() {
           </h2>
           <div className="max-w-4xl mx-auto">
             <div
-              className="relative"
+              className="relative transform transition-transform duration-500 hover:scale-[1.02] group"
               style={{ paddingBottom: "56.25%" /* 16:9 Aspect Ratio */ }}
             >
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-purple-500/10 rounded-lg z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <video
-                className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+                className="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl object-cover"
                 controls
                 autoPlay
                 muted
                 loop
+                playsInline
               >
                 <source src="/vid/intro.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
-            <div className="text-center mt-4">
-              <p className="text-orange-500">NileBit Labs Introduction Video</p>
+            <div className="text-center mt-6">
+              <p className="text-orange-500 font-medium text-lg tracking-wide">
+                NileBit Labs Introduction Video
+              </p>
             </div>
           </div>
         </div>
