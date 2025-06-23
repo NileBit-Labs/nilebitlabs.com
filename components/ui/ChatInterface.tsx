@@ -50,18 +50,21 @@ const ChatInterface = ({ isOpen, onClose }: ChatInterfaceProps) => {
     founders: [
       {
         name: "Douglas Bagambe",
-        role: "Co-Founder",
-        expertise: "Blockchain development and software engineering",
+        role: "CEO & Co-Founder",
+        expertise:
+          "Technical vision and leadership with deep expertise in blockchain development and overall software engineering.",
       },
       {
         name: "Elioda Muhangi",
-        role: "Co-Founder",
-        expertise: "AI and machine learning initiatives",
+        role: "CTO & Co-Founder",
+        expertise:
+          "Leads AI and machine learning initiatives, driving innovation and technology strategy across projects.",
       },
       {
         name: "Collins Shema",
-        role: "Co-Founder",
-        expertise: "User-centric design and experience",
+        role: "COO & Co-Founder",
+        expertise:
+          "Oversees operations and client engagement, ensuring seamless project delivery and user-centric design.",
       },
     ],
     contacts: {
@@ -71,14 +74,14 @@ const ChatInterface = ({ isOpen, onClose }: ChatInterfaceProps) => {
       hours: "Monday - Friday: 9AM - 5PM, Saturday: 10AM - 2PM",
     },
     services: [
-      "Full-stack software development",
+      "Full-stack software development (web and mobile)",
       "AI and machine learning solutions",
       "Blockchain development",
-      "Cloud services",
-      "Web Development",
-      "Mobile App Development",
-      "UX/UI Design",
-      "Technology Consulting",
+      "Cloud infrastructure and services",
+      "Web application development",
+      "Mobile app development (iOS & Android)",
+      "UX/UI design and user experience optimization",
+      "Technology consulting and strategic advisory",
     ],
   };
 
@@ -86,52 +89,62 @@ const ChatInterface = ({ isOpen, onClose }: ChatInterfaceProps) => {
     {
       question: "What services does NileBit Labs offer?",
       answer:
-        "We provide full-stack software development, AI and machine learning solutions, blockchain development, cloud services, cybersecurity, and fintech solutions.",
+        "We specialize in full-stack web and mobile development, AI and machine learning solutions, blockchain development, cloud services, UX/UI design, and technology consulting tailored to your business needs.",
     },
     {
       question: "How can I get a quote for my project?",
       answer:
-        "Submit your project details via our Contact form, and we'll provide a tailored quote within 48 hours.",
+        "Simply submit your project details via our Contact form or email us directly. We’ll review your requirements and provide a tailored proposal and quote within 48 hours.",
     },
     {
       question: "How long does a typical project take?",
       answer:
-        "Project timelines vary based on scope. Small projects may take 4-8 weeks, while complex solutions can take 3-6 months or more. We'll provide a detailed timeline during planning.",
+        "Project durations depend on complexity and scope. Small to medium projects typically take 4-8 weeks, while large-scale or enterprise solutions can take 3-6 months or longer. A detailed timeline will be provided during project planning.",
     },
     {
       question: "Can you work with existing codebases?",
       answer:
-        "Yes, we can integrate with or enhance existing codebases, provided we have access to the source code and documentation.",
+        "Yes. We can integrate with or enhance your existing applications, provided we have access to the source code and necessary documentation to ensure smooth collaboration and development.",
     },
     {
-      question: "What kind of support do you offer post-launch?",
+      question: "What kind of post-launch support do you offer?",
       answer:
-        "We offer maintenance packages including bug fixes, updates, and performance optimization.",
+        "We offer flexible maintenance packages, including bug fixes, feature updates, performance optimizations, and ongoing technical support to keep your applications running smoothly.",
     },
     {
-      question: "How do I report a technical issue?",
+      question: "How do I report a technical issue or request support?",
       answer:
-        "Contact our support team at support@nilebitlabs.com with a description of the issue and any relevant details (e.g., error messages).",
+        "Contact our support team at support@nilebitlabs.com with a detailed description of the issue, relevant screenshots or error messages, and your contact information for prompt assistance.",
     },
     {
       question: "What payment methods do you accept?",
       answer:
-        "We accept bank transfers, credit cards, and mobile money payments (e.g., MTN Mobile Money, Airtel Money). Payment details will be provided in your invoice.",
+        "We accept bank transfers, credit and debit cards, and mobile money payments (such as MTN Mobile Money and Airtel Money). Detailed payment instructions will be included with your invoice.",
     },
     {
       question: "Can I cancel a project after it starts?",
       answer:
-        "Cancellation terms depend on your contract. Typically, you may cancel with 30 days' notice, subject to payment for work completed. Contact us for specifics.",
+        "Cancellation terms are outlined in the contract. Typically, cancellations require a 30-day notice period and payment for work completed up to the cancellation date. Please contact us directly to discuss your situation.",
     },
     {
       question: "Who are the founders of NileBit Labs?",
       answer:
-        "NileBit Labs was founded by Douglas Bagambe (technical vision, blockchain development), Elioda Muhangi (AI and machine learning), and Collins Shema (user experience design).",
+        "NileBit Labs was founded by three individuals, Douglas Bagambe (CEO, blockchain development and technical strategy), Elioda Muhangi (CTO, AI and machine learning), and Collins Shema (COO, operations and UX design). Together, they drive the company’s vision and growth.",
     },
     {
       question: "How can I contact NileBit Labs?",
       answer:
-        "You can reach us at info@nilebitlabs.com, call us at +256 770 919 975, or visit our office in Makerere Kavule, Kampala, Uganda.",
+        "You can reach us via email at info@nilebitlabs.com, call any of our phone numbers (+256 770 919 975, +256 780 487 574, +256 776 159 775), or visit us at our office in Makerere Kavule, Kampala, Uganda during business hours.",
+    },
+    {
+      question: "Which industries do you serve?",
+      answer:
+        "We serve clients across finance, healthcare, retail, logistics, and emerging sectors, providing tailored technology solutions to drive digital transformation and growth.",
+    },
+    {
+      question: "Do you provide custom software development?",
+      answer:
+        "Absolutely. We specialize in custom full-stack software solutions tailored to your unique business needs, leveraging the latest technologies in blockchain, AI, and mobile/web development.",
     },
   ];
 

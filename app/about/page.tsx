@@ -14,10 +14,12 @@ export default function About() {
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Innovating the Future of Technology
           </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-            At NileBit Labs, we are committed to transforming ideas into
-            powerful digital experiences through innovative software development
-            and strategic technology solutions.
+          <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto leading-relaxed">
+            At NileBit Labs, we are a dynamic team passionate about shaping the
+            future through innovation. Specializing in blockchain development,
+            artificial intelligence, machine learning, and full-stack web and
+            mobile development, we create scalable, secure, and cutting-edge
+            digital solutions that empower businesses across diverse industries.
           </p>
           <Link
             href="/contact"
@@ -40,32 +42,37 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="p-6 bg-gray-50 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-orange-500 mb-4">
-                Mandate
+                Our Mandate
               </h3>
-              <p className="text-gray-600">
-                To deliver cutting-edge software solutions that empower
-                businesses to thrive in a digital-first world, ensuring
-                scalability, security, and innovation at every step.
+              <p className="text-gray-600 leading-relaxed">
+                We are mandated to deliver innovative, secure, and scalable
+                software solutions that empower businesses to thrive in an
+                increasingly digital and decentralized world. Through leveraging
+                emerging technologies, we ensure our clients achieve operational
+                excellence and sustained growth.
               </p>
             </div>
             <div className="p-6 bg-gray-50 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-orange-500 mb-4">
-                Vision
+                Our Vision
               </h3>
-              <p className="text-gray-600">
-                To be a global leader in technology innovation, creating
-                software that shapes the future and drives meaningful impact
-                across industries.
+              <p className="text-gray-600 leading-relaxed">
+                We envision NileBit Labs as a global leader in technology
+                innovation—pioneering solutions that reshape industries, drive
+                meaningful impact, and open new horizons for our clients and
+                communities worldwide.
               </p>
             </div>
             <div className="p-6 bg-gray-50 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-orange-500 mb-4">
-                Mission
+                Our Mission
               </h3>
-              <p className="text-gray-600">
-                To partner with our clients in building transformative digital
-                solutions through collaboration, expertise, and a relentless
-                pursuit of excellence.
+              <p className="text-gray-600 leading-relaxed">
+                To partner closely with clients, combining expertise and
+                collaboration to build transformative digital solutions. We
+                relentlessly pursue excellence, delivering technology that is
+                forward-thinking, reliable, and tailored to real-world business
+                challenges.
               </p>
             </div>
           </div>
@@ -85,7 +92,6 @@ export default function About() {
             {/* Douglas Bagambe */}
             <div className="text-center">
               <div className="w-48 h-48 mx-auto mb-4 rounded-full bg-gray-200 overflow-hidden">
-                {/* Placeholder for team member image */}
                 <Image
                   src="/img/team/douglas.jpg"
                   alt="Douglas Bagambe"
@@ -97,11 +103,12 @@ export default function About() {
               <h3 className="text-xl font-semibold text-orange-500">
                 Douglas Bagambe
               </h3>
-              <p className="text-gray-400">Co-Founder</p>
-              <p className="text-gray-300 mt-2">
-                Douglas drives the technical vision at NileBit Labs, with a
-                great experience in Blockchain development and overall software
-                engineering.
+              <p className="text-gray-400">CEO & Co-Founder</p>
+              <p className="text-gray-300 mt-2 leading-relaxed">
+                Douglas sets the strategic direction of NileBit Labs and leads
+                our business development efforts. With deep expertise in
+                blockchain and software engineering, he ensures our solutions
+                are both innovative and aligned with client goals.
               </p>
             </div>
             {/* Elioda Muhangi */}
@@ -118,18 +125,20 @@ export default function About() {
               <h3 className="text-xl font-semibold text-orange-500">
                 Elioda Muhangi
               </h3>
-              <p className="text-gray-400">Co-Founder</p>
-              <p className="text-gray-300 mt-2">
-                Elioda leads our AI and machine learning initiatives, bringing
-                innovative solutions to complex challenges.
+              <p className="text-gray-400">CTO & Co-Founder</p>
+              <p className="text-gray-300 mt-2 leading-relaxed">
+                Elioda drives our technology strategy and product innovation. He
+                leads research and development in AI, machine learning, and
+                full-stack development to create scalable, high-quality digital
+                solutions.
               </p>
             </div>
-            {/* Shema Collins */}
+            {/* Collins Shema */}
             <div className="text-center">
               <div className="w-48 h-48 mx-auto mb-4 rounded-full bg-gray-200 overflow-hidden">
                 <Image
                   src="/img/team/shema.jpg"
-                  alt="Shema Collins"
+                  alt="Collins Shema"
                   width={192}
                   height={192}
                   className="object-cover w-full h-full"
@@ -138,10 +147,11 @@ export default function About() {
               <h3 className="text-xl font-semibold text-orange-500">
                 Collins Shema
               </h3>
-              <p className="text-gray-400">Co-Founder</p>
-              <p className="text-gray-300 mt-2">
-                Shema ensures our solutions are user-centric, crafting seamless
-                and intuitive experiences for our clients.
+              <p className="text-gray-400">COO & Co-Founder</p>
+              <p className="text-gray-300 mt-2 leading-relaxed">
+                Collins manages our operations and project delivery processes,
+                ensuring seamless execution and exceptional client satisfaction
+                through efficient workflows and quality assurance.
               </p>
             </div>
           </div>
