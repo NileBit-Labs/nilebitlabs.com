@@ -1,10 +1,5 @@
 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Logo gradient -->
-    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ff6b00" />
-      <stop offset="100%" stop-color="#ff9d00" />
-    </linearGradient>
   </defs>
   
   <!-- Outer stamp border -->
@@ -22,29 +17,29 @@
   <!-- Date field curved at bottom -->
   <path id="bottomCurve" d="M 45 100 A 55 55 0 0 0 155 100" fill="none"/>
   <text font-family="Arial, sans-serif" font-size="12" font-weight="normal" fill="#2d4a63" text-anchor="middle">
-    <textPath href="#bottomCurve" startOffset="50%">DATE: 19/08/2025</textPath>
+    <textPath href="#bottomCurve" startOffset="50%">DATE: ___/___/_____</textPath>
   </text>
   
   <!-- Central logo scaled down -->
   <g transform="translate(100,100) scale(0.6)">
     <!-- Main Circle -->
-    <circle cx="0" cy="0" r="30" fill="url(#logoGradient)" />
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#1a365d" stroke-width="2" />
     
     <!-- Circuit Lines -->
-    <path d="M0,-18 L0,-24 L24,-24 L24,-12 L30,-12" stroke="white" stroke-width="2.5" fill="none" />
-    <path d="M0,18 L0,24 L18,24 L18,12 L30,12" stroke="white" stroke-width="2.5" fill="none" />
-    <path d="M-26,0 L-14,0" stroke="white" stroke-width="2.5" fill="none" />
+    <path d="M0,-18 L0,-24 L24,-24 L24,-12 L30,-12" stroke="#1a365d" stroke-width="2.5" fill="none" />
+    <path d="M0,18 L0,24 L18,24 L18,12 L30,12" stroke="#1a365d" stroke-width="2.5" fill="none" />
+    <path d="M-26,0 L-14,0" stroke="#1a365d" stroke-width="2.5" fill="none" />
     
     <!-- "N" Symbol -->
     <path d="M-14,-12 L-8,-12 L-8,12 L-14,12 L-14,-12 M-8,-12 L10,12 M4,-12 L10,-12 L10,12 L4,12 L4,-12" 
-          stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          stroke="#1a365d" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
     
     <!-- Digital Dots -->
-    <circle cx="-26" cy="0" r="2.5" fill="white" />
-    <circle cx="30" cy="-12" r="2.5" fill="white" />
-    <circle cx="30" cy="12" r="2.5" fill="white" />
-    <circle cx="24" cy="-24" r="2.5" fill="white" />
-    <circle cx="18" cy="24" r="2.5" fill="white" />
+    <circle cx="-26" cy="0" r="2.5" fill="#1a365d" />
+    <circle cx="30" cy="-12" r="2.5" fill="#1a365d" />
+    <circle cx="30" cy="12" r="2.5" fill="#1a365d" />
+    <circle cx="24" cy="-24" r="2.5" fill="#1a365d" />
+    <circle cx="18" cy="24" r="2.5" fill="#1a365d" />
   </g>
   
   <!-- Decorative corner accents -->
