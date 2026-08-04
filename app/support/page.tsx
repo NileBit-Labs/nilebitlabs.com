@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import Link from "next/link";
@@ -6,7 +5,6 @@ import {
   FaEnvelope,
   FaPhoneAlt,
   FaClock,
-  FaQuestionCircle,
 } from "react-icons/fa";
 
 export default function Support() {

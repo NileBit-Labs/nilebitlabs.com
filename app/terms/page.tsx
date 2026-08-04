@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import Link from "next/link";
@@ -35,8 +34,8 @@ export default function Terms() {
               </h3>
               <p className="text-gray-600">
                 By accessing or using any services provided by NileBit Labs
-                ("we," "us," or "our"), you agree to be bound by these Terms and
-                Conditions ("Terms"). If you do not agree, please refrain from
+                (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), you agree to be bound by these Terms and
+                Conditions (&quot;Terms&quot;). If you do not agree, please refrain from
                 using our services.
               </p>
             </div>

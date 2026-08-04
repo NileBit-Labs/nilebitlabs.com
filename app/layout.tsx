@@ -2,8 +2,12 @@ import "./globals.css";
 import MainLayout from "../components/layout/MainLayout";
 
 export const metadata = {
-  title: "NileBit Labs",
-  description: "Innovative Tech Solutions by NileBit Labs",
+  title: {
+    default: "NileBit Labs",
+    template: "%s | NileBit Labs",
+  },
+  description:
+    "NileBit Labs is a product engineering and emerging technology company based in Kampala, Uganda.",
   icons: {
     icon: "/nilebit-icon.svg",
   },

@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import Link from "next/link";
@@ -34,7 +33,7 @@ export default function Privacy() {
                 1. Introduction
               </h3>
               <p className="text-gray-600">
-                NileBit Labs ("we," "us," or "our") is committed to protecting
+                NileBit Labs (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is committed to protecting
                 your privacy. This Privacy Policy explains how we collect, use,
                 disclose, and safeguard your information when you use our
                 services or visit our website.

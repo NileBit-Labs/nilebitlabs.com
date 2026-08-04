@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
 import Image from "next/image";
 
@@ -25,7 +24,7 @@ export default function About() {
             href="/contact"
             className="inline-block border-2 border-white text-white px-6 py-3 rounded-full hover:bg-orange-500 hover:border-orange-500 transition"
           >
-            Let's Talk
+            Let&apos;s Talk
           </Link>
         </div>
       </section>

@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-
 "use client";
 import { useState } from "react";
 import Link from "next/link";
@@ -33,7 +31,7 @@ export default function NewsletterForm() {
           {submitted ? (
             <div className="bg-green-50 border border-green-200 text-green-700 p-4 rounded-lg mb-6 text-center">
               <p className="font-medium">Thank you for subscribing!</p>
-              <p>You'll be the first to know about our latest updates.</p>
+              <p>You&apos;ll be the first to know about our latest updates.</p>
             </div>
           ) : null}
 

@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { useState } from "react";
@@ -258,7 +257,7 @@ export default function Contact() {
                 {formSubmitted ? (
                   <div className="bg-green-50 border border-green-200 text-green-700 p-4 rounded-lg mb-6">
                     <p className="font-medium">Thank you for your message!</p>
-                    <p>We'll get back to you as soon as possible.</p>
+                    <p>We&apos;ll get back to you as soon as possible.</p>
                   </div>
                 ) : null}
 
@@ -526,7 +525,7 @@ export default function Contact() {
               <p className="text-gray-600">
                 We offer flexible pricing models including fixed price, time and
                 materials, and retainer options. After understanding your
-                project needs, we'll recommend the most appropriate model.
+                project needs, we&apos;ll recommend the most appropriate model.
               </p>
             </div>
 
@@ -554,7 +553,7 @@ export default function Contact() {
 
           <div className="text-center mt-10">
             <p className="text-gray-600 mb-4">
-              Don't see your question answered?
+              Don&apos;t see your question answered?
             </p>
             <Link
               href="/faq"

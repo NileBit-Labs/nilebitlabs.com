@@ -1,5 +1,6 @@
 import Navbar from "../ui/Navbar";
 import Footer from "../ui/Footer";
+import { PageShell } from "../ui/design-system";
 
 export default function MainLayout({
   children,
@@ -7,10 +8,18 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <PageShell className="flex flex-col">
+      <a
+        href="#main-content"
+        className="sr-only z-[60] rounded-button bg-primary px-4 py-2 text-primary-foreground focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+      >
+        Skip to content
+      </a>
       <Navbar />
-      <main className="flex-grow pt-16">{children}</main>
+      <main id="main-content" className="flex-grow pt-20">
+        {children}
+      </main>
       <Footer />
-    </div>
+    </PageShell>
   );
 }

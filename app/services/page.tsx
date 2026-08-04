@@ -1,11 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { useState } from "react";
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "@heroicons/react/24/outline";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { technologies, services, process } from "../../data/services";
 import Link from "next/link";
 
@@ -275,7 +270,6 @@ export default function Services() {
           {/* Subprocess Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {process[activeProcess].subprocesses.map((subprocess, index) => {
-              const IconComponent = getIcon(process[activeProcess].icon);
               return (
                 <div
                   key={subprocess.title}

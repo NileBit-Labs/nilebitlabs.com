@@ -1,10 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // components/ui/Hero.tsx
 "use client";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+
+const heroImages = [
+  "/img/photo/anh1.webp",
+  "/img/photo/anh2.webp",
+  "/img/photo/anh3.webp",
+];
 
 export default function Hero({
   title,
@@ -19,12 +23,6 @@ export default function Hero({
 }) {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isHovering, setIsHovering] = useState<number | null>(null);
-
-  const images = [
-    "/img/photo/anh1.webp",
-    "/img/photo/anh2.webp",
-    "/img/photo/anh3.webp",
-  ];
 
   const teamFeatures = [
     {
@@ -46,7 +44,7 @@ export default function Hero({
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % images.length);
+      setActiveSlide((prev) => (prev + 1) % heroImages.length);
     }, 5000);
 
     return () => clearInterval(interval);
@@ -56,17 +54,20 @@ export default function Hero({
     <section className="relative h-screen overflow-hidden">
       {/* Image Slideshow */}
       <div className="absolute inset-0 w-full h-full">
-        {images.map((img, index) => (
+        {heroImages.map((img, index) => (
           <div
             key={index}
             className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
               index === activeSlide ? "opacity-100" : "opacity-0"
             }`}
           >
-            <img
+            <Image
               src={img}
               className="w-full h-full object-cover"
               alt={`NileBit Labs - Slide ${index + 1}`}
+              fill
+              sizes="100vw"
+              priority={index === 0}
             />
           </div>
         ))}
@@ -85,9 +86,7 @@ export default function Hero({
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-              <span className="uppercase text-white">We Build Innovative</span>
-              <br />
-              <span className="text-orange-500 italic">Software Solutions</span>
+              <span className="uppercase text-white">{title}</span>
             </h1>
 
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
@@ -141,7 +140,7 @@ export default function Hero({
 
       {/* Navigation Dots */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {images.map((_, index) => (
+        {heroImages.map((_, index) => (
           <button
             key={index}
             onClick={() => setActiveSlide(index)}

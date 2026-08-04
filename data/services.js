@@ -1,9 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   SiReact,
   SiNodedotjs,
-  SiAmazonaws,
-  SiBlockchain,
   SiTypescript,
   SiDocker,
   SiKubernetes,
@@ -23,7 +20,6 @@ import {
   CubeIcon,
   ServerIcon,
   CircleStackIcon,
-  ArrowPathIcon,
   ChipIcon,
   DatabaseIcon,
   SwatchIcon,
@@ -32,7 +28,6 @@ import {
   RocketLaunchIcon,
   LifebuoyIcon,
 } from "@heroicons/react/24/outline";
-import { Cloud } from "lucide-react";
 
 export const technologies = [
   {
