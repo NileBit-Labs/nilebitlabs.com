@@ -1,332 +1,485 @@
-"use client";
-import { useState } from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { technologies, services, process } from "../../data/services";
+import type { Metadata } from "next";
 import Link from "next/link";
-
-// Import the icons you'll need based on the process array
 import {
-  MagnifyingGlassIcon,
-  ClipboardDocumentListIcon,
-  CodeBracketIcon,
-  RocketLaunchIcon,
-  LifebuoyIcon,
-  ArrowPathIcon,
-} from "@heroicons/react/24/outline";
-import React from "react";
+  ArrowRight,
+  Blocks,
+  Brain,
+  CheckCircle2,
+  Cloud,
+  Code2,
+  Cpu,
+  LayoutDashboard,
+  Lightbulb,
+  MessageSquare,
+  Network,
+  PenTool,
+  PanelTop,
+  Smartphone,
+  Workflow,
+} from "lucide-react";
+import {
+  Badge,
+  Button,
+  Card,
+  Container,
+  CTA,
+  Section,
+  SectionHeader,
+  Tag,
+} from "@/components/ui/design-system";
 
-// Icon mapping object
-const iconMap = {
-  MagnifyingGlassIcon,
-  ClipboardDocumentListIcon,
-  CodeBracketIcon,
-  RocketLaunchIcon,
-  LifebuoyIcon,
-  ArrowPathIcon,
+export const metadata: Metadata = {
+  title: "Services",
+  description:
+    "Software engineering, AI, blockchain, mobile, cloud, UI/UX, and technology consulting services from NileBit Labs.",
 };
 
-// Color mapping object
-const colorMap = {
-  blue: "bg-blue-500 text-blue-100",
-  purple: "bg-purple-500 text-purple-100",
-  orange: "bg-orange-500 text-orange-100",
-  green: "bg-green-500 text-green-100",
-  red: "bg-red-500 text-red-100",
-  teal: "bg-teal-500 text-teal-100",
-};
+const expertisePillars = [
+  {
+    title: "Software Engineering",
+    summary:
+      "Full-stack product engineering for web platforms, business systems, APIs, and custom software.",
+    solves:
+      "Helps teams replace manual workflows, launch new digital products, modernize platforms, and improve reliability.",
+    receives:
+      "Clients receive production-ready interfaces, backends, integrations, documentation, and launch support.",
+    icon: Code2,
+  },
+  {
+    title: "Artificial Intelligence",
+    summary:
+      "Applied AI and machine learning for automation, prediction, workflow assistance, and intelligent product features.",
+    solves:
+      "Helps businesses reduce repetitive work, extract meaning from data, and create smarter customer or internal tools.",
+    receives:
+      "Clients receive AI feature planning, model or API integration, workflow design, evaluation, and deployment guidance.",
+    icon: Brain,
+  },
+  {
+    title: "Blockchain & Web3",
+    summary:
+      "Decentralized product engineering for smart contracts, Web3 applications, wallets, and blockchain integrations.",
+    solves:
+      "Helps teams build transparent, programmable, asset-based, or community-owned digital products.",
+    receives:
+      "Clients receive product architecture, smart-contract implementation, frontend integration, and testnet-to-launch support.",
+    icon: Blocks,
+  },
+];
 
-const colorBorderMap = {
-  blue: "border-blue-500",
-  purple: "border-purple-500",
-  orange: "border-orange-500",
-  green: "border-green-500",
-  red: "border-red-500",
-  teal: "border-teal-500",
-};
+const supportingCapabilities = [
+  {
+    title: "Mobile Development",
+    description: "Cross-platform mobile products for customer and operational workflows.",
+    icon: Smartphone,
+  },
+  {
+    title: "Cloud Infrastructure",
+    description: "Deployment, hosting, automation, and infrastructure planning for reliable products.",
+    icon: Cloud,
+  },
+  {
+    title: "UI/UX Design",
+    description: "User flows, interfaces, and product experiences shaped around clarity and adoption.",
+    icon: PenTool,
+  },
+  {
+    title: "Technology Consulting",
+    description: "Technical direction, product scoping, architecture review, and implementation planning.",
+    icon: Lightbulb,
+  },
+];
 
-const colorTextMap = {
-  blue: "text-blue-600",
-  purple: "text-purple-600",
-  orange: "text-orange-600",
-  green: "text-green-600",
-  red: "text-red-600",
-  teal: "text-teal-600",
-};
+const productCategories = [
+  {
+    title: "Business Platforms",
+    description: "Custom systems that support operations, teams, reporting, and business workflows.",
+    icon: LayoutDashboard,
+  },
+  {
+    title: "Customer Portals",
+    description: "Secure customer-facing products for account access, service delivery, and self-service.",
+    icon: PanelTop,
+  },
+  {
+    title: "Internal Systems",
+    description: "Tools for staff, operations, approvals, inventory, sales, support, and administration.",
+    icon: Workflow,
+  },
+  {
+    title: "Mobile Applications",
+    description: "Mobile products for customers, field teams, founders, communities, and service delivery.",
+    icon: Smartphone,
+  },
+  {
+    title: "AI Assistants",
+    description: "Assistive workflows for support, research, data entry, operations, and product experiences.",
+    icon: MessageSquare,
+  },
+  {
+    title: "Automation",
+    description: "Process automation that connects tools, reduces repetitive work, and improves execution.",
+    icon: Cpu,
+  },
+  {
+    title: "Web3 Products",
+    description: "Wallet-connected apps, token-enabled systems, decentralized workflows, and blockchain UX.",
+    icon: Blocks,
+  },
+  {
+    title: "Custom Platforms",
+    description: "Purpose-built software where off-the-shelf tools cannot support the business model.",
+    icon: Network,
+  },
+];
 
-export default function Services() {
-  const [activeProcess, setActiveProcess] = useState(0);
+const processSteps = [
+  {
+    title: "Discover",
+    description: "Clarify the business goal, users, constraints, risks, and success criteria.",
+  },
+  {
+    title: "Plan",
+    description: "Define scope, milestones, responsibilities, and the delivery path.",
+  },
+  {
+    title: "Design",
+    description: "Shape user flows, system structure, interfaces, and key product decisions.",
+  },
+  {
+    title: "Build",
+    description: "Engineer the product in focused increments with regular review.",
+  },
+  {
+    title: "Test",
+    description: "Validate behavior, edge cases, performance, accessibility, and release readiness.",
+  },
+  {
+    title: "Launch",
+    description: "Deploy, monitor, hand over, and support the first real users.",
+  },
+  {
+    title: "Support",
+    description: "Improve the product as requirements, usage, and business needs evolve.",
+  },
+];
 
-  // Get appropriate icon component
-  const getIcon = (iconName) => {
-    const IconComponent = iconMap[iconName] || MagnifyingGlassIcon;
-    return IconComponent;
-  };
+const technologyGroups = [
+  {
+    title: "Product Interfaces",
+    items: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+  },
+  {
+    title: "Application Systems",
+    items: ["Node.js", "Python", "PostgreSQL", "APIs"],
+  },
+  {
+    title: "Intelligence",
+    items: ["TensorFlow", "Computer Vision", "NLP", "Automation"],
+  },
+  {
+    title: "Distributed Products",
+    items: ["Solana", "Rust", "Smart Contracts", "Wallet UX"],
+  },
+  {
+    title: "Infrastructure",
+    items: ["AWS", "Docker", "CI/CD", "Monitoring"],
+  },
+];
 
-  // Navigation functions for process section
-  const goToNextProcess = () => {
-    setActiveProcess((prev) => (prev === process.length - 1 ? 0 : prev + 1));
-  };
+const faqs = [
+  {
+    question: "What kind of projects is NileBit Labs best suited for?",
+    answer:
+      "We are best suited for teams that need custom software, product engineering, AI-enabled workflows, blockchain products, or technical direction before building.",
+  },
+  {
+    question: "Can you work from an early idea?",
+    answer:
+      "Yes. We can help clarify the product, define scope, choose an architecture, and turn the idea into a buildable plan before implementation starts.",
+  },
+  {
+    question: "Do you work with existing systems?",
+    answer:
+      "Yes. We can improve, integrate, rebuild, or extend existing applications when the codebase and business context are available.",
+  },
+  {
+    question: "Do you provide design as part of development?",
+    answer:
+      "Yes. UI/UX is part of how we shape products. For larger projects, design can become a dedicated workstream before engineering begins.",
+  },
+  {
+    question: "How do engagements usually start?",
+    answer:
+      "They start with a conversation about the business goal, expected users, current constraints, timeline, and the kind of technical help required.",
+  },
+];
 
-  const goToPrevProcess = () => {
-    setActiveProcess((prev) => (prev === 0 ? process.length - 1 : prev - 1));
-  };
-
+function ServicesSystemVisual() {
   return (
-    <div className="bg-gray-900 text-white">
-      {/* Hero Section */}
-      <section className="py-24 flex items-center justify-start bg-dark bg-opacity-80 bg-[url('/img/hero/services-bg.jpg')] bg-cover bg-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-orange-500 uppercase tracking-widest mb-4">
-            Our Services
-          </p>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Transformative Technology Solutions
-          </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-            We deliver cutting-edge digital solutions tailored to your business
-            needs, driving innovation and growth through strategic technology
-            implementation.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block border-2 border-white text-white px-6 py-3 rounded-full hover:bg-orange-500 hover:border-orange-500 transition"
-          >
-            Request a Consultation
-          </Link>
+    <div className="rounded-card border border-border bg-surface p-4 shadow-soft">
+      <div className="rounded-card border border-border bg-background p-5">
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <p className="text-eyebrow text-primary">Capability map</p>
+            <h2 className="mt-3 text-heading-4 text-heading">
+              From business problem to shipped system
+            </h2>
+          </div>
+          <CheckCircle2 className="h-5 w-5 text-primary" strokeWidth={1.75} />
         </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="py-16 bg-white text-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold mb-12 text-center">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service) => (
+        <div className="mt-8 grid gap-3">
+          {["Problem", "Architecture", "Product", "Launch"].map(
+            (item, index) => (
               <div
-                key={service.id}
-                className="p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border-b-4 border-orange-500 hover:-translate-y-1"
+                key={item}
+                className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-card border border-border bg-surface p-4"
               >
-                <div className="flex items-start mb-4">
-                  <div className="flex-shrink-0 p-3 bg-orange-100 rounded-lg mr-4">
-                    <service.icon className="h-8 w-8 text-orange-500" />
-                  </div>
-                  <h2 className="text-2xl font-semibold text-orange-500">
-                    {service.title}
-                  </h2>
-                </div>
-                <p className="text-gray-700 mb-4">{service.description}</p>
-                <div className="mt-4">
-                  <h3 className="text-lg font-medium text-gray-800 mb-2">
-                    What we offer:
-                  </h3>
-                  <ul className="space-y-2">
-                    {service.details.map((detail, index) => (
-                      <li key={index} className="flex items-start">
-                        <span className="text-orange-500 mr-2">•</span>
-                        <span className="text-gray-600">{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <span className="flex h-8 w-8 items-center justify-center rounded-pill bg-primary-light text-caption font-semibold text-primary">
+                  0{index + 1}
+                </span>
+                <div>
+                  <p className="text-body-sm font-semibold text-heading">
+                    {item}
+                  </p>
+                  <div className="mt-2 h-2 w-full rounded-pill bg-border" />
                 </div>
               </div>
-            ))}
-          </div>
+            )
+          )}
         </div>
-      </section>
+      </div>
+    </div>
+  );
+}
 
-      {/* Technologies Section */}
-      <section
-        id="technologies"
-        className="py-16 bg-dark text-white border-b-4 border-white shadow-lg"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold mb-12 text-center">
-            Technologies We Use
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {technologies.map((tech) => (
-              <div key={tech.name} className="text-center p-2">
-                <div className="w-12 h-12 mx-auto mb-2 bg-gray-800 rounded-lg flex items-center justify-center">
-                  {tech.icon &&
-                    React.createElement(tech.icon, {
-                      className: "h-6 w-6 text-orange-500",
-                    })}
-                </div>
-                <h3 className="text-base font-semibold text-orange-500 truncate">
-                  {tech.name}
-                </h3>
-                <p className="text-xs text-gray-400 mt-1 line-clamp-2">
-                  {tech.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section - Redesigned with mobile support */}
-      <section id="process" className="py-20 bg-white text-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold mb-16 text-center">Our Process</h2>
-
-          {/* Mobile-friendly Process Navigation */}
-          <div className="mb-12">
-            {/* Process Navigation Controls */}
-            <div className="flex items-center justify-between mb-8">
-              <button
-                onClick={goToPrevProcess}
-                className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all"
-                aria-label="Previous process step"
-              >
-                <ChevronLeftIcon className="h-6 w-6" />
-              </button>
-
-              <div className="text-center">
-                <h3
-                  className={`text-2xl font-bold mb-1 ${
-                    colorTextMap[process[activeProcess].color]
-                  }`}
-                >
-                  {process[activeProcess].title}
-                </h3>
-                <div className="flex justify-center space-x-2 mt-2">
-                  {process.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setActiveProcess(index)}
-                      className={`w-3 h-3 rounded-full transition-all ${
-                        index === activeProcess
-                          ? "bg-orange-500 scale-125"
-                          : "bg-gray-300"
-                      }`}
-                      aria-label={`Go to process step ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <button
-                onClick={goToNextProcess}
-                className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all"
-                aria-label="Next process step"
-              >
-                <ChevronRightIcon className="h-6 w-6" />
-              </button>
-            </div>
-
-            {/* Process Steps - Horizontal Pills (Desktop Only) */}
-            <div className="hidden md:block relative">
-              {/* Timeline Line */}
-              <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-200 transform -translate-y-1/2"></div>
-
-              {/* Process Steps */}
-              <div className="flex justify-between relative z-10">
-                {process.map((step, index) => {
-                  const IconComponent = getIcon(step.icon);
-                  return (
-                    <div
-                      key={step.title}
-                      className="flex flex-col items-center cursor-pointer transition-all"
-                      onClick={() => setActiveProcess(index)}
-                    >
-                      <div
-                        className={`w-16 h-16 rounded-full flex items-center justify-center mb-3 transition-all duration-300 ${
-                          index === activeProcess
-                            ? colorMap[step.color]
-                            : "bg-white border-2 " + colorBorderMap[step.color]
-                        }`}
-                      >
-                        <IconComponent
-                          className={`h-8 w-8 ${
-                            index === activeProcess
-                              ? "text-white"
-                              : colorTextMap[step.color]
-                          }`}
-                        />
-                      </div>
-                      <h3
-                        className={`text-sm font-bold ${
-                          index === activeProcess
-                            ? colorTextMap[step.color]
-                            : "text-gray-500"
-                        }`}
-                      >
-                        {step.title}
-                      </h3>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* Active Process Description */}
-          <div className="bg-gray-50 p-6 rounded-lg shadow-md mb-10">
-            <p className="text-lg text-gray-600">
-              {process[activeProcess].description}
+export default function ServicesPage() {
+  return (
+    <div className="bg-background text-body-color">
+      <Section spacing="lg">
+        <Container className="grid gap-14 lg:grid-cols-2 lg:items-center">
+          <div className="max-w-readable">
+            <Badge tone="primary">Services</Badge>
+            <h1 className="mt-8 text-display-lg text-heading">
+              Engineering capability for products that need to work.
+            </h1>
+            <p className="mt-7 text-body-lg text-muted">
+              NileBit Labs builds web platforms, mobile products, AI workflows,
+              and blockchain systems for teams that need dependable software
+              shaped around real business goals.
             </p>
+            <div className="mt-9">
+              <Button href="/contact" size="lg">
+                Discuss Your Project
+              </Button>
+            </div>
           </div>
+          <ServicesSystemVisual />
+        </Container>
+      </Section>
 
-          {/* Subprocess Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {process[activeProcess].subprocesses.map((subprocess, index) => {
+      <Section spacing="lg" className="bg-surface">
+        <Container>
+          <SectionHeader
+            eyebrow="Our expertise"
+            title="Three core pillars. One product engineering mindset."
+            description="Every engagement starts with the problem and moves toward the simplest dependable system that can support the business."
+          />
+          <div className="mt-14 grid gap-grid lg:grid-cols-3">
+            {expertisePillars.map((pillar) => {
+              const Icon = pillar.icon;
+
+              return (
+                <Card key={pillar.title} className="min-h-full">
+                  <Icon className="h-5 w-5 text-primary" strokeWidth={1.75} />
+                  <h2 className="mt-7 text-heading-3 text-heading">
+                    {pillar.title}
+                  </h2>
+                  <div className="mt-6 space-y-5">
+                    <div>
+                      <p className="text-eyebrow text-primary">What it is</p>
+                      <p className="mt-2 text-body text-muted">
+                        {pillar.summary}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-eyebrow text-primary">Problems solved</p>
+                      <p className="mt-2 text-body text-muted">
+                        {pillar.solves}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-eyebrow text-primary">What you receive</p>
+                      <p className="mt-2 text-body text-muted">
+                        {pillar.receives}
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+              );
+            })}
+          </div>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {supportingCapabilities.map((capability) => {
+              const Icon = capability.icon;
+
               return (
                 <div
-                  key={subprocess.title}
-                  className={`p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white border-l-4 ${
-                    colorBorderMap[process[activeProcess].color]
-                  } hover:-translate-y-1`}
+                  key={capability.title}
+                  className="rounded-card border border-border bg-background p-5"
                 >
-                  <div className="flex items-center mb-4">
-                    <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center mr-3 ${
-                        colorMap[process[activeProcess].color]
-                      }`}
-                    >
-                      <span className="text-white font-bold">{index + 1}</span>
-                    </div>
-                    <h4 className="text-xl font-semibold text-gray-800">
-                      {subprocess.title}
-                    </h4>
-                  </div>
-                  <p className="text-gray-600">{subprocess.description}</p>
+                  <Icon className="h-4 w-4 text-primary" strokeWidth={1.75} />
+                  <h3 className="mt-5 text-heading-4 text-heading">
+                    {capability.title}
+                  </h3>
+                  <p className="mt-3 text-body-sm text-muted">
+                    {capability.description}
+                  </p>
                 </div>
               );
             })}
           </div>
+        </Container>
+      </Section>
 
-          {/* Bottom Navigation Controls */}
-          <div className="flex justify-center items-center mt-12 space-x-4">
-            <button
-              onClick={goToPrevProcess}
-              className={`flex items-center px-4 py-2 rounded-full border ${
-                colorBorderMap[process[activeProcess].color]
-              } ${
-                colorTextMap[process[activeProcess].color]
-              } hover:bg-gray-50 transition-all`}
-            >
-              <ChevronLeftIcon className="h-5 w-5 mr-1" />
-              <span>Previous</span>
-            </button>
+      <Section spacing="lg">
+        <Container>
+          <SectionHeader
+            eyebrow="What we build"
+            title="Products and systems, not generic service packages."
+            description="The output depends on the business problem. These are the common forms our work takes."
+          />
+          <div className="mt-14 grid gap-grid md:grid-cols-2 lg:grid-cols-4">
+            {productCategories.map((category) => {
+              const Icon = category.icon;
 
-            <span className="text-gray-400">
-              {activeProcess + 1} of {process.length}
-            </span>
-
-            <button
-              onClick={goToNextProcess}
-              className={`flex items-center px-4 py-2 rounded-full border ${
-                colorBorderMap[process[activeProcess].color]
-              } ${
-                colorTextMap[process[activeProcess].color]
-              } hover:bg-gray-50 transition-all`}
-            >
-              <span>Next</span>
-              <ChevronRightIcon className="h-5 w-5 ml-1" />
-            </button>
+              return (
+                <Card key={category.title} className="min-h-full">
+                  <Icon className="h-4 w-4 text-primary" strokeWidth={1.75} />
+                  <h2 className="mt-5 text-heading-4 text-heading">
+                    {category.title}
+                  </h2>
+                  <p className="mt-3 text-body-sm text-muted">
+                    {category.description}
+                  </p>
+                </Card>
+              );
+            })}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
+
+      <Section spacing="lg" className="bg-surface">
+        <Container size="content">
+          <p className="text-eyebrow text-primary">Engineering principles</p>
+          <h2 className="mt-5 text-heading-2 text-heading">
+            We build for the product you need now and the system you will need
+            later.
+          </h2>
+          <div className="mt-8 space-y-6 text-body-lg text-muted">
+            <p>
+              Understanding comes before implementation. We need to know the
+              business model, users, constraints, risks, and operating context
+              before choosing a stack or writing code.
+            </p>
+            <p>
+              Architecture matters because software becomes expensive when it is
+              hard to change. We care about maintainability, performance,
+              security, and clear ownership from the start.
+            </p>
+            <p>
+              Long-term thinking does not mean slow delivery. It means building
+              the smallest reliable version of the right system, then improving
+              it with evidence.
+            </p>
+          </div>
+        </Container>
+      </Section>
+
+      <Section spacing="lg">
+        <Container>
+          <SectionHeader
+            eyebrow="Delivery process"
+            title="A modern delivery path with clear decisions at every stage."
+          />
+          <div className="mt-14 grid gap-5 lg:grid-cols-7">
+            {processSteps.map((step, index) => (
+              <div key={step.title} className="relative">
+                <div className="h-full rounded-card border border-border bg-surface p-5">
+                  <p className="text-caption text-muted">0{index + 1}</p>
+                  <h2 className="mt-4 text-heading-4 text-heading">
+                    {step.title}
+                  </h2>
+                  <p className="mt-3 text-body-sm text-muted">
+                    {step.description}
+                  </p>
+                </div>
+                {index < processSteps.length - 1 ? (
+                  <div className="hidden lg:absolute lg:left-full lg:top-8 lg:block lg:h-px lg:w-5 lg:bg-border" />
+                ) : null}
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section spacing="lg" className="bg-surface">
+        <Container className="grid gap-12 lg:grid-cols-2 lg:items-start">
+          <SectionHeader
+            eyebrow="Technology philosophy"
+            title="We choose technologies based on product requirements, not trends."
+            description="The stack should make the product easier to ship, maintain, scale, and improve. Tools are grouped by what they help us deliver."
+          />
+          <div className="space-y-4">
+            {technologyGroups.map((group) => (
+              <Card key={group.title}>
+                <h2 className="text-heading-4 text-heading">{group.title}</h2>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <Tag key={item}>{item}</Tag>
+                  ))}
+                </div>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section spacing="lg">
+        <Container>
+          <SectionHeader
+            eyebrow="FAQs"
+            title="Questions clients usually ask before we start."
+          />
+          <div className="mt-12 divide-y divide-border border-y border-border">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="grid gap-4 py-7 lg:grid-cols-2">
+                <h2 className="text-heading-4 text-heading">{faq.question}</h2>
+                <p className="text-body text-muted">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section spacing="md" className="bg-surface">
+        <Container>
+          <CTA
+            title="Need a product, platform, or technical plan?"
+            description="Start with a conversation about the business problem, expected users, timeline, and technical risk."
+            action={<Button href="/contact">Discuss Your Project</Button>}
+          />
+          <div className="mt-6">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-body-sm font-medium text-muted transition-colors hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              Back to homepage
+              <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
+            </Link>
+          </div>
+        </Container>
+      </Section>
     </div>
   );
 }
