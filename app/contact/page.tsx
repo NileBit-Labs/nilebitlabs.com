@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Badge, Button, Card, Checkbox, Container, Field, Input, Label, Section, Select, Textarea } from "@/components/ui/design-system";
 
@@ -10,6 +10,11 @@ export default function ContactPage() {
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const project = new URLSearchParams(window.location.search).get("project")?.trim().slice(0, 3000);
+    if (project) setForm((current) => ({ ...current, projectType: current.projectType || "Not sure yet", summary: current.summary || project }));
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();

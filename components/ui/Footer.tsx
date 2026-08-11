@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Button, Container, Divider } from "./design-system";
 import BrandLogo from "./BrandLogo";
+import AppearanceControl from "./AppearanceControl";
 
 interface FooterLink {
   label: string;
@@ -105,9 +106,12 @@ export default function Footer() {
 
         <Divider className="my-8" />
 
-        <div className="flex flex-col gap-3 text-caption text-muted md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-4 text-caption text-muted md:flex-row md:items-center md:justify-between">
           <p>© {currentYear} NileBit Labs. All rights reserved.</p>
-          <p>Where technology meets innovation.</p>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
+            <span className="font-medium text-muted">Appearance</span>
+            <AppearanceControl />
+          </div>
         </div>
       </Container>
     </footer>

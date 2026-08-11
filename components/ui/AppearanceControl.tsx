@@ -1,15 +1,14 @@
 "use client";
 
-import { Laptop, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export type Appearance = "system" | "dark" | "light";
 
 const options = [
-  { value: "system", label: "System appearance", icon: Laptop },
-  { value: "dark", label: "Dark appearance", icon: Moon },
-  { value: "light", label: "Light appearance", icon: Sun },
+  { value: "system", label: "System" },
+  { value: "light", label: "Light" },
+  { value: "dark", label: "Dark" },
 ] as const;
 
 function applyAppearance(appearance: Appearance) {
@@ -31,20 +30,20 @@ export default function AppearanceControl({ className }: { className?: string })
 
   return (
     <div className={cn("inline-flex rounded-button border border-border bg-surface p-1", className)} role="group" aria-label="Appearance">
-      {options.map(({ value, label, icon: Icon }) => (
+      {options.map(({ value, label }) => (
         <button
           key={value}
           type="button"
-          aria-label={label}
+          aria-label={`Use ${label.toLowerCase()} appearance`}
           aria-pressed={appearance === value}
           title={label}
           onClick={() => { setAppearance(value); applyAppearance(value); }}
           className={cn(
-            "inline-flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+            "inline-flex min-h-8 items-center justify-center rounded-full px-3 text-caption font-medium text-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
             appearance === value && "bg-surface-elevated text-heading shadow-sm",
           )}
         >
-          <Icon className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+          {label}
         </button>
       ))}
     </div>

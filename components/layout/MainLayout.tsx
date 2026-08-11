@@ -1,6 +1,7 @@
 import Navbar from "../ui/Navbar";
 import Footer from "../ui/Footer";
 import { PageShell } from "../ui/design-system";
+import NileBot from "../nilebot/NileBot";
 
 export default function MainLayout({
   children,
@@ -20,6 +21,7 @@ export default function MainLayout({
         {children}
       </main>
       <Footer />
+      <NileBot />
     </PageShell>
   );
 }

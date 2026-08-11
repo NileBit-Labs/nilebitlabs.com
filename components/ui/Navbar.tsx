@@ -5,7 +5,6 @@ import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button, Container } from "./design-system";
-import AppearanceControl from "./AppearanceControl";
 import BrandLogo from "./BrandLogo";
 import { cn } from "@/lib/utils";
 
@@ -61,8 +60,7 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="hidden items-center gap-3 lg:flex">
-            <AppearanceControl />
+          <div className="hidden lg:block">
             <Button href="/contact" size="sm">
               Start a Conversation
             </Button>
@@ -97,10 +95,6 @@ export default function Navbar() {
             <Button href="/contact" className="mt-2" onClick={closeMenu}>
               Start a Conversation
             </Button>
-            <div className="mt-2 flex items-center justify-between border-t border-border pt-4">
-              <span className="text-body-sm font-medium text-muted">Appearance</span>
-              <AppearanceControl />
-            </div>
           </div>
         </Container>
       </div>
