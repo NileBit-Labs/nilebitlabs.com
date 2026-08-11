@@ -1,569 +1,84 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaGithub,
-  FaYoutube,
-  FaInstagram,
-  FaMapMarkerAlt,
-  FaPhoneAlt,
-  FaEnvelope,
-  FaClock,
-} from "react-icons/fa";
+import { useState, type FormEvent } from "react";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { Badge, Button, Card, Checkbox, Container, Field, Input, Label, Section, Select, Textarea } from "@/components/ui/design-system";
 
-export default function Contact() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    company: "",
-    role: "",
-    service: "",
-    description: "",
-    newsletter: false,
-  });
+const initialForm = { name: "", email: "", company: "", projectType: "", summary: "", budget: "", timeline: "", website: "", consent: false };
 
-  const [formSubmitted, setFormSubmitted] = useState(false);
+export default function ContactPage() {
+  const [form, setForm] = useState(initialForm);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("sending");
+    setMessage("");
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        console.log("Form data submitted:", formData);
-        setFormSubmitted(true);
-
-        setTimeout(() => {
-          setFormSubmitted(false);
-          setFormData({
-            firstName: "",
-            lastName: "",
-            email: "",
-            phone: "",
-            company: "",
-            role: "",
-            service: "",
-            description: "",
-            newsletter: false,
-          });
-        }, 3000);
-      } else {
-        throw new Error("Failed to send inquiry");
-      }
+      const response = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
+      const result = (await response.json()) as { message?: string; error?: string };
+      if (!response.ok) throw new Error(result.error || "We could not send your inquiry.");
+      setStatus("success");
+      setMessage(result.message || "Thank you. We will respond as soon as we can.");
+      setForm(initialForm);
     } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("There was an error sending your inquiry. Please try again later.");
+      setStatus("error");
+      setMessage(error instanceof Error ? error.message : "We could not send your inquiry. Please email us directly.");
     }
-  };
+  }
 
   return (
-    <div className="bg-gray-900 text-white">
-      {/* Hero Section */}
-      <section className="py-24 bg-dark bg-opacity-80 bg-[url('/img/hero/contact-bg.jpg')] bg-cover bg-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-orange-500 uppercase tracking-widest mb-4">
-            Get in Touch
-          </p>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Contact NileBit Labs
-          </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-            Ready to transform your ideas into reality? Our team of experts is
-            here to help you navigate the digital landscape.
-          </p>
-        </div>
-      </section>
+    <div>
+      <Section spacing="lg">
+        <Container>
+          <div className="max-w-4xl">
+            <Badge tone="primary">Contact</Badge>
+            <h1 className="mt-8 text-display-lg text-heading">Let&apos;s discuss what you need to build.</h1>
+            <p className="mt-7 max-w-readable text-body-lg text-muted">Tell us about the business goal, the users, and what needs to become possible. We will respond with the most useful next step.</p>
+          </div>
+        </Container>
+      </Section>
 
-      <section className="py-16 bg-white text-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Contact Information Column */}
-            <div className="lg:col-span-1">
-              <div className="bg-gray-50 p-8 rounded-lg shadow-md">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                  Connect With Us
-                </h2>
+      <Section tone="surface" spacing="lg">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
+            <div>
+              <p className="text-eyebrow text-primary">Start a conversation</p>
+              <h2 className="mt-5 text-heading-2 text-heading">A clear first conversation, not a sales script.</h2>
+              <p className="mt-5 text-body text-muted">Share as much context as you have. If the scope is still uncertain, that is a useful place to begin.</p>
+              <address className="mt-9 space-y-5 not-italic text-body text-muted">
+                <a href="mailto:info@nilebitlabs.com" className="flex items-center gap-3 transition-colors hover:text-heading"><Mail className="h-5 w-5 text-primary" strokeWidth={1.75} /> info@nilebitlabs.com</a>
+                <a href="tel:+256770919975" className="flex items-center gap-3 transition-colors hover:text-heading"><Phone className="h-5 w-5 text-primary" strokeWidth={1.75} /> +256 770 919 975</a>
+                <p className="flex items-start gap-3"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" strokeWidth={1.75} /> Makerere Kavule, Kampala, Uganda</p>
+              </address>
+              <div className="mt-9 border-t border-border pt-7 text-body-sm text-muted"><p>Monday–Friday, 9:00 AM–5:00 PM</p><p className="mt-2">Saturday, 10:00 AM–2:00 PM</p><p className="mt-2">East Africa Time</p></div>
+            </div>
 
-                {/* Contact Details */}
-                <div className="space-y-6 mb-8">
-                  <div className="flex items-start">
-                    <div className="text-orange-500 mr-4 mt-1">
-                      <FaMapMarkerAlt size={20} />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900">Location</h3>
-                      <p className="text-gray-600">
-                        Makerere Kavule
-                        <br />
-                        Kampala, Uganda
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <div className="text-orange-500 mr-4 mt-1">
-                      <FaEnvelope size={20} />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900">Email Us</h3>
-                      <a
-                        href="mailto:douglasbagambe4@gmail.com"
-                        className="text-gray-600 hover:text-orange-500 transition"
-                      >
-                        info@nilebitlabs.com
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <div className="text-orange-500 mr-4 mt-1">
-                      <FaPhoneAlt size={20} />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900">Call Us</h3>
-                      <Link
-                        href="tel:+256770919175"
-                        className="text-gray-600 hover:text-orange-500 transition"
-                      >
-                        +256 770 919 175
-                      </Link>
-                      <br />
-                      <Link
-                        href="tel:+256780487574"
-                        className="text-gray-600 hover:text-orange-500 transition"
-                      >
-                        +256 780 487 574
-                      </Link>
-                      <br />
-                      <Link
-                        href="tel:+256776159775"
-                        className="text-gray-600 hover:text-orange-500 transition"
-                      >
-                        +256 776 159 775
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <div className="text-orange-500 mr-4 mt-1">
-                      <FaClock size={20} />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900">
-                        Working Hours
-                      </h3>
-                      <p className="text-gray-600">
-                        Monday - Friday: 9AM - 5PM
-                        <br />
-                        Saturday: 10AM - 2PM
-                      </p>
-                    </div>
-                  </div>
+            <Card elevated className="p-6 md:p-8">
+              <h2 className="text-heading-3 text-heading">Discuss Your Project</h2>
+              <p className="mt-3 text-body text-muted">Required fields are marked with an asterisk.</p>
+              <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+                <div className="grid gap-6 md:grid-cols-2">
+                  <Field><Label htmlFor="name">Name *</Label><Input id="name" name="name" autoComplete="name" required maxLength={100} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} /></Field>
+                  <Field><Label htmlFor="email">Email *</Label><Input id="email" name="email" type="email" autoComplete="email" required maxLength={254} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} /></Field>
                 </div>
-
-                {/* Social Media Links */}
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-4">
-                    Follow Us
-                  </h3>
-                  <div className="flex space-x-4">
-                    <a
-                      href="https://twitter.com/nilebitlabs"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-gray-200 hover:bg-orange-500 text-gray-700 hover:text-white p-3 rounded-full transition"
-                    >
-                      <FaTwitter size={18} />
-                    </a>
-                    <a
-                      href="https://facebook.com/nilebitlabs"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-gray-200 hover:bg-orange-500 text-gray-700 hover:text-white p-3 rounded-full transition"
-                    >
-                      <FaFacebookF size={18} />
-                    </a>
-                    <a
-                      href="https://linkedin.com/company/nilebitlabs"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-gray-200 hover:bg-orange-500 text-gray-700 hover:text-white p-3 rounded-full transition"
-                    >
-                      <FaLinkedinIn size={18} />
-                    </a>
-                    <a
-                      href="https://github.com/NileBit-Labs"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-gray-200 hover:bg-orange-500 text-gray-700 hover:text-white p-3 rounded-full transition"
-                    >
-                      <FaGithub size={18} />
-                    </a>
-                    <a
-                      href="https://instagram.com/nilebitlabs"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-gray-200 hover:bg-orange-500 text-gray-700 hover:text-white p-3 rounded-full transition"
-                    >
-                      <FaInstagram size={18} />
-                    </a>
-                    <a
-                      href="https://youtube.com/@nilebitlabs"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-gray-200 hover:bg-orange-500 text-gray-700 hover:text-white p-3 rounded-full transition"
-                    >
-                      <FaYoutube size={18} />{" "}
-                    </a>
-                  </div>
+                <Field><Label htmlFor="company">Company / Organization</Label><Input id="company" name="company" autoComplete="organization" maxLength={120} value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} /></Field>
+                <Field><Label htmlFor="projectType">Project type *</Label><Select id="projectType" name="projectType" required value={form.projectType} onChange={(e) => setForm({ ...form, projectType: e.target.value })}><option value="">Select the closest fit</option><option>Web or software engineering</option><option>Mobile application</option><option>Artificial intelligence or machine learning</option><option>Blockchain or Web3</option><option>Cloud infrastructure</option><option>UI/UX design</option><option>Technology consulting</option><option>Not sure yet</option></Select></Field>
+                <Field><Label htmlFor="summary">Project summary *</Label><Textarea id="summary" name="summary" required maxLength={3000} rows={7} placeholder="What are you trying to achieve, and what is getting in the way?" value={form.summary} onChange={(e) => setForm({ ...form, summary: e.target.value })} /></Field>
+                <div className="grid gap-6 md:grid-cols-2">
+                  <Field><Label htmlFor="budget">Budget range (optional)</Label><Select id="budget" name="budget" value={form.budget} onChange={(e) => setForm({ ...form, budget: e.target.value })}><option value="">Prefer not to say yet</option><option>Under $5,000</option><option>$5,000–$15,000</option><option>$15,000–$50,000</option><option>$50,000+</option><option>Need help estimating</option></Select></Field>
+                  <Field><Label htmlFor="timeline">Timeline (optional)</Label><Select id="timeline" name="timeline" value={form.timeline} onChange={(e) => setForm({ ...form, timeline: e.target.value })}><option value="">No fixed timeline</option><option>As soon as practical</option><option>Within 1–3 months</option><option>Within 3–6 months</option><option>More than 6 months</option></Select></Field>
                 </div>
-              </div>
-
-              {/* Map */}
-              <div className="mt-8 bg-gray-50 p-2 rounded-lg shadow-md overflow-hidden">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127672.75772082334!2d32.5472752!3d0.3475964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbc0f9b338969%3A0x8af89cfafc0b345d!2sKampala%2C%20Uganda!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus"
-                  width="100%"
-                  height="250"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="rounded-lg"
-                ></iframe>
-              </div>
-            </div>
-
-            {/* Contact Form Column */}
-            <div id="form" className="lg:col-span-2">
-              <div className="bg-gray-50 p-8 rounded-lg shadow-md">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                  Send Us a Message
-                </h2>
-
-                {formSubmitted ? (
-                  <div className="bg-green-50 border border-green-200 text-green-700 p-4 rounded-lg mb-6">
-                    <p className="font-medium">Thank you for your message!</p>
-                    <p>We&apos;ll get back to you as soon as possible.</p>
-                  </div>
-                ) : null}
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Name Fields - Two columns */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-gray-700 mb-2 font-medium">
-                        First Name <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-                        value={formData.firstName}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            firstName: e.target.value,
-                          })
-                        }
-                        placeholder="Enter your first name"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-gray-700 mb-2 font-medium">
-                        Last Name <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-                        value={formData.lastName}
-                        onChange={(e) =>
-                          setFormData({ ...formData, lastName: e.target.value })
-                        }
-                        placeholder="Enter your last name"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  {/* Contact Details - Two columns */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-gray-700 mb-2 font-medium">
-                        Email <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-                        value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                        placeholder="Enter your email"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-gray-700 mb-2 font-medium">
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-                        value={formData.phone}
-                        onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
-                        }
-                        placeholder="Enter your phone number"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Company Details - Two columns */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-gray-700 mb-2 font-medium">
-                        Company
-                      </label>
-                      <input
-                        type="text"
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-                        value={formData.company}
-                        onChange={(e) =>
-                          setFormData({ ...formData, company: e.target.value })
-                        }
-                        placeholder="Your company name"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-gray-700 mb-2 font-medium">
-                        Your Role
-                      </label>
-                      <input
-                        type="text"
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-                        value={formData.role}
-                        onChange={(e) =>
-                          setFormData({ ...formData, role: e.target.value })
-                        }
-                        placeholder="Your role"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Service Selection */}
-                  <div>
-                    <label className="block text-gray-700 mb-2 font-medium">
-                      What Can We Help You With?{" "}
-                      <span className="text-red-500">*</span>
-                    </label>
-                    <select
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-                      value={formData.service}
-                      onChange={(e) =>
-                        setFormData({ ...formData, service: e.target.value })
-                      }
-                      required
-                    >
-                      <option value="">Select a service</option>
-                      <option value="custom-software">
-                        Custom Software Development
-                      </option>
-                      <option value="ai">AI & Machine Learning</option>
-                      <option value="blockchain">Blockchain Development</option>
-                      <option value="cloud">Cloud Solutions</option>
-                      <option value="web">Web Development</option>
-                      <option value="mobile">Mobile App Development</option>
-                      <option value="ux">UX/UI Design</option>
-                      <option value="consulting">Technology Consulting</option>
-                      <option value="other">Other Services</option>
-                    </select>
-                  </div>
-
-                  {/* Project Description */}
-                  <div>
-                    <label className="block text-gray-700 mb-2 font-medium">
-                      Tell Us About Your Project{" "}
-                      <span className="text-red-500">*</span>
-                    </label>
-                    <textarea
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-                      value={formData.description}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          description: e.target.value,
-                        })
-                      }
-                      placeholder="Please describe your project or inquiry"
-                      rows={5}
-                      required
-                    />
-                  </div>
-
-                  {/* Newsletter Subscription */}
-                  <div className="flex items-start">
-                    <input
-                      type="checkbox"
-                      id="newsletter"
-                      className="mt-1 h-4 w-4 text-orange-500 focus:ring-orange-500 border-gray-300 rounded"
-                      checked={formData.newsletter}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          newsletter: e.target.checked,
-                        })
-                      }
-                    />
-                    <label
-                      htmlFor="newsletter"
-                      className="ml-2 block text-gray-700"
-                    >
-                      Subscribe to our newsletter for updates on tech trends,
-                      company news, and industry insights.
-                    </label>
-                  </div>
-
-                  {/* Privacy Policy */}
-                  <div className="text-sm text-gray-600">
-                    <p>
-                      By submitting this form, you agree to our{" "}
-                      <Link
-                        href="/privacy-policy"
-                        className="text-orange-500 hover:underline"
-                      >
-                        Privacy Policy
-                      </Link>{" "}
-                      and consent to NileBit Labs contacting you regarding your
-                      inquiry.
-                    </p>
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    className="w-full bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600 transition font-medium"
-                  >
-                    Submit Inquiry
-                  </button>
-                </form>
-              </div>
-            </div>
+                <div className="hidden" aria-hidden="true"><Label htmlFor="website">Website</Label><Input id="website" name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => setForm({ ...form, website: e.target.value })} /></div>
+                <div className="flex items-start gap-3"><Checkbox id="consent" name="consent" checked={form.consent} onChange={(e) => setForm({ ...form, consent: e.target.checked })} /><label htmlFor="consent" className="text-body-sm text-muted">I agree that NileBit Labs may use these details to respond to my inquiry, as described in the <a href="/privacy" className="font-medium text-heading underline underline-offset-4 hover:text-primary">Privacy Policy</a>. *</label></div>
+                <Button type="submit" disabled={status === "sending" || !form.consent}>{status === "sending" ? "Sending…" : "Discuss Your Project"}</Button>
+                <div aria-live="polite">{message ? <p className={status === "error" ? "text-body-sm text-error" : "text-body-sm text-success"}>{message}</p> : null}</div>
+              </form>
+            </Card>
           </div>
-        </div>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="py-16 bg-gray-100 text-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6">
-              Stay Updated with Our Newsletter
-            </h2>
-            <p className="text-gray-600 mb-8">
-              Get the latest tech trends, industry insights, and company updates
-              delivered straight to your inbox.
-            </p>
-
-            <form className="flex flex-col sm:flex-row gap-4 justify-center">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="px-6 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-orange-500 focus:border-orange-500 flex-grow max-w-md"
-                required
-              />
-              <button
-                type="submit"
-                className="bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600 transition whitespace-nowrap"
-              >
-                Subscribe Now
-              </button>
-            </form>
-            <p className="text-sm text-gray-500 mt-4">
-              We respect your privacy and will never share your information.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section id="faq" className="py-16 bg-white text-gray-900">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Frequently Asked Questions
-          </h2>
-
-          <div className="space-y-6">
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                How soon can you start on my project?
-              </h3>
-              <p className="text-gray-600">
-                We typically begin new projects within 1-2 weeks of finalizing
-                project scope and agreements. For urgent needs, we may be able
-                to accommodate faster timelines.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                What is your pricing structure?
-              </h3>
-              <p className="text-gray-600">
-                We offer flexible pricing models including fixed price, time and
-                materials, and retainer options. After understanding your
-                project needs, we&apos;ll recommend the most appropriate model.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Do you provide ongoing support after project completion?
-              </h3>
-              <p className="text-gray-600">
-                Yes, we offer various maintenance and support packages to ensure
-                your solution continues to perform optimally after launch.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Can you work with our in-house team?
-              </h3>
-              <p className="text-gray-600">
-                Absolutely! We frequently collaborate with in-house development
-                teams, providing specialized expertise where needed while
-                integrating seamlessly with your existing workflows.
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center mt-10">
-            <p className="text-gray-600 mb-4">
-              Don&apos;t see your question answered?
-            </p>
-            <Link
-              href="/faq"
-              className="inline-block border-2 border-orange-500 text-orange-500 px-6 py-3 rounded-full hover:bg-orange-500 hover:text-white transition"
-            >
-              More FAQs
-            </Link>
-          </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
     </div>
   );
 }

@@ -1,163 +1,24 @@
-"use client";
+import type { Metadata } from "next";
+import { Button, Card, Container, CTA, Section, SectionHeader } from "@/components/ui/design-system";
 
-import Link from "next/link";
+export const metadata: Metadata = { title: "Frequently Asked Questions", description: "Answers about working with NileBit Labs on software, mobile, AI, and blockchain products.", alternates: { canonical: "/faq" } };
 
-export default function FAQ() {
-  return (
-    <div className="bg-gray-900 text-white">
-      {/* Hero Section */}
-      <section className="py-24 bg-dark bg-opacity-80 bg-[url('/img/hero/tech-bg.jpg')] bg-cover bg-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-orange-500 uppercase tracking-widest mb-4">
-            Your Questions Answered
-          </p>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-            Find answers to common questions about our services, processes, and
-            support.
-          </p>
-        </div>
-      </section>
+const questions = [
+  ["What does NileBit Labs build?", "We design and engineer web platforms, custom software, mobile applications, applied AI capabilities, and blockchain products. We also support projects with cloud infrastructure, UI/UX design, and technical consulting."],
+  ["How do projects begin?", "We begin with a conversation about the business goal, users, constraints, current systems, and known risks. From there, we recommend a practical discovery or implementation path."],
+  ["Do you work with startups?", "Yes. We work with founders and growing teams when there is a clear problem to solve and a realistic commitment to shaping, building, and improving the product."],
+  ["Can you work with existing systems?", "Yes. We can assess an existing codebase, integration, or workflow and recommend whether to extend, modernize, or replace specific parts. Access and technical quality affect what is practical."],
+  ["Do you build MVPs?", "Yes. We treat an MVP as the smallest complete product that can test an important assumption. We reduce scope while preserving the foundations needed for safe operation and useful learning."],
+  ["How are timelines estimated?", "Timelines depend on scope, technical uncertainty, integrations, content readiness, and feedback speed. We estimate after understanding the work and communicate assumptions rather than promising a generic delivery window."],
+  ["What happens after launch?", "Post-launch work can include monitoring, issue resolution, product improvements, new capabilities, and technical handover. The appropriate arrangement is agreed for each engagement."],
+  ["Do you work with international clients?", "Yes. NileBit Labs is based in Kampala, Uganda, and can collaborate remotely with clients in other markets using clear milestones, documentation, and regular communication."],
+  ["How can I contact NileBit Labs?", "Use the project inquiry form or email info@nilebitlabs.com. You can also call the primary company number during East Africa business hours."],
+] as const;
 
-      {/* FAQ Content */}
-      <section className="py-16 bg-white text-gray-900">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-12 text-center">
-            All Your FAQs
-          </h2>
-
-          <div className="space-y-6">
-            {/* General Questions */}
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-orange-500 mb-2">
-                What services does NileBit Labs offer?
-              </h3>
-              <p className="text-gray-600">
-                We provide full-stack software development, AI and machine
-                learning solutions, blockchain development, cloud services,
-                cybersecurity, and fintech solutions. See our{" "}
-                <Link
-                  href="/services"
-                  className="text-orange-500 hover:underline"
-                >
-                  Services page
-                </Link>{" "}
-                for details.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-orange-500 mb-2">
-                How can I get a quote for my project?
-              </h3>
-              <p className="text-gray-600">
-                Submit your project details via our{" "}
-                <Link
-                  href="/contact"
-                  className="text-orange-500 hover:underline"
-                >
-                  Contact form
-                </Link>
-                , and we’ll provide a tailored quote within 48 hours.
-              </p>
-            </div>
-
-            {/* Project-Related Questions */}
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-orange-500 mb-2">
-                How long does a typical project take?
-              </h3>
-              <p className="text-gray-600">
-                Project timelines vary based on scope. Small projects may take
-                4-8 weeks, while complex solutions can take 3-6 months or more.
-                We’ll provide a detailed timeline during planning.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-orange-500 mb-2">
-                Can you work with existing codebases?
-              </h3>
-              <p className="text-gray-600">
-                Yes, we can integrate with or enhance existing codebases,
-                provided we have access to the source code and documentation.
-              </p>
-            </div>
-
-            {/* Support Questions */}
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-orange-500 mb-2">
-                What kind of support do you offer post-launch?
-              </h3>
-              <p className="text-gray-600">
-                We offer maintenance packages including bug fixes, updates, and
-                performance optimization. Details are available on our{" "}
-                <Link
-                  href="/support"
-                  className="text-orange-500 hover:underline"
-                >
-                  Support page
-                </Link>
-                .
-              </p>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-orange-500 mb-2">
-                How do I report a technical issue?
-              </h3>
-              <p className="text-gray-600">
-                Contact our support team at{" "}
-                <Link
-                  href="mailto:support@nilebitlabs.com"
-                  className="text-orange-500 hover:underline"
-                >
-                  support@nilebitlabs.com
-                </Link>{" "}
-                with a description of the issue and any relevant details (e.g.,
-                error messages).
-              </p>
-            </div>
-
-            {/* Billing Questions */}
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-orange-500 mb-2">
-                What payment methods do you accept?
-              </h3>
-              <p className="text-gray-600">
-                We accept bank transfers, credit cards, and mobile money
-                payments (e.g., MTN Mobile Money, Airtel Money). Payment details
-                will be provided in your invoice.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-orange-500 mb-2">
-                Can I cancel a project after it starts?
-              </h3>
-              <p className="text-gray-600">
-                Cancellation terms depend on your contract. Typically, you may
-                cancel with 30 days’ notice, subject to payment for work
-                completed. Contact us for specifics.
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center mt-10">
-            <p className="text-gray-600 mb-4">
-              Still have questions? Reach out to us!
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block border-2 border-orange-500 text-orange-500 px-6 py-3 rounded-full hover:bg-orange-500 hover:text-white transition"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+export default function FaqPage() {
+  return <div>
+    <Section spacing="lg"><Container><div className="max-w-4xl"><p className="text-eyebrow text-primary">FAQ</p><h1 className="mt-8 text-display-lg text-heading">Useful answers before we begin.</h1><p className="mt-7 max-w-readable text-body-lg text-muted">A straightforward overview of how NileBit Labs approaches product and engineering engagements.</p></div></Container></Section>
+    <Section tone="surface" spacing="lg"><Container><SectionHeader eyebrow="Working together" title="Common questions, answered clearly." /><div className="mt-10 grid gap-grid lg:grid-cols-2">{questions.map(([question, answer]) => <Card key={question}><h2 className="text-heading-4 text-heading">{question}</h2><p className="mt-4 text-body text-muted">{answer}</p></Card>)}</div></Container></Section>
+    <Section spacing="md"><Container><CTA title="Have a question specific to your project?" description="Tell us what you are considering and where you need clarity." action={<Button href="/contact">Discuss Your Project</Button>} /></Container></Section>
+  </div>;
 }

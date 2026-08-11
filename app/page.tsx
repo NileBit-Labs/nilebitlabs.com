@@ -30,6 +30,7 @@ export const metadata: Metadata = {
   title: "Product Engineering and Emerging Technology",
   description:
     "NileBit Labs builds dependable web, mobile, AI, and blockchain systems for ambitious teams from Kampala, Uganda.",
+  alternates: { canonical: "/" },
 };
 
 const proofItems = [
@@ -158,17 +159,17 @@ const insights = [
   {
     title: "AI and Machine Learning Trends to Watch in 2025",
     category: "AI & ML",
-    href: "/blog/ai-ml-trends",
+    href: "/insights/applied-ai-product-decisions",
   },
   {
     title: "Modern Software Development: Best Practices for 2025",
     category: "Software Development",
-    href: "/blog/software-dev",
+    href: "/insights/modern-software-development-principles",
   },
   {
     title: "The Future of Web3: Decentralized Apps and Beyond",
     category: "Web3",
-    href: "/blog/future-of-web3",
+    href: "/insights/blockchain-product-fit",
   },
 ];
 
@@ -314,7 +315,7 @@ export default function Home() {
               <Button href="/contact" size="lg">
                 Discuss Your Project
               </Button>
-              <Button href="/solutions" variant="secondary" size="lg">
+              <Button href="/work" variant="secondary" size="lg">
                 View Selected Work
               </Button>
             </div>

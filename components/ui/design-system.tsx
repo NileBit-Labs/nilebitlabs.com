@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ComponentType, InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from "react";
+import type { ComponentType, InputHTMLAttributes, ReactNode, SelectHTMLAttributes, TextareaHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 type Tone = "default" | "muted" | "primary" | "success" | "warning" | "error";
@@ -332,20 +332,13 @@ export function Textarea(props: TextareaHTMLAttributes<HTMLTextAreaElement>) {
   );
 }
 
-interface SelectProps {
-  children: ReactNode;
-  id: string;
-  name?: string;
-  required?: boolean;
-  className?: string;
-}
+interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> { id: string }
 
-export function Select({ children, id, name, required, className }: SelectProps) {
+export function Select({ children, id, className, ...props }: SelectProps) {
   return (
     <select
       id={id}
-      name={name}
-      required={required}
+      {...props}
       className={cn("min-h-touch w-full rounded-input border border-border bg-surface px-4 py-2.5 text-body text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary", className)}
     >
       {children}

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { Button, Container, Divider } from "./design-system";
 
 interface FooterLink {
@@ -10,9 +10,9 @@ interface FooterLink {
 
 const companyLinks: FooterLink[] = [
   { label: "Services", href: "/services" },
-  { label: "Work", href: "/solutions" },
+  { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
-  { label: "Insights", href: "/blog" },
+  { label: "Insights", href: "/insights" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -20,6 +20,7 @@ const legalLinks: FooterLink[] = [
   { label: "FAQs", href: "/faq" },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
+  { label: "Cookies", href: "/cookies" },
 ];
 
 export default function Footer() {
@@ -100,26 +101,10 @@ export default function Footer() {
               </p>
               <p className="flex gap-3">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1.75} />
-                <a className="hover:text-heading" href="tel:+256770919175">
-                  +256 770 919 175
+                <a className="hover:text-heading" href="tel:+256770919975">
+                  +256 770 919 975
                 </a>
               </p>
-            </div>
-            <div className="mt-6 flex gap-3">
-              <a
-                href="https://github.com/NileBit-Labs"
-                aria-label="NileBit Labs on GitHub"
-                className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-button border border-border text-muted transition-colors hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-              >
-                <Github className="h-4 w-4" strokeWidth={1.75} />
-              </a>
-              <a
-                href="https://linkedin.com/company/nilebitlabs"
-                aria-label="NileBit Labs on LinkedIn"
-                className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-button border border-border text-muted transition-colors hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-              >
-                <Linkedin className="h-4 w-4" strokeWidth={1.75} />
-              </a>
             </div>
           </address>
         </div>
