@@ -48,9 +48,9 @@ export default function ContactPage() {
               <h2 className="mt-5 text-heading-2 text-heading">A clear first conversation, not a sales script.</h2>
               <p className="mt-5 text-body text-muted">Share as much context as you have. If the scope is still uncertain, that is a useful place to begin.</p>
               <address className="mt-9 space-y-5 not-italic text-body text-muted">
-                <a href="mailto:info@nilebitlabs.com" className="flex items-center gap-3 transition-colors hover:text-heading"><Mail className="h-5 w-5 text-primary" strokeWidth={1.75} /> info@nilebitlabs.com</a>
-                <a href="tel:+256770919975" className="flex items-center gap-3 transition-colors hover:text-heading"><Phone className="h-5 w-5 text-primary" strokeWidth={1.75} /> +256 770 919 975</a>
-                <p className="flex items-start gap-3"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" strokeWidth={1.75} /> Makerere Kavule, Kampala, Uganda</p>
+                <a href="mailto:info@nilebitlabs.com" className="flex min-h-touch items-center gap-3 transition-colors hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Mail className="h-5 w-5 text-primary" strokeWidth={1.75} aria-hidden="true" /> info@nilebitlabs.com</a>
+                <a href="tel:+256770919975" className="flex min-h-touch items-center gap-3 transition-colors hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Phone className="h-5 w-5 text-primary" strokeWidth={1.75} aria-hidden="true" /> +256 770 919 975</a>
+                <p className="flex items-start gap-3"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" strokeWidth={1.75} aria-hidden="true" /> Makerere Kavule, Kampala, Uganda</p>
               </address>
               <div className="mt-9 border-t border-border pt-7 text-body-sm text-muted"><p>Monday–Friday, 9:00 AM–5:00 PM</p><p className="mt-2">Saturday, 10:00 AM–2:00 PM</p><p className="mt-2">East Africa Time</p></div>
             </div>
@@ -71,9 +71,9 @@ export default function ContactPage() {
                   <Field><Label htmlFor="timeline">Timeline (optional)</Label><Select id="timeline" name="timeline" value={form.timeline} onChange={(e) => setForm({ ...form, timeline: e.target.value })}><option value="">No fixed timeline</option><option>As soon as practical</option><option>Within 1–3 months</option><option>Within 3–6 months</option><option>More than 6 months</option></Select></Field>
                 </div>
                 <div className="hidden" aria-hidden="true"><Label htmlFor="website">Website</Label><Input id="website" name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => setForm({ ...form, website: e.target.value })} /></div>
-                <div className="flex items-start gap-3"><Checkbox id="consent" name="consent" checked={form.consent} onChange={(e) => setForm({ ...form, consent: e.target.checked })} /><label htmlFor="consent" className="text-body-sm text-muted">I agree that NileBit Labs may use these details to respond to my inquiry, as described in the <a href="/privacy" className="font-medium text-heading underline underline-offset-4 hover:text-primary">Privacy Policy</a>. *</label></div>
-                <Button type="submit" disabled={status === "sending" || !form.consent}>{status === "sending" ? "Sending…" : "Discuss Your Project"}</Button>
-                <div aria-live="polite">{message ? <p className={status === "error" ? "text-body-sm text-error" : "text-body-sm text-success"}>{message}</p> : null}</div>
+                <div className="flex items-start gap-3"><Checkbox id="consent" name="consent" required checked={form.consent} onChange={(e) => setForm({ ...form, consent: e.target.checked })} /><label htmlFor="consent" className="text-body-sm text-muted">I agree that NileBit Labs may use these details to respond to my inquiry, as described in the <a href="/privacy" className="font-medium text-heading underline underline-offset-4 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Privacy Policy</a>. *</label></div>
+                <Button type="submit" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Discuss Your Project"}</Button>
+                <div aria-live="polite" aria-atomic="true">{message ? <p role={status === "error" ? "alert" : "status"} className={status === "error" ? "text-body-sm text-error" : "text-body-sm text-success"}>{message}</p> : null}</div>
               </form>
             </Card>
           </div>

@@ -26,6 +26,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Learn about NileBit Labs, a product engineering and emerging technology company based in Kampala, Uganda.",
+  alternates: { canonical: "/about" },
 };
 
 const purposeStatements = [

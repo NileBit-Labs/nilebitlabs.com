@@ -32,6 +32,7 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Software engineering, AI, blockchain, mobile, cloud, UI/UX, and technology consulting services from NileBit Labs.",
+  alternates: { canonical: "/services" },
 };
 
 const expertisePillars = [

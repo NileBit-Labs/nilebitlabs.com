@@ -54,6 +54,12 @@
 - `success`, `warning`, `error`: semantic states only.
 - `code-background`: technical snippets.
 
+The same semantic tokens power Dark, Light, and System appearance modes. New components must use tokens rather than theme-specific color utilities. System is the default; explicit choices are stored in the browser under `nilebit-appearance`.
+
+## Appearance and Font Implementation
+
+Manrope is loaded and self-hosted through `next/font` with 400, 500, 600, and 700 weights. `--font-primary` is the global family token. Display and heading scales remain fluid, with a narrower mobile scale below 430px.
+
 ## Component System
 
 Reusable primitives live in `components/ui/design-system.tsx`:

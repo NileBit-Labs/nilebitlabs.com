@@ -261,13 +261,13 @@ export function Stat({ label, value, detail }: StatProps) {
 interface FeatureProps {
   title: string;
   description: string;
-  icon?: ComponentType<{ className?: string; strokeWidth?: number }>;
+  icon?: ComponentType<{ className?: string; strokeWidth?: number; "aria-hidden"?: boolean | "true" | "false" }>;
 }
 
 export function Feature({ title, description, icon: Icon }: FeatureProps) {
   return (
     <Card>
-      {Icon ? <Icon className="mb-6 h-5 w-5 text-primary" strokeWidth={iconRules.strokeWidth} /> : null}
+      {Icon ? <Icon className="mb-6 h-5 w-5 text-primary" strokeWidth={iconRules.strokeWidth} aria-hidden="true" /> : null}
       <h3 className={cn(typography.h4, "text-heading")}>{title}</h3>
       <p className={cn(typography.body, "mt-3 text-muted")}>{description}</p>
     </Card>
@@ -346,22 +346,15 @@ export function Select({ children, id, className, ...props }: SelectProps) {
   );
 }
 
-interface CheckboxProps {
-  id: string;
-  name?: string;
-  checked?: boolean;
-  onChange?: InputHTMLAttributes<HTMLInputElement>["onChange"];
-}
+interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> { id: string }
 
-export function Checkbox({ id, name, checked, onChange }: CheckboxProps) {
+export function Checkbox({ id, className, ...props }: CheckboxProps) {
   return (
     <input
       id={id}
-      name={name}
       type="checkbox"
-      checked={checked}
-      onChange={onChange}
-      className="mt-1 h-5 w-5 rounded border-border bg-surface text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      {...props}
+      className={cn("mt-1 h-5 w-5 shrink-0 rounded border-border bg-surface text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary", className)}
     />
   );
 }

@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Button, Container, Divider } from "./design-system";
+import BrandLogo from "./BrandLogo";
 
 interface FooterLink {
   label: string;
@@ -35,13 +35,7 @@ export default function Footer() {
               href="/"
               className="inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
-              <Image
-                src="/nilebit-logo-darkmode.svg"
-                alt="NileBit Labs"
-                width={180}
-                height={72}
-                className="h-16 w-auto"
-              />
+              <BrandLogo width={180} className="h-16 w-auto" />
             </Link>
             <p className="mt-5 max-w-sm text-body text-muted">
               Product engineering and emerging technology from Kampala, Uganda,
@@ -90,17 +84,17 @@ export default function Footer() {
             <h2 className="text-eyebrow text-primary">Contact</h2>
             <div className="mt-5 space-y-4 text-body-sm text-muted">
               <p className="flex gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1.75} />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1.75} aria-hidden="true" />
                 <span>Makerere Kavule, Kampala, Uganda</span>
               </p>
               <p className="flex gap-3">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1.75} />
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1.75} aria-hidden="true" />
                 <a className="hover:text-heading" href="mailto:info@nilebitlabs.com">
                   info@nilebitlabs.com
                 </a>
               </p>
               <p className="flex gap-3">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1.75} />
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1.75} aria-hidden="true" />
                 <a className="hover:text-heading" href="tel:+256770919975">
                   +256 770 919 975
                 </a>

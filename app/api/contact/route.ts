@@ -13,8 +13,25 @@ interface ContactRequest {
   consent: boolean;
 }
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emailPattern = /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$/i;
 const allowedProjectTypes = new Set(["Web or software engineering", "Mobile application", "Artificial intelligence or machine learning", "Blockchain or Web3", "Cloud infrastructure", "UI/UX design", "Technology consulting", "Not sure yet"]);
+const rateLimit = new Map<string, { count: number; resetAt: number }>();
+const rateLimitWindow = 10 * 60 * 1000;
+const rateLimitMaximum = 5;
+
+function isRateLimited(request: Request) {
+  const forwarded = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  const client = forwarded || request.headers.get("x-real-ip") || "unknown";
+  const now = Date.now();
+  if (rateLimit.size > 1000) rateLimit.clear();
+  const current = rateLimit.get(client);
+  if (!current || current.resetAt <= now) {
+    rateLimit.set(client, { count: 1, resetAt: now + rateLimitWindow });
+    return false;
+  }
+  current.count += 1;
+  return current.count > rateLimitMaximum;
+}
 
 function text(value: unknown, maxLength: number) {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
@@ -38,6 +55,7 @@ function parseRequest(value: unknown): ContactRequest | null {
 }
 
 export async function POST(request: Request) {
+  if (isRateLimited(request)) return NextResponse.json({ error: "Too many inquiries were submitted. Please wait before trying again." }, { status: 429, headers: { "Retry-After": "600" } });
   let payload: ContactRequest | null;
   try { payload = parseRequest(await request.json()); } catch { return NextResponse.json({ error: "The request must contain valid JSON." }, { status: 400 }); }
   if (!payload) return NextResponse.json({ error: "Please check the required fields and try again." }, { status: 400 });
@@ -52,7 +70,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "The contact service is not configured. Please email info@nilebitlabs.com." }, { status: 503 });
   }
 
-  const transporter = nodemailer.createTransport({ host: smtpHost, port: smtpPort, secure: smtpPort === 465, auth: { user: smtpUser, pass: smtpPass } });
+  const transporter = nodemailer.createTransport(
+    { host: smtpHost, port: smtpPort, secure: smtpPort === 465, auth: { user: smtpUser, pass: smtpPass } },
+    { disableFileAccess: true, disableUrlAccess: true },
+  );
   const fields = [
     ["Name", payload.name], ["Email", payload.email], ["Company", payload.company || "Not provided"],
     ["Project type", payload.projectType], ["Budget", payload.budget || "Not provided"], ["Timeline", payload.timeline || "Not provided"], ["Summary", payload.summary],

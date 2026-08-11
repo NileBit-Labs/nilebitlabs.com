@@ -1,10 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { Button, Container } from "./design-system";
+import AppearanceControl from "./AppearanceControl";
+import BrandLogo from "./BrandLogo";
 import { cn } from "@/lib/utils";
 
 interface NavItem {
@@ -23,8 +25,17 @@ const navItems: NavItem[] = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const closeMenu = () => setIsOpen(false);
+
+  useEffect(() => { setIsOpen(false); }, [pathname]);
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (event: KeyboardEvent) => { if (event.key === "Escape") setIsOpen(false); };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl">
@@ -35,14 +46,7 @@ export default function Navbar() {
             className="flex min-h-touch items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             onClick={closeMenu}
           >
-            <Image
-              src="/nilebit-logo-darkmode.svg"
-              alt="NileBit Labs"
-              width={160}
-              height={64}
-              priority
-              className="h-14 w-auto"
-            />
+            <BrandLogo priority />
           </Link>
 
           <div className="hidden items-center gap-1 lg:flex">
@@ -57,7 +61,8 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="hidden lg:block">
+          <div className="hidden items-center gap-3 lg:flex">
+            <AppearanceControl />
             <Button href="/contact" size="sm">
               Start a Conversation
             </Button>
@@ -69,13 +74,14 @@ export default function Navbar() {
             className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-button border border-border text-heading transition-colors hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hidden"
             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
           >
-            {isOpen ? <X className="h-5 w-5" strokeWidth={1.75} /> : <Menu className="h-5 w-5" strokeWidth={1.75} />}
+            {isOpen ? <X className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" /> : <Menu className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />}
           </button>
         </nav>
       </Container>
 
-      <div className={cn("border-t border-border bg-background lg:hidden", isOpen ? "block" : "hidden")}>
+      <div id="mobile-navigation" className={cn("border-t border-border bg-background lg:hidden", isOpen ? "block" : "hidden")}>
         <Container className="py-4">
           <div className="grid gap-2">
             {navItems.map((item) => (
@@ -91,6 +97,10 @@ export default function Navbar() {
             <Button href="/contact" className="mt-2" onClick={closeMenu}>
               Start a Conversation
             </Button>
+            <div className="mt-2 flex items-center justify-between border-t border-border pt-4">
+              <span className="text-body-sm font-medium text-muted">Appearance</span>
+              <AppearanceControl />
+            </div>
           </div>
         </Container>
       </div>

@@ -30,6 +30,7 @@ export const metadata: Metadata = {
   title: "Work",
   description:
     "Engineering case studies from NileBit Labs across software platforms, AI systems, mobile products, and blockchain applications.",
+  alternates: { canonical: "/work" },
 };
 
 const featuredCaseStudy = {
