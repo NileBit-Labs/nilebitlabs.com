@@ -1,6 +1,6 @@
 "use client";
 
-import { RotateCcw, X } from "lucide-react";
+import { Bot, RotateCcw, X } from "lucide-react";
 import { useEffect, useRef } from "react";
 import NileBotInput from "./NileBotInput";
 import NileBotMessage from "./NileBotMessage";
@@ -36,7 +36,7 @@ export default function NileBotPanel({ messages, mode, pending, error, onSend, o
       <section id="nilebot-dialog" ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="nilebot-title" aria-describedby="nilebot-description" className="absolute inset-x-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] top-3 flex flex-col overflow-hidden rounded-card border border-border bg-background shadow-soft md:inset-auto md:bottom-6 md:right-6 md:h-[min(44rem,calc(100vh-3rem))] md:w-[27rem]">
         <header className="flex items-center justify-between gap-4 border-b border-border bg-surface px-4 py-3">
           <div className="min-w-0">
-            <div className="flex items-center gap-2"><span className="font-mono text-caption font-semibold text-primary" aria-hidden="true">{"{||}"}</span><h2 id="nilebot-title" className="text-body font-semibold text-heading">NileBot</h2></div>
+            <div className="flex items-center gap-2"><Bot className="h-5 w-5 text-primary" strokeWidth={1.75} aria-hidden="true" /><h2 id="nilebot-title" className="text-body font-semibold text-heading">NileBot</h2></div>
             <p id="nilebot-description" className="mt-0.5 text-caption text-muted">{mode === "ai" ? "AI-guided project discovery" : mode === "fallback" ? "Guided project discovery" : "Shape your project with NileBit Labs"}</p>
           </div>
           <div className="flex items-center gap-1">

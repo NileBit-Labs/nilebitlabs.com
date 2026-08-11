@@ -8,20 +8,7 @@ import { Button, Container } from "./design-system";
 import BrandLogo from "./BrandLogo";
 import { cn } from "@/lib/utils";
 import NileBotTrigger from "../nilebot/NileBotTrigger";
-
-interface NavItem {
-  label: string;
-  href: string;
-}
-
-const navItems: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
-  { label: "Insights", href: "/insights" },
-  { label: "Contact", href: "/contact" },
-];
+import { isNavigationItemActive, primaryNavigation } from "@/lib/navigation";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,15 +37,19 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden items-center gap-1 lg:flex">
-            {navItems.map((item) => (
+            {primaryNavigation.map((item) => {
+              const active = isNavigationItemActive(pathname, item.href);
+              return (
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-button px-4 py-2 text-sm font-medium text-muted transition-colors hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                aria-current={active ? "page" : undefined}
+                className={cn("relative rounded-button px-4 py-2 text-sm font-medium text-muted transition-colors after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-pill after:bg-primary after:transition-transform hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary", active && "font-semibold text-heading after:scale-x-100")}
               >
                 {item.label}
               </Link>
-            ))}
+              );
+            })}
           </div>
 
           <div className="hidden lg:block">
@@ -81,16 +72,20 @@ export default function Navbar() {
       <div id="mobile-navigation" className={cn("border-t border-border bg-background lg:hidden", isOpen ? "block" : "hidden")}>
         <Container className="py-4">
           <div className="grid gap-2">
-            {navItems.map((item) => (
+            {primaryNavigation.map((item) => {
+              const active = isNavigationItemActive(pathname, item.href);
+              return (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={closeMenu}
-                className="flex min-h-touch items-center rounded-card px-4 text-base font-medium text-heading transition-colors hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                aria-current={active ? "page" : undefined}
+                className={cn("relative flex min-h-touch items-center rounded-card px-4 text-base font-medium text-muted transition-colors after:absolute after:bottom-1 after:left-4 after:h-0.5 after:w-6 after:origin-left after:scale-x-0 after:rounded-pill after:bg-primary after:transition-transform hover:bg-surface hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary", active && "font-semibold text-heading after:scale-x-100")}
               >
                 {item.label}
               </Link>
-            ))}
+              );
+            })}
             <NileBotTrigger className="mt-2" onClick={closeMenu} />
             <Button href="/contact" variant="secondary" onClick={closeMenu}>Contact Our Team</Button>
           </div>

@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { Container, Divider } from "./design-system";
 import BrandLogo from "./BrandLogo";
 import AppearanceControl from "./AppearanceControl";
+import { isNavigationItemActive } from "@/lib/navigation";
+import { cn } from "@/lib/utils";
 
 interface FooterLink {
   label: string;
@@ -26,6 +31,7 @@ const legalLinks: FooterLink[] = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
 
   return (
     <footer id="site-footer" className="border-t border-border bg-background text-body-color">
@@ -51,8 +57,10 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-body-sm text-muted transition-colors hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    aria-current={isNavigationItemActive(pathname, item.href) ? "page" : undefined}
+                    className={cn("inline-flex items-center gap-2 text-body-sm text-muted transition-colors hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary", isNavigationItemActive(pathname, item.href) && "font-medium text-heading")}
                   >
+                    {isNavigationItemActive(pathname, item.href) ? <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" /> : null}
                     {item.label}
                   </Link>
                 </li>
@@ -73,8 +81,10 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-body-sm text-muted transition-colors hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    aria-current={pathname === item.href ? "page" : undefined}
+                    className={cn("inline-flex items-center gap-2 text-body-sm text-muted transition-colors hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary", pathname === item.href && "font-medium text-heading")}
                   >
+                    {pathname === item.href ? <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" /> : null}
                     {item.label}
                   </Link>
                 </li>
