@@ -128,6 +128,8 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
   onClick?: () => void;
+  ariaControls?: string;
+  ariaHasPopup?: "dialog";
 }
 
 export function Button({
@@ -139,6 +141,8 @@ export function Button({
   type = "button",
   disabled = false,
   onClick,
+  ariaControls,
+  ariaHasPopup,
 }: ButtonProps) {
   const base =
     "inline-flex min-h-touch items-center justify-center rounded-button font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50";
@@ -163,7 +167,7 @@ export function Button({
   }
 
   return (
-    <button type={type} disabled={disabled} onClick={onClick} className={classes}>
+    <button type={type} disabled={disabled} onClick={onClick} className={classes} aria-controls={ariaControls} aria-haspopup={ariaHasPopup}>
       {children}
     </button>
   );

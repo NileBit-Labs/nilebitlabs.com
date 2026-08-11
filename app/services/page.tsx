@@ -27,6 +27,7 @@ import {
   SectionHeader,
   Tag,
 } from "@/components/ui/design-system";
+import NileBotTrigger from "@/components/nilebot/NileBotTrigger";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -270,9 +271,7 @@ export default function ServicesPage() {
               shaped around real business goals.
             </p>
             <div className="mt-9">
-              <Button href="/contact" size="lg">
-                Discuss Your Project
-              </Button>
+              <NileBotTrigger size="lg" />
             </div>
           </div>
           <ServicesSystemVisual />
@@ -468,7 +467,7 @@ export default function ServicesPage() {
           <CTA
             title="Need a product, platform, or technical plan?"
             description="Start with a conversation about the business problem, expected users, timeline, and technical risk."
-            action={<Button href="/contact">Discuss Your Project</Button>}
+            action={<div className="flex flex-col gap-3 sm:flex-row"><NileBotTrigger /><Button href="/contact" variant="secondary">Contact Our Team</Button></div>}
           />
           <div className="mt-6">
             <Link

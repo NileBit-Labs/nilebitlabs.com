@@ -21,6 +21,7 @@ import {
   Section,
   SectionHeader,
 } from "@/components/ui/design-system";
+import NileBotTrigger from "@/components/nilebot/NileBotTrigger";
 
 export const metadata: Metadata = {
   title: "About",
@@ -207,9 +208,7 @@ export default function AboutPage() {
               Based in Kampala, Uganda. Serving clients locally and globally.
             </p>
             <div className="mt-9">
-              <Button href="/contact" size="lg">
-                Discuss Your Project
-              </Button>
+              <NileBotTrigger size="lg" />
             </div>
           </div>
           <CompanySignalVisual />
@@ -398,9 +397,8 @@ export default function AboutPage() {
             description="Every serious project starts with understanding the problem, the users, the risks, and the system that needs to exist."
             action={
               <div className="flex flex-col gap-3 sm:flex-row">
-                <Button href="/contact">
-                  Discuss Your Project
-                </Button>
+                <NileBotTrigger />
+                <Button href="/contact" variant="secondary">Contact Our Team</Button>
                 <Button href="/work" variant="secondary">
                   Explore Our Work
                   <ArrowRight className="ml-2 h-4 w-4" strokeWidth={1.75} aria-hidden="true" />

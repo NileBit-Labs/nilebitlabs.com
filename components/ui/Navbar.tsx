@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Button, Container } from "./design-system";
 import BrandLogo from "./BrandLogo";
 import { cn } from "@/lib/utils";
+import NileBotTrigger from "../nilebot/NileBotTrigger";
 
 interface NavItem {
   label: string;
@@ -61,9 +62,7 @@ export default function Navbar() {
           </div>
 
           <div className="hidden lg:block">
-            <Button href="/contact" size="sm">
-              Start a Conversation
-            </Button>
+            <NileBotTrigger size="sm" />
           </div>
 
           <button
@@ -92,9 +91,8 @@ export default function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <Button href="/contact" className="mt-2" onClick={closeMenu}>
-              Start a Conversation
-            </Button>
+            <NileBotTrigger className="mt-2" onClick={closeMenu} />
+            <Button href="/contact" variant="secondary" onClick={closeMenu}>Contact Our Team</Button>
           </div>
         </Container>
       </div>

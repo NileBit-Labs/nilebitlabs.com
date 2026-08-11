@@ -3,8 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
-import { Button, Card, Container, CTA, Section } from "@/components/ui/design-system";
+import { Card, Container, CTA, Section } from "@/components/ui/design-system";
 import { getInsight, getRelatedInsights, insights } from "@/data/insights";
+import NileBotTrigger from "@/components/nilebot/NileBotTrigger";
 
 interface InsightPageProps { params: Promise<{ slug: string }> }
 
@@ -89,7 +90,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
         </Container>
       </Section>
 
-      <Section spacing="md"><Container><CTA title="Need to turn a complex idea into a dependable product?" description="Talk to NileBit Labs about the product, the constraints, and the engineering path forward." action={<Button href="/contact">Discuss Your Project</Button>} /></Container></Section>
+      <Section spacing="md"><Container><CTA title="Need to turn a complex idea into a dependable product?" description="Use NileBot to clarify the product, constraints, and engineering path forward." action={<NileBotTrigger />} /></Container></Section>
     </article>
   );
 }

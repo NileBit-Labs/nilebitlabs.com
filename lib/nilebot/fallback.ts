@@ -2,7 +2,7 @@ import { knowledgeRecords, navigationActions } from "./knowledge";
 import type { NileBotAction, NileBotMessageInput, NileBotResponse } from "./types";
 
 const injectionPattern = /(reveal|show|print|repeat).*(system|instruction|prompt|api key|secret)|ignore (all|your|previous)|pretend (you are|to be)|change your identity/i;
-const projectPattern = /(help me plan|i need|we need|planning|product idea|build an?|create an?|develop an?|project for|app for|platform for|system for|website for|mvp for)/i;
+const projectPattern = /(help me plan|help me choose a solution|i have a project idea|i need|we need|planning|product idea|build an?|create an?|develop an?|project for|app for|platform for|system for|website for|mvp for)/i;
 
 const discoveryQuestions = {
   problem: "What problem should this product solve for the business or its users?",

@@ -49,7 +49,7 @@ export default function ContactPage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
             <div>
-              <p className="text-eyebrow text-primary">Start a conversation</p>
+              <p className="text-eyebrow text-primary">Contact</p>
               <h2 className="mt-5 text-heading-2 text-heading">A clear first conversation, not a sales script.</h2>
               <p className="mt-5 text-body text-muted">Share as much context as you have. If the scope is still uncertain, that is a useful place to begin.</p>
               <address className="mt-9 space-y-5 not-italic text-body text-muted">
@@ -61,7 +61,7 @@ export default function ContactPage() {
             </div>
 
             <Card elevated className="p-6 md:p-8">
-              <h2 className="text-heading-3 text-heading">Discuss Your Project</h2>
+              <h2 className="text-heading-3 text-heading">Contact Our Team</h2>
               <p className="mt-3 text-body text-muted">Required fields are marked with an asterisk.</p>
               <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                 <div className="grid gap-6 md:grid-cols-2">
@@ -77,7 +77,7 @@ export default function ContactPage() {
                 </div>
                 <div className="hidden" aria-hidden="true"><Label htmlFor="website">Website</Label><Input id="website" name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => setForm({ ...form, website: e.target.value })} /></div>
                 <div className="flex items-start gap-3"><Checkbox id="consent" name="consent" required checked={form.consent} onChange={(e) => setForm({ ...form, consent: e.target.checked })} /><label htmlFor="consent" className="text-body-sm text-muted">I agree that NileBit Labs may use these details to respond to my inquiry, as described in the <a href="/privacy" className="font-medium text-heading underline underline-offset-4 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Privacy Policy</a>. *</label></div>
-                <Button type="submit" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Discuss Your Project"}</Button>
+                <Button type="submit" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send Enquiry"}</Button>
                 <div aria-live="polite" aria-atomic="true">{message ? <p role={status === "error" ? "alert" : "status"} className={status === "error" ? "text-body-sm text-error" : "text-body-sm text-success"}>{message}</p> : null}</div>
               </form>
             </Card>

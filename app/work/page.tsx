@@ -25,6 +25,7 @@ import {
   SectionHeader,
   Tag,
 } from "@/components/ui/design-system";
+import NileBotTrigger from "@/components/nilebot/NileBotTrigger";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -369,9 +370,7 @@ export default function WorkPage() {
               problem.
             </p>
             <div className="mt-9">
-              <Button href="/contact" size="lg">
-                Discuss Your Project
-              </Button>
+              <NileBotTrigger size="lg" />
             </div>
           </div>
           <WorkSystemVisual />
@@ -510,13 +509,10 @@ export default function WorkPage() {
       <Section spacing="md" className="bg-surface">
         <Container>
           <CTA
-            title="Let's Build Something That Lasts."
+            title="Build something that lasts."
             description="Start with the business problem, then shape the engineering plan around it."
             action={
-              <Button href="/contact">
-                Discuss Your Project
-                <ArrowRight className="ml-2 h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
-              </Button>
+              <div className="flex flex-col gap-3 sm:flex-row"><NileBotTrigger /><Button href="/contact" variant="secondary">Contact Our Team<ArrowRight className="ml-2 h-4 w-4" strokeWidth={1.75} aria-hidden="true" /></Button></div>
             }
           />
           <div className="mt-8 text-center">

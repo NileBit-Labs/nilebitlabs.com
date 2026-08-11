@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { Button, Container, Divider } from "./design-system";
+import { Container, Divider } from "./design-system";
 import BrandLogo from "./BrandLogo";
 import AppearanceControl from "./AppearanceControl";
 
@@ -28,9 +28,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-background text-body-color">
+    <footer id="site-footer" className="border-t border-border bg-background text-body-color">
       <Container className="py-section-sm">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_1fr]">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_0.8fr_1fr]">
           <div>
             <Link
               href="/"
@@ -42,11 +42,6 @@ export default function Footer() {
               Product engineering and emerging technology from Kampala, Uganda,
               built for clients with serious software ambitions.
             </p>
-            <div className="mt-6">
-              <Button href="/contact" variant="secondary" size="sm">
-                Plan a Project
-              </Button>
-            </div>
           </div>
 
           <nav aria-label="Company links">
@@ -63,6 +58,12 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+            <div className="mt-9">
+              <h2 className="text-eyebrow text-primary">Appearance</h2>
+              <div className="mt-4">
+                <AppearanceControl />
+              </div>
+            </div>
           </nav>
 
           <nav aria-label="Legal links">
@@ -106,12 +107,8 @@ export default function Footer() {
 
         <Divider className="my-8" />
 
-        <div className="flex flex-col gap-4 text-caption text-muted md:flex-row md:items-center md:justify-between">
+        <div className="text-caption text-muted">
           <p>© {currentYear} NileBit Labs. All rights reserved.</p>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
-            <span className="font-medium text-muted">Appearance</span>
-            <AppearanceControl />
-          </div>
         </div>
       </Container>
     </footer>

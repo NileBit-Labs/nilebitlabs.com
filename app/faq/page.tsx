@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Button, Card, Container, CTA, Section, SectionHeader } from "@/components/ui/design-system";
+import NileBotTrigger from "@/components/nilebot/NileBotTrigger";
 
 export const metadata: Metadata = { title: "Frequently Asked Questions", description: "Answers about working with NileBit Labs on software, mobile, AI, and blockchain products.", alternates: { canonical: "/faq" } };
 
@@ -19,6 +20,6 @@ export default function FaqPage() {
   return <div>
     <Section spacing="lg"><Container><div className="max-w-4xl"><p className="text-eyebrow text-primary">FAQ</p><h1 className="mt-8 text-display-lg text-heading">Useful answers before we begin.</h1><p className="mt-7 max-w-readable text-body-lg text-muted">A straightforward overview of how NileBit Labs approaches product and engineering engagements.</p></div></Container></Section>
     <Section tone="surface" spacing="lg"><Container><SectionHeader eyebrow="Working together" title="Common questions, answered clearly." /><div className="mt-10 grid gap-grid lg:grid-cols-2">{questions.map(([question, answer]) => <Card key={question}><h2 className="text-heading-4 text-heading">{question}</h2><p className="mt-4 text-body text-muted">{answer}</p></Card>)}</div></Container></Section>
-    <Section spacing="md"><Container><CTA title="Have a question specific to your project?" description="Tell us what you are considering and where you need clarity." action={<Button href="/contact">Discuss Your Project</Button>} /></Container></Section>
+    <Section spacing="md"><Container><CTA title="Have a question specific to your project?" description="Tell NileBot what you are considering and where you need clarity." action={<div className="flex flex-col gap-3 sm:flex-row"><NileBotTrigger /><Button href="/contact" variant="secondary">Contact Our Team</Button></div>} /></Container></Section>
   </div>;
 }

@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Badge, Button, Card, Container, CTA, Section, SectionHeader } from "@/components/ui/design-system";
+import { Badge, Card, Container, CTA, Section, SectionHeader } from "@/components/ui/design-system";
 import { insightCategories, insights } from "@/data/insights";
+import NileBotTrigger from "@/components/nilebot/NileBotTrigger";
 
 export const metadata: Metadata = {
   title: "Insights",
@@ -86,7 +87,7 @@ export default function InsightsPage() {
       </Section>
 
       <Section spacing="md">
-        <Container><CTA title="Have a product decision worth thinking through?" description="Share the business goal, the constraints, and what needs to become possible." action={<Button href="/contact">Discuss Your Project</Button>} /></Container>
+        <Container><CTA title="Have a product decision worth thinking through?" description="Share the business goal, the constraints, and what needs to become possible." action={<NileBotTrigger />} /></Container>
       </Section>
     </div>
   );

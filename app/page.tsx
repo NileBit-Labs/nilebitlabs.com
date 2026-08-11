@@ -25,6 +25,7 @@ import {
   Tag,
 } from "@/components/ui/design-system";
 import { cn } from "@/lib/utils";
+import NileBotTrigger from "@/components/nilebot/NileBotTrigger";
 
 export const metadata: Metadata = {
   title: "Product Engineering and Emerging Technology",
@@ -312,9 +313,7 @@ export default function Home() {
               systems for ambitious teams.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Button href="/contact" size="lg">
-                Discuss Your Project
-              </Button>
+              <NileBotTrigger size="lg" />
               <Button href="/work" variant="secondary" size="lg">
                 View Selected Work
               </Button>
@@ -562,9 +561,9 @@ export default function Home() {
       <Section spacing="md">
         <Container>
           <CTA
-            title="Have a product or system worth building properly?"
-            description="Talk to NileBit Labs about the business goal, technical risk, and path to launch."
-            action={<Button href="/contact">Discuss Your Project</Button>}
+            title="Have something in mind?"
+            description="Tell NileBot what you’re building. It can help structure your requirements and prepare the conversation with our team."
+            action={<div className="flex flex-col gap-3 sm:flex-row"><NileBotTrigger /><Button href="/contact" variant="secondary">Contact Our Team</Button></div>}
           />
         </Container>
       </Section>
