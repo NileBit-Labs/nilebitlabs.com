@@ -12,9 +12,13 @@ export default function NileBotPanel({ messages, mode, pending, error, onSend, o
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
+  const messagesRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { inputRef.current?.focus(); }, []);
-  useEffect(() => { endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" }); }, [messages, pending, error]);
+  useEffect(() => { inputRef.current?.focus({ preventScroll: true }); }, []);
+  useEffect(() => {
+    const container = messagesRef.current;
+    if (container) container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+  }, [messages, pending, error]);
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
@@ -45,7 +49,7 @@ export default function NileBotPanel({ messages, mode, pending, error, onSend, o
           </div>
         </header>
 
-        <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-5" aria-live="polite" aria-busy={pending}>
+        <div ref={messagesRef} className="flex-1 overflow-y-auto overscroll-contain px-4 py-5" aria-live="polite" aria-busy={pending}>
           <div className="space-y-4">
             {messages.map((message) => <NileBotMessage key={message.id} message={message} />)}
             {messages.length === 1 ? <div className="grid gap-2 pt-2">{starters.map((starter) => <button key={starter} type="button" onClick={() => onSend(starter)} className="min-h-touch rounded-card border border-border bg-surface px-4 py-3 text-left text-body-sm font-medium text-heading transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">{starter}</button>)}</div> : null}

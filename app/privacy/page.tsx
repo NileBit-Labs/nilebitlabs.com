@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Container, Section } from "@/components/ui/design-system";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = { title: "Privacy Policy", description: "How NileBit Labs handles information submitted through this website.", alternates: { canonical: "/privacy" } };
+export const metadata: Metadata = createPageMetadata("Privacy Policy", "How NileBit Labs handles information submitted through its public website, Contact form, and NileBot experience.", "/privacy");
 
 const sections = [
   ["Information you provide", "We receive information you choose to submit through the project inquiry form or by contacting us directly. This may include your name, email address, organization, project details, budget range, timeline, and correspondence."],

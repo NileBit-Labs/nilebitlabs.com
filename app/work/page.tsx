@@ -10,6 +10,7 @@ import {
   Code2,
   Cpu,
   Database,
+  ExternalLink,
   Layers3,
   Rocket,
   Smartphone,
@@ -26,34 +27,45 @@ import {
   Tag,
 } from "@/components/ui/design-system";
 import NileBotTrigger from "@/components/nilebot/NileBotTrigger";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Work",
-  description:
-    "Engineering case studies from NileBit Labs across software platforms, AI systems, mobile products, and blockchain applications.",
-  alternates: { canonical: "/work" },
-};
+export const metadata: Metadata = createPageMetadata(
+  "Work",
+  "Explore NileBit Labs engineering work across live institutional platforms, commerce, applied AI, mobile products, and blockchain applications.",
+  "/work",
+);
 
 const featuredCaseStudy = {
-  title: "SK Computer Store",
-  category: "Commerce platform",
-  image: "/img/portfolio/skcomputerstore.png",
+  title: "Rubaare Secondary School",
+  category: "Institutional Platform",
+  image: "/images/work/rubaare-secondary-school.webp",
+  imageAlt: "Rubaare Secondary School website designed and developed by NileBit Labs",
   overview:
-    "A commerce product for computer hardware discovery, catalogue presentation, and checkout foundations.",
+    "A live institutional website and digital information platform for a secondary school in Ntungamo District, Uganda.",
   problem:
-    "The business needed a clearer digital storefront that could present hardware products and support a more structured buying journey.",
+    "Rubaare Secondary School needed a modern public platform capable of presenting academic and admissions information clearly while supporting frequently changing school content.",
   challenge:
-    "Commerce products need more than a visual catalogue. They require dependable product structure, responsive interaction patterns, and a foundation that can support payments, inventory changes, and future operational workflows.",
+    "The website needed to bring school information, academics, admissions, leadership, news, events, documents, fees, and contact pathways into one structured experience that remains useful across desktop and mobile.",
   solution:
-    "NileBit Labs shaped the product around practical buyer flows, product browsing, and a clean implementation foundation that can be extended as the business grows.",
+    "NileBit Labs designed and engineered a responsive institutional platform with structured content management, searchable resources, publishing workflows, downloadable documents, and a production SEO foundation.",
   architecture:
-    "A Next.js application layer for the storefront, structured UI components for product presentation, and an integration-ready checkout foundation.",
-  technologies: ["Next.js", "Tailwind CSS", "Stripe"],
-  status: "Live product work. Detailed operating metrics and growth outcomes are pending confirmation.",
-  ctaHref: "/contact",
+    "A Next.js and TypeScript application with Sanity content architecture, deployed on Vercel for reliable public delivery.",
+  technologies: ["Next.js", "TypeScript", "Sanity", "Vercel"],
+  status: "Live in production at rubaaress.sc.ug.",
+  liveUrl: "https://rubaaress.sc.ug/",
 };
 
 const selectedCaseStudies = [
+  {
+    title: "SK Computer Store",
+    category: "Commerce platform",
+    image: "/img/portfolio/skcomputerstore.png",
+    problem:
+      "A computer hardware business needed a clearer digital storefront for product discovery and a structured buying journey.",
+    solution:
+      "A responsive commerce experience with a focused product catalogue and an integration-ready checkout foundation.",
+    technologies: ["Next.js", "Tailwind CSS", "Stripe"],
+  },
   {
     title: "Driver Behavior Monitoring",
     category: "AI system",
@@ -63,7 +75,6 @@ const selectedCaseStudies = [
     solution:
       "An AI monitoring concept using computer vision patterns and edge-processing considerations for real-time assessment.",
     technologies: ["TensorFlow", "Computer Vision", "Edge Computing"],
-    status: "AI project. Deployment scope and production usage need confirmation.",
   },
   {
     title: "Foozana",
@@ -74,7 +85,6 @@ const selectedCaseStudies = [
     solution:
       "A mobile wellness application foundation focused on core nutrition interactions and a clean app structure.",
     technologies: ["Flutter", "Firebase", "Mobile"],
-    status: "Mobile app. Current release status needs confirmation.",
   },
   {
     title: "Solana Lottery Platform",
@@ -85,7 +95,6 @@ const selectedCaseStudies = [
     solution:
       "A Web3 product concept using Solana program architecture and a React interface for decentralized participation flows.",
     technologies: ["Solana", "Rust", "React"],
-    status: "Blockchain project. Production status needs confirmation.",
   },
   {
     title: "TeraSalesAI",
@@ -96,7 +105,6 @@ const selectedCaseStudies = [
     solution:
       "An AI-agent product direction for workflow automation, customer interaction support, and data-driven assistance.",
     technologies: ["Python", "NLP", "GPT Integration"],
-    status: "AI product work. Client scope and deployment status need confirmation.",
   },
 ];
 
@@ -290,14 +298,14 @@ function FeaturedCaseStudy() {
             ))}
           </div>
         </div>
-        <Button href={featuredCaseStudy.ctaHref} variant="secondary" className="mt-8">
-          Discuss a Similar Project
-        </Button>
+        <Link href={featuredCaseStudy.liveUrl} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex min-h-touch items-center justify-center gap-2 rounded-button border border-border bg-surface px-5 py-2.5 text-sm font-semibold text-heading transition-colors hover:bg-surface-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+          Visit Live Site <ExternalLink className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+        </Link>
       </div>
       <div className="image-frame relative aspect-[16/11] overflow-hidden">
         <Image
           src={featuredCaseStudy.image}
-          alt={`${featuredCaseStudy.title} project preview`}
+          alt={featuredCaseStudy.imageAlt}
           fill
           sizes="(min-width: 1024px) 40rem, 100vw"
           className="object-cover"
@@ -327,7 +335,6 @@ function CaseStudyCard({
       <div>
         <div className="flex flex-wrap items-center gap-3">
           <Badge tone="primary">{caseStudy.category}</Badge>
-          <span className="text-caption text-muted">{caseStudy.status}</span>
         </div>
         <h3 className="mt-5 text-heading-3 text-heading">{caseStudy.title}</h3>
         <dl className="mt-6 grid gap-5">
@@ -382,7 +389,7 @@ export default function WorkPage() {
           <SectionHeader
             eyebrow="Featured case study"
             title="A closer look at product engineering in practice."
-            description="This section uses existing NileBit Labs project material and avoids unverified performance claims."
+            description="A live institutional platform built for clear public information, structured publishing, and dependable access across devices."
           />
           <div className="mt-14">
             <FeaturedCaseStudy />
@@ -395,7 +402,7 @@ export default function WorkPage() {
           <SectionHeader
             eyebrow="Selected work"
             title="Additional projects across software, AI, mobile, and blockchain."
-            description="Each example is written as an engineering case study, with missing project details clearly marked for later confirmation."
+            description="A focused selection of product and engineering work across different technical contexts."
           />
           <div className="mt-14 grid gap-grid lg:grid-cols-2">
             {selectedCaseStudies.map((caseStudy) => (

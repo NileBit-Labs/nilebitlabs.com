@@ -25,11 +25,12 @@ export const nileBitFacts = {
     "Collins Shema — COO & Co-Founder; operations, project coordination, delivery processes, client experience, and quality assurance.",
   ],
   work: [
-    "SK Computer Store — commerce platform work. Detailed operating metrics remain unconfirmed.",
-    "Driver Behavior Monitoring — AI and computer-vision project. Deployment scope remains unconfirmed.",
-    "Foozana — mobile nutrition and wellness application. Current release status remains unconfirmed.",
-    "Solana Lottery Platform — blockchain product. Production status remains unconfirmed.",
-    "TeraSalesAI — AI workflow-automation product work. Client scope and deployment status remain unconfirmed.",
+    "Rubaare Secondary School — a live production institutional website and digital information platform for a school in Ntungamo District, Uganda. NileBit Labs built it with Next.js, TypeScript, Sanity content architecture, and Vercel deployment. Visit https://rubaaress.sc.ug/.",
+    "SK Computer Store — commerce platform for hardware discovery and a structured buying journey.",
+    "Driver Behavior Monitoring — AI and computer-vision research and prototype work.",
+    "Foozana — mobile nutrition and wellness product work.",
+    "Solana Lottery Platform — blockchain product work using Solana program architecture.",
+    "TeraSalesAI — AI workflow-automation product work.",
   ],
 } as const;
 
@@ -41,6 +42,7 @@ export const knowledgeRecords: KnowledgeRecord[] = [
   { id: "blockchain", title: "Blockchain and Web3", summary: "NileBit Labs engineers smart-contract systems, Web3 applications, wallets, and blockchain integrations where decentralized infrastructure fits the product.", keywords: ["blockchain", "web3", "solana", "smart contract", "wallet"], href: "/services" },
   { id: "process", title: "Delivery process", summary: `The delivery path is ${nileBitFacts.process.join(", ")}. Engagements begin with the business problem, users, constraints, and technical risk.`, keywords: ["process", "approach", "start", "timeline", "delivery", "how do projects"], href: "/services" },
   { id: "work", title: "Selected work", summary: `Selected work includes ${nileBitFacts.work.join(" ")}`, keywords: ["work", "case study", "case studies", "project", "portfolio", "examples"], href: "/work" },
+  { id: "rubaare", title: "Rubaare Secondary School", summary: nileBitFacts.work[0], keywords: ["rubaare", "school", "schools", "education", "education work", "institutional", "real website", "real websites", "production website"], href: "/work" },
   { id: "leadership", title: "Leadership", summary: nileBitFacts.leadership.join(" "), keywords: ["leader", "leadership", "founder", "ceo", "cto", "coo", "douglas", "elioda", "collins"], href: "/about" },
   { id: "contact", title: "Contact", summary: `Email ${nileBitFacts.company.email}, call ${nileBitFacts.company.phone}, or visit the Contact page. NileBit Labs is located at ${nileBitFacts.company.location}.`, keywords: ["contact", "email", "phone", "call", "reach", "talk", "location", "based", "where"], href: "/contact" },
   { id: "insights", title: "Insights", summary: "NileBit Labs publishes practical perspectives on software engineering, applied AI, blockchain product fit, and MVP foundations.", keywords: ["insight", "article", "read", "thinking", "engineering principle"], href: "/insights" },

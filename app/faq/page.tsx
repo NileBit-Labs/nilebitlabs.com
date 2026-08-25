@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Button, Card, Container, CTA, Section, SectionHeader } from "@/components/ui/design-system";
 import NileBotTrigger from "@/components/nilebot/NileBotTrigger";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = { title: "Frequently Asked Questions", description: "Answers about working with NileBit Labs on software, mobile, AI, and blockchain products.", alternates: { canonical: "/faq" } };
+export const metadata: Metadata = createPageMetadata("Frequently Asked Questions", "Answers about working with NileBit Labs on software engineering, mobile, applied AI, blockchain, project delivery, and ongoing product support.", "/faq");
 
 const questions = [
   ["What does NileBit Labs build?", "We design and engineer web platforms, custom software, mobile applications, applied AI capabilities, and blockchain products. We also support projects with cloud infrastructure, UI/UX design, and technical consulting."],

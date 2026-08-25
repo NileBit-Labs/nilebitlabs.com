@@ -28,13 +28,9 @@ import {
   Tag,
 } from "@/components/ui/design-system";
 import NileBotTrigger from "@/components/nilebot/NileBotTrigger";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Software engineering, AI, blockchain, mobile, cloud, UI/UX, and technology consulting services from NileBit Labs.",
-  alternates: { canonical: "/services" },
-};
+export const metadata: Metadata = createPageMetadata("Services", "Software engineering, AI, blockchain, mobile, cloud, UI/UX, and technology consulting services from NileBit Labs in Kampala, Uganda.", "/services");
 
 const expertisePillars = [
   {

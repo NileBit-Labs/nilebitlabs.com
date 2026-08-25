@@ -5,18 +5,9 @@ import { ArrowRight } from "lucide-react";
 import { Badge, Card, Container, CTA, Section, SectionHeader } from "@/components/ui/design-system";
 import { insightCategories, insights } from "@/data/insights";
 import NileBotTrigger from "@/components/nilebot/NileBotTrigger";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Insights",
-  description: "Practical thinking from NileBit Labs on product engineering, applied AI, blockchain, and building dependable software.",
-  alternates: { canonical: "/insights" },
-  openGraph: {
-    title: "Insights | NileBit Labs",
-    description: "Practical thinking on product engineering, applied AI, blockchain, and dependable software.",
-    url: "/insights",
-    type: "website",
-  },
-};
+export const metadata: Metadata = createPageMetadata("Insights", "Practical thinking from NileBit Labs on product engineering, applied AI, blockchain infrastructure, MVP decisions, and dependable software.", "/insights");
 
 export default function InsightsPage() {
   const featured = insights.find((insight) => insight.featured) ?? insights[0];

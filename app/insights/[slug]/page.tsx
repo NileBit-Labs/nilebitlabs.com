@@ -22,14 +22,16 @@ export async function generateMetadata({ params }: InsightPageProps): Promise<Me
     description: insight.excerpt,
     alternates: { canonical: path },
     openGraph: {
-      title: insight.title,
+      title: `${insight.title} | NileBit Labs`,
       description: insight.excerpt,
       type: "article",
       url: path,
+      siteName: "NileBit Labs",
+      locale: "en_UG",
       publishedTime: insight.publishedAt,
-      images: insight.image ? [{ url: insight.image, alt: insight.title }] : undefined,
+      images: insight.image ? [{ url: insight.image, alt: insight.title, width: 1200, height: 630 }] : undefined,
     },
-    twitter: { card: "summary_large_image", title: insight.title, description: insight.excerpt, images: insight.image ? [insight.image] : undefined },
+    twitter: { card: "summary_large_image", title: `${insight.title} | NileBit Labs`, description: insight.excerpt, images: insight.image ? [insight.image] : undefined },
   };
 }
 
@@ -40,14 +42,26 @@ export default async function InsightPage({ params }: InsightPageProps) {
   const canonicalUrl = `https://nilebitlabs.com/insights/${insight.slug}`;
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    headline: insight.title,
-    description: insight.excerpt,
-    datePublished: insight.publishedAt,
-    author: { "@type": "Organization", name: "NileBit Labs" },
-    publisher: { "@type": "Organization", name: "NileBit Labs", url: "https://nilebitlabs.com" },
-    mainEntityOfPage: canonicalUrl,
-    image: insight.image ? `https://nilebitlabs.com${insight.image}` : undefined,
+    "@graph": [
+      {
+        "@type": "Article",
+        headline: insight.title,
+        description: insight.excerpt,
+        datePublished: insight.publishedAt,
+        author: { "@id": "https://nilebitlabs.com/#organization" },
+        publisher: { "@id": "https://nilebitlabs.com/#organization" },
+        mainEntityOfPage: canonicalUrl,
+        image: insight.image ? `https://nilebitlabs.com${insight.image}` : undefined,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://nilebitlabs.com/" },
+          { "@type": "ListItem", position: 2, name: "Insights", item: "https://nilebitlabs.com/insights" },
+          { "@type": "ListItem", position: 3, name: insight.title, item: canonicalUrl },
+        ],
+      },
+    ],
   };
 
   return (

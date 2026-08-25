@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Container, Section } from "@/components/ui/design-system";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = { title: "Website Terms", description: "Terms governing use of the NileBit Labs public website.", alternates: { canonical: "/terms" } };
+export const metadata: Metadata = createPageMetadata("Website Terms", "Terms governing use of the public NileBit Labs website and its informational content.", "/terms");
 
 const sections = [
   ["About these terms", "These terms apply to use of the public NileBit Labs website. They do not replace a proposal, statement of work, service agreement, or other contract for client services. Project scope, fees, payment terms, ownership, warranties, support, and liability are agreed separately for each engagement."],

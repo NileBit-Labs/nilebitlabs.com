@@ -9,6 +9,7 @@ import {
   Cloud,
   Code2,
   Cpu,
+  ExternalLink,
   Lightbulb,
   Network,
   PenTool,
@@ -26,12 +27,33 @@ import {
 } from "@/components/ui/design-system";
 import { cn } from "@/lib/utils";
 import NileBotTrigger from "@/components/nilebot/NileBotTrigger";
+import { insights as insightArticles } from "@/data/insights";
+import { defaultDescription, siteUrl } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Product Engineering and Emerging Technology",
-  description:
-    "NileBit Labs builds dependable web, mobile, AI, and blockchain systems for ambitious teams from Kampala, Uganda.",
+  title: { absolute: "NileBit Labs | Software Engineering, AI & Blockchain" },
+  description: defaultDescription,
   alternates: { canonical: "/" },
+  openGraph: {
+    title: "NileBit Labs | Software Engineering, AI & Blockchain",
+    description: defaultDescription,
+    url: "/",
+    siteName: "NileBit Labs",
+    locale: "en_UG",
+    type: "website",
+    images: [{ url: "/images/og/nilebit-labs-og.png", width: 1200, height: 630, alt: "NileBit Labs — Product Engineering, AI and Blockchain" }],
+  },
+  twitter: { card: "summary_large_image", title: "NileBit Labs | Software Engineering, AI & Blockchain", description: defaultDescription, images: ["/images/og/nilebit-labs-og.png"] },
+};
+
+const websiteData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  name: "NileBit Labs",
+  alternateName: "NileBit Labs Uganda",
+  url: `${siteUrl}/`,
+  publisher: { "@id": `${siteUrl}/#organization` },
 };
 
 const proofItems = [
@@ -71,6 +93,20 @@ const supportingCapabilities = [
 
 const selectedWork = [
   {
+    title: "Rubaare Secondary School",
+    category: "Institutional platform",
+    image: "/images/work/rubaare-secondary-school.webp",
+    imageAlt: "Rubaare Secondary School website designed and developed by NileBit Labs",
+    challenge:
+      "The school needed a modern public platform for academic, admissions, and frequently changing institutional information.",
+    solution:
+      "Designed and engineered a responsive website with structured content management, publishing, searchable resources, documents, and a production SEO foundation.",
+    technologies: ["Next.js", "TypeScript", "Sanity", "Vercel"],
+    status: "Live",
+    liveUrl: "https://rubaaress.sc.ug/",
+    featured: true,
+  },
+  {
     title: "SK Computer Store",
     category: "Commerce platform",
     image: "/img/portfolio/skcomputerstore.png",
@@ -79,8 +115,7 @@ const selectedWork = [
     solution:
       "Built a responsive commerce experience with a focused product catalogue and checkout foundation.",
     technologies: ["Next.js", "Tailwind CSS", "Stripe"],
-    status: "Live product work",
-    featured: true,
+    status: "Commerce platform",
   },
   {
     title: "Driver Behavior Monitoring",
@@ -91,18 +126,7 @@ const selectedWork = [
     solution:
       "Designed an AI monitoring concept using computer vision and edge-processing patterns.",
     technologies: ["TensorFlow", "Computer Vision", "Edge Computing"],
-    status: "AI project",
-  },
-  {
-    title: "Foozana",
-    category: "Mobile product",
-    image: "/img/portfolio/foozana.jpg",
-    challenge:
-      "Nutrition and wellness users need a simple mobile product experience.",
-    solution:
-      "Created a mobile wellness application foundation focused on diet and nutrition workflows.",
-    technologies: ["Flutter", "Firebase", "Mobile"],
-    status: "Mobile app",
+    status: "Research / Prototype",
   },
 ];
 
@@ -156,23 +180,7 @@ const leaders = [
   },
 ];
 
-const insights = [
-  {
-    title: "AI and Machine Learning Trends to Watch in 2025",
-    category: "AI & ML",
-    href: "/insights/applied-ai-product-decisions",
-  },
-  {
-    title: "Modern Software Development: Best Practices for 2025",
-    category: "Software Development",
-    href: "/insights/modern-software-development-principles",
-  },
-  {
-    title: "The Future of Web3: Decentralized Apps and Beyond",
-    category: "Web3",
-    href: "/insights/blockchain-product-fit",
-  },
-];
+const homepageInsights = insightArticles.slice(0, 3);
 
 function ProductSystemMockup() {
   return (
@@ -265,7 +273,7 @@ function WorkCard({
       >
         <Image
           src={project.image}
-          alt={`${project.title} project preview`}
+          alt={"imageAlt" in project ? project.imageAlt : `${project.title} project preview`}
           fill
           sizes={project.featured ? "(min-width: 1024px) 38rem, 100vw" : "(min-width: 1024px) 24rem, 100vw"}
           className="object-cover"
@@ -292,6 +300,16 @@ function WorkCard({
             <Tag key={technology}>{technology}</Tag>
           ))}
         </div>
+        {"liveUrl" in project && project.liveUrl ? (
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Link href="/work" className="inline-flex min-h-touch items-center text-body-sm font-semibold text-heading transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+              View Case Study
+            </Link>
+            <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-touch items-center gap-2 text-body-sm font-semibold text-heading transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+              Visit Live Site <ExternalLink className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+            </Link>
+          </div>
+        ) : null}
       </div>
     </Card>
   );
@@ -300,6 +318,7 @@ function WorkCard({
 export default function Home() {
   return (
     <div className="bg-background text-body-color">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteData).replace(/</g, "\\u003c") }} />
       <Section spacing="lg" className="min-h-screen">
         <Container className="grid gap-14 lg:grid-cols-2 lg:items-center">
           <div className="max-w-readable">
@@ -389,7 +408,7 @@ export default function Home() {
           <SectionHeader
             eyebrow="Selected work"
             title="Examples of systems, products, and technical direction."
-            description="A focused view of project work using existing NileBit Labs assets. Outcomes should be expanded as case studies become documented."
+            description="A focused view of institutional, commerce, and applied AI product work."
           />
           <div className="mt-14 space-y-grid">
             <WorkCard project={selectedWork[0]} />
@@ -533,10 +552,10 @@ export default function Home() {
               description="A lean editorial layer for ideas around product engineering, AI, software systems, and emerging technology."
             />
             <div className="space-y-4">
-              {insights.map((insight) => (
+              {homepageInsights.map((insight) => (
                 <Link
-                  key={insight.href}
-                  href={insight.href}
+                  key={insight.slug}
+                  href={`/insights/${insight.slug}`}
                   className="group block rounded-card border border-border bg-background p-5 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   <p className="text-caption text-primary">

@@ -41,16 +41,21 @@ export default function NileBot() {
   }, []);
   useEffect(() => {
     if (!open) return;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
     const previousOverflow = document.body.style.overflow;
     const previousPaddingRight = document.body.style.paddingRight;
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
     if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
+    const preserveScroll = requestAnimationFrame(() => window.scrollTo(scrollX, scrollY));
     const closeOnEscape = (event: KeyboardEvent) => { if (event.key === "Escape") close(); };
     document.addEventListener("keydown", closeOnEscape);
     return () => {
+      cancelAnimationFrame(preserveScroll);
       document.body.style.overflow = previousOverflow;
       document.body.style.paddingRight = previousPaddingRight;
+      window.scrollTo(scrollX, scrollY);
       document.removeEventListener("keydown", closeOnEscape);
     };
   }, [open]);

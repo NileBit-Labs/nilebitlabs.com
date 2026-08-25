@@ -22,13 +22,9 @@ import {
   SectionHeader,
 } from "@/components/ui/design-system";
 import NileBotTrigger from "@/components/nilebot/NileBotTrigger";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "Learn about NileBit Labs, a product engineering and emerging technology company based in Kampala, Uganda.",
-  alternates: { canonical: "/about" },
-};
+export const metadata: Metadata = createPageMetadata("About", "Learn about NileBit Labs, a founder-led product engineering and emerging technology company based in Kampala, Uganda and delivering globally.", "/about");
 
 const purposeStatements = [
   {
