@@ -166,16 +166,19 @@ const leaders = [
   {
     name: "Douglas Bagambe",
     role: "CEO & Co-Founder",
+    email: "douglas@nilebitlabs.com",
     image: "/img/team/douglas.jpg",
   },
   {
     name: "Elioda Muhangi",
     role: "CTO & Co-Founder",
+    email: "eliod@nilebitlabs.com",
     image: "/img/team/elioda.jpg",
   },
   {
     name: "Collins Shema",
     role: "COO & Co-Founder",
+    email: "shema@nilebitlabs.com",
     image: "/img/team/shema.jpg",
   },
 ];

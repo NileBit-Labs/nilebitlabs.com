@@ -54,7 +54,7 @@ export default function ContactPage() {
               <p className="mt-5 text-body text-muted">Share as much context as you have. If the scope is still uncertain, that is a useful place to begin.</p>
               <address className="mt-9 space-y-5 not-italic text-body text-muted">
                 <a href="mailto:info@nilebitlabs.com" className="flex min-h-touch items-center gap-3 transition-colors hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Mail className="h-5 w-5 text-primary" strokeWidth={1.75} aria-hidden="true" /> info@nilebitlabs.com</a>
-                <a href="tel:+256770919975" className="flex min-h-touch items-center gap-3 transition-colors hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Phone className="h-5 w-5 text-primary" strokeWidth={1.75} aria-hidden="true" /> +256 770 919 175</a>
+                <a href="tel:+256770919175" className="flex min-h-touch items-center gap-3 transition-colors hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Phone className="h-5 w-5 text-primary" strokeWidth={1.75} aria-hidden="true" /> +256 770 919 175</a>
                 <p className="flex items-start gap-3"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" strokeWidth={1.75} aria-hidden="true" /> Makerere Kavule, Kampala, Uganda</p>
               </address>
               <div className="mt-9 border-t border-border pt-7 text-body-sm text-muted"><p>Monday–Friday, 9:00 AM–5:00 PM</p><p className="mt-2">Saturday, 10:00 AM–2:00 PM</p><p className="mt-2">East Africa Time</p></div>

@@ -45,7 +45,7 @@ const organizationData = {
   url: `${siteUrl}/`,
   logo: `${siteUrl}/nilebit-logo.svg`,
   email: "info@nilebitlabs.com",
-  telephone: "+256 770 919 975",
+  telephone: "+256 770 919 175",
   address: { "@type": "PostalAddress", streetAddress: "Makerere Kavule", addressLocality: "Kampala", addressCountry: "Uganda" },
 };
 

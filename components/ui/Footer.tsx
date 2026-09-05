@@ -105,12 +105,35 @@ export default function Footer() {
                   info@nilebitlabs.com
                 </a>
               </p>
-              <p className="flex gap-3">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1.75} aria-hidden="true" />
-                <a className="hover:text-heading" href="tel:+256770919975">
-                  +256 770 919 975
-                </a>
-              </p>
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1.75} aria-hidden="true" />
+                  <div className="flex flex-wrap items-center gap-2">
+                    <a className="hover:text-heading" href="tel:+256770919175">
+                      +256 770 919 175
+                    </a>
+                    <span className="text-caption uppercase tracking-[0.18em] text-muted">UG</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary opacity-0" strokeWidth={1.75} aria-hidden="true" />
+                  <div className="flex flex-wrap items-center gap-2">
+                    <a className="hover:text-heading" href="tel:+256780487574">
+                      +256 780 487 574
+                    </a>
+                    <span className="text-caption uppercase tracking-[0.18em] text-muted">UG</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary opacity-0" strokeWidth={1.75} aria-hidden="true" />
+                  <div className="flex flex-wrap items-center gap-2">
+                    <a className="hover:text-heading" href="tel:+250792831227">
+                      +250 792 831 227
+                    </a>
+                    <span className="text-caption uppercase tracking-[0.18em] text-muted">RW</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </address>
         </div>

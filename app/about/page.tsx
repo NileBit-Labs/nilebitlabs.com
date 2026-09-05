@@ -9,6 +9,7 @@ import {
   Code2,
   Compass,
   Globe2,
+  Mail,
   MapPin,
   Rocket,
 } from "lucide-react";
@@ -91,6 +92,7 @@ const leaders = [
   {
     name: "Douglas Bagambe",
     role: "CEO & Co-Founder",
+    email: "douglas@nilebitlabs.com",
     image: "/img/team/douglas.jpg",
     focus:
       "Company strategy, business development, partnerships, technical leadership, and blockchain/software engineering.",
@@ -98,6 +100,7 @@ const leaders = [
   {
     name: "Elioda Muhangi",
     role: "CTO & Co-Founder",
+    email: "eliod@nilebitlabs.com",
     image: "/img/team/elioda.jpg",
     focus:
       "Technology strategy, system architecture, research, artificial intelligence, machine learning, and engineering quality.",
@@ -105,6 +108,7 @@ const leaders = [
   {
     name: "Collins Shema",
     role: "COO & Co-Founder",
+    email: "shema@nilebitlabs.com",
     image: "/img/team/shema.jpg",
     focus:
       "Operations, project coordination, delivery processes, client experience, and quality assurance.",
@@ -179,6 +183,13 @@ function FounderCard({ leader }: { leader: (typeof leaders)[number] }) {
         </div>
       </div>
       <p className="mt-6 text-body text-muted">{leader.focus}</p>
+      <a
+        href={`mailto:${leader.email}`}
+        className="mt-5 inline-flex items-center gap-2 text-body-sm text-muted transition-colors hover:text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      >
+        <Mail className="h-4 w-4 text-primary" strokeWidth={1.75} aria-hidden="true" />
+        <span>{leader.email}</span>
+      </a>
     </Card>
   );
 }

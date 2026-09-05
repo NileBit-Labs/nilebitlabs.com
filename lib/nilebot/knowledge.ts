@@ -6,7 +6,7 @@ export const nileBitFacts = {
     description: "A product engineering and emerging technology company based in Kampala, Uganda, serving clients locally and globally.",
     location: "Makerere Kavule, Kampala, Uganda",
     email: "info@nilebitlabs.com",
-    phone: "+256 770 919 975",
+    phone: "+256 770 919 175",
     hours: "Monday to Friday, 9:00 AM to 5:00 PM; Saturday, 10:00 AM to 2:00 PM, East Africa Time.",
   },
   services: [
