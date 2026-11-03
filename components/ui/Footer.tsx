@@ -25,6 +25,7 @@ const companyLinks: FooterLink[] = [
 const legalLinks: FooterLink[] = [
   { label: "FAQs", href: "/faq" },
   { label: "Privacy", href: "/privacy" },
+  { label: "WhatsApp POS privacy", href: "/whatsapp-pos-privacy" },
   { label: "Terms", href: "/terms" },
   { label: "Cookies", href: "/cookies" },
 ];
