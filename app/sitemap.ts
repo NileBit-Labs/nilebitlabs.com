@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { insights } from "@/data/insights";
 
 const baseUrl = "https://nilebitlabs.com";
-const routes = ["", "/services", "/work", "/about", "/insights", "/contact", "/faq", "/privacy", "/terms", "/cookies"];
+const routes = ["", "/services", "/work", "/about", "/insights", "/contact", "/faq", "/privacy", "/whatsapp-pos-privacy", "/terms", "/cookies"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages: MetadataRoute.Sitemap = routes.map((route) => ({
